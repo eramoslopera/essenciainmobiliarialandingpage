@@ -2,9 +2,9 @@
 export default {
     content: [
         "./index.html",
-        "./components/**/*.{js,ts,jsx,tsx}",
-        "./pages/**/*.{js,ts,jsx,tsx}",
-        "./*.{js,ts,jsx,tsx}",
+        "./src/components/**/*.{js,ts,jsx,tsx}",
+        "./src/pages/**/*.{js,ts,jsx,tsx}",
+        "./src/**/*.{js,ts,jsx,tsx}",
     ],
     darkMode: "class",
     theme: {
