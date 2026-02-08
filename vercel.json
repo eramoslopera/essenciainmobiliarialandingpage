@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/feed",
+            "destination": "https://procesos.apinmo.com/portal/kyeroagencias3/1909-kyero-eCSz1ipe-facilitea.xml"
+        },
+        {
+            "source": "/((?!api/.*).*)",
+            "destination": "/index.html"
+        }
+    ]
+}
