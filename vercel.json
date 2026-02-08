@@ -8,5 +8,8 @@
             "source": "/((?!api/.*).*)",
             "destination": "/index.html"
         }
-    ]
+    ],
+    "buildCommand": "vite build",
+    "outputDirectory": "dist",
+    "framework": "vite"
 }
