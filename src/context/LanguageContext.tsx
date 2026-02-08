@@ -19,6 +19,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.about': 'About',
     'nav.stories': 'Stories',
     'nav.contact': 'Contact',
+    'nav.sell_now': 'Sell Now',
 
     // Global / Common
     'common.read_more': 'Read More',
@@ -484,6 +485,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.about': 'Nosotros',
     'nav.stories': 'Historias',
     'nav.contact': 'Contacto',
+    'nav.sell_now': 'Vende ahora',
     'common.read_more': 'Leer Más',
     'common.view_all': 'Ver Todo',
     'common.search': 'Buscar',

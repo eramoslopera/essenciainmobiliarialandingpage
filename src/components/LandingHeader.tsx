@@ -16,44 +16,53 @@ const LandingHeader: React.FC = () => {
         { id: 'mia-method', label: 'MIA' },
         { id: 'recent-sales', label: t('landing.hero.sales') },
         { id: 'faq', label: 'FAQ' },
-        { id: 'start-valuation', label: t('nav.contact') },
+        { id: 'start-valuation', label: t('nav.sell_now') },
     ];
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-[#101922]/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    {/* Logo acts as reset/refresh rather than navigation */}
+
+                {/* Logo - Rigid Left */}
+                <div className="flex-1 flex justify-start">
                     <a href="/" className="flex items-center gap-3">
                         <img src="/Logo_Negro.svg" alt="Essencia Inmobiliaria" className="h-12 w-auto object-contain dark:invert" />
                     </a>
                 </div>
 
-                <div className="flex items-center gap-8">
-                    {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-6 mr-4">
-                        {navLinks.map((link) => (
-                            <button
-                                key={link.id}
-                                onClick={() => scrollToSection(link.id)}
-                                className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-gray-500 transition-colors"
-                            >
-                                {link.label}
-                            </button>
-                        ))}
-                    </nav>
+                {/* Desktop Navigation - Rigid Center */}
+                <nav className="hidden lg:flex flex-1 justify-center items-center gap-6">
+                    {navLinks.map((link) => (
+                        <button
+                            key={link.id}
+                            onClick={() => scrollToSection(link.id)}
+                            className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-gray-500 transition-colors whitespace-nowrap"
+                        >
+                            {link.label}
+                        </button>
+                    ))}
+                </nav>
 
-                    {/* Language Switcher */}
-                    <div className="hidden lg:flex items-center gap-3 text-[10px] font-bold tracking-widest text-gray-400">
-                        <button onClick={() => setLanguage('es')} className={`cursor-pointer transition-colors ${language === 'es' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>ES</button>
-                        <button onClick={() => setLanguage('en')} className={`cursor-pointer transition-colors ${language === 'en' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>EN</button>
-                        <button onClick={() => setLanguage('fr')} className={`cursor-pointer transition-colors ${language === 'fr' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>FR</button>
-                        <button onClick={() => setLanguage('de')} className={`cursor-pointer transition-colors ${language === 'de' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>DE</button>
-                        <button onClick={() => setLanguage('va')} className={`cursor-pointer transition-colors ${language === 'va' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>VA</button>
+                {/* Actions - Rigid Right */}
+                <div className="flex-1 flex justify-end items-center gap-4">
+
+                    {/* Language Switcher Dropdown */}
+                    <div className="hidden lg:block relative group">
+                        <button className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-gray-400 hover:text-editorial-black dark:hover:text-white transition-colors py-2 uppercase">
+                            {language}
+                            <span className="material-symbols-outlined text-[14px]">expand_more</span>
+                        </button>
+                        <div className="absolute top-full right-0 w-24 bg-white dark:bg-background-dark shadow-xl border border-gray-100 dark:border-gray-800 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                            <button onClick={() => setLanguage('en')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'en' ? 'text-primary' : 'text-gray-400'}`}>EN</button>
+                            <button onClick={() => setLanguage('es')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'es' ? 'text-primary' : 'text-gray-400'}`}>ES</button>
+                            <button onClick={() => setLanguage('fr')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'fr' ? 'text-primary' : 'text-gray-400'}`}>FR</button>
+                            <button onClick={() => setLanguage('de')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'de' ? 'text-primary' : 'text-gray-400'}`}>DE</button>
+                            <button onClick={() => setLanguage('va')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
+                        </div>
                     </div>
 
                     <a href="tel:+34647803355" className="hidden sm:flex h-10 px-6 items-center justify-center bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
-                        +34 647 803 355
+                        {t('nav.contact')}
                     </a>
 
                     <button className="lg:hidden p-2 text-editorial-black dark:text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -84,7 +93,7 @@ const LandingHeader: React.FC = () => {
                         <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
                     </div>
                     <a href="tel:+34647803355" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
-                        +34 647 803 355
+                        {t('nav.contact')}
                     </a>
                 </div>
             )}
