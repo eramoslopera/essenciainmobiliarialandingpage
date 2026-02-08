@@ -3,7 +3,7 @@ import React from 'react';
 const FloatingWhatsApp: React.FC = () => {
     // Replace with actual phone number if provided, otherwise use a placeholder or generic link
     // Format: https://wa.me/<number>
-    const whatsappUrl = "https://wa.me/34600000000";
+    const whatsappUrl = "https://wa.me/34647803355";
 
     return (
         <a
