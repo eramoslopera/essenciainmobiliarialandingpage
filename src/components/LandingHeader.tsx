@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 const LandingHeader: React.FC = () => {
     const { t, language, setLanguage } = useLanguage();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
