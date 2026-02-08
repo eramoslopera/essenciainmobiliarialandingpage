@@ -129,6 +129,25 @@ const Landing: React.FC = () => {
         });
     };
 
+    const [showBackToTop, setShowBackToTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 400) {
+                setShowBackToTop(true);
+            } else {
+                setShowBackToTop(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setFormStatus('submitting');
@@ -220,12 +239,12 @@ const Landing: React.FC = () => {
                             <p className="text-gray-500 font-medium text-sm mb-8">{t('landing.service.online.desc')}</p>
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-300 pb-1 group-hover:border-black transition-colors">{t('landing.service.online.cta')}</span>
                         </div>
-                        <a href="mailto:hello@essencia.es" className="bg-[#f6f7f8] dark:bg-white/5 p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                        <div onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })} className="bg-[#f6f7f8] dark:bg-white/5 p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
                             <span className="material-symbols-outlined text-4xl mb-6 text-editorial-black dark:text-white">person</span>
                             <h3 className="text-2xl font-black mb-2 text-editorial-black dark:text-white tracking-tight">{t('landing.service.person.title')}</h3>
                             <p className="text-gray-500 font-medium text-sm mb-8">{t('landing.service.person.desc')}</p>
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-300 pb-1 group-hover:border-black transition-colors">{t('landing.service.person.cta')}</span>
-                        </a>
+                        </div>
                     </div>
                 </section>
 
@@ -268,7 +287,7 @@ const Landing: React.FC = () => {
                 </section>
 
                 {/* MIA Method Section */}
-                <section className="py-24 px-6 lg:px-12 bg-[#f6f7f8] dark:bg-white/5 relative overflow-hidden">
+                <section id="mia-method" className="py-24 px-6 lg:px-12 bg-[#f6f7f8] dark:bg-white/5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-10 opacity-10 pointer-events-none">
                         <span className="text-[200px] font-black text-editorial-black dark:text-white">MIA</span>
                     </div>
@@ -502,7 +521,7 @@ const Landing: React.FC = () => {
                 </section>
 
                 {/* FAQ Accordion */}
-                <section className="py-24 bg-white dark:bg-background-dark px-6">
+                <section id="faq" className="py-24 bg-white dark:bg-background-dark px-6">
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
                         <div className="space-y-4">
@@ -623,6 +642,12 @@ const Landing: React.FC = () => {
             </main>
             <LandingFooter />
             <FloatingWhatsApp />
+            <button
+                onClick={scrollToTop}
+                className={`fixed bottom-24 right-6 z-40 w-12 h-12 bg-white dark:bg-background-dark text-editorial-black dark:text-white shadow-lg border border-gray-100 dark:border-gray-700 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+            >
+                <span className="material-symbols-outlined">arrow_upward</span>
+            </button>
         </>
     );
 };
