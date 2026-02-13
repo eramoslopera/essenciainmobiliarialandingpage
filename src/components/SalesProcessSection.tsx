@@ -42,6 +42,34 @@ const SalesProcessSection: React.FC = () => {
         setCurrentStep((prev) => (prev - 1 + steps.length) % steps.length);
     };
 
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+    // Minimum swipe distance
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    }
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    }
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            nextStep();
+        } else if (isRightSwipe) {
+            prevStep();
+        }
+    }
+
     return (
         <section className="bg-[#222222] text-white py-24 relative overflow-hidden">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
