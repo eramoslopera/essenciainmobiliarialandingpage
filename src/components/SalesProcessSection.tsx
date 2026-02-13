@@ -26,6 +26,11 @@ const SalesProcessSection: React.FC = () => {
             id: 'step4',
             image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop", // Handshake/Closing
             icon: "handshake"
+        },
+        {
+            id: 'step5',
+            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop", // Keys/Post-sale
+            icon: "vpn_key"
         }
     ];
 
@@ -38,7 +43,7 @@ const SalesProcessSection: React.FC = () => {
     };
 
     return (
-        <section className="bg-[#0b0f19] text-white py-24 relative overflow-hidden">
+        <section className="bg-[#222222] text-white py-24 relative overflow-hidden">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                     <div>

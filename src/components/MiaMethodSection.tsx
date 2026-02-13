@@ -29,7 +29,7 @@ const MiaMethodSection: React.FC = () => {
     };
 
     return (
-        <section id="mia-method" className="py-24 px-6 lg:px-12 bg-[#f6f7f8] dark:bg-white/5 relative overflow-hidden">
+        <section id="mia-method" className="py-24 px-6 lg:px-12 bg-white dark:bg-background-dark relative overflow-hidden">
             <div className="absolute top-0 right-0 p-10 opacity-10 pointer-events-none">
                 <span className="text-[200px] font-black text-editorial-black dark:text-white">MIA</span>
             </div>
@@ -90,7 +90,7 @@ const MiaMethodSection: React.FC = () => {
                             <div className="w-12 h-1 bg-editorial-black mb-2"></div>
                             <p className="text-lg font-medium">{selectedStep.content}</p>
                             <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-xs text-gray-500 italic">
-                                * Este paso es fundamental en nuestro proceso exclusivo de venta.
+                                {t('landing.mia.fundamental')}
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@ const MiaMethodSection: React.FC = () => {
                             onClick={() => setSelectedStep(null)}
                             className="mt-6 w-full py-3 bg-editorial-black text-white uppercase text-xs font-black tracking-widest hover:bg-gray-800 transition-colors"
                         >
-                            Entendido
+                            {t('common.understood')}
                         </button>
                     </Modal>
                 )}

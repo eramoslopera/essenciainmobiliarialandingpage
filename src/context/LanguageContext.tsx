@@ -32,6 +32,7 @@ const translations: Record<Language, Record<string, string>> = {
     'common.email': 'Email',
     'common.phone': 'Phone',
     'common.message': 'Message',
+    'common.understood': 'Understood',
     'common.loading': 'Loading...',
     'common.learn_more': 'Learn More',
 
@@ -119,6 +120,9 @@ const translations: Record<Language, Record<string, string>> = {
     'sell.step4': 'Negotiation & Closing',
     'sell.step4.desc': 'We filter buyers, negotiate terms, and handle all notary procedures.',
     'sell.step4.long': 'We protect your interests. We filter inquisitive people and negotiate the best conditions, accompanying you until the signature.',
+    'sell.step5': 'Post-Sale Service',
+    'sell.step5.desc': 'We help with tax payments and utility changes.',
+    'sell.step5.long': 'Our commitment extends beyond the notary. We assist with capital gains tax, utility transfer, and reinvestment strategies.',
     'sell.ready.title': 'Ready to sell?',
     'sell.ready.subtitle': "Get a valuation that reflects the true potential of your property, not just an algorithm's guess.",
 
@@ -453,6 +457,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Landing - MIA Method & Extra
     'landing.mia.id': 'MIA Method',
     'landing.mia.subtitle': 'High Impact Marketing',
+    'landing.mia.fundamental': '* This step is fundamental in our exclusive sales process.',
     'landing.mia.exclusive': 'Our Exclusive Method',
     'landing.mia.step1.title': 'Communication Plan',
     'landing.mia.step1.subtitle': 'With Seller',
@@ -510,6 +515,7 @@ const translations: Record<Language, Record<string, string>> = {
     'common.email': 'Email',
     'common.phone': 'Teléfono',
     'common.message': 'Mensaje',
+    'common.understood': 'Entendido',
     'common.loading': 'Cargando...',
     'common.learn_more': 'Saber Más',
     'error.required': 'Este campo es obligatorio',
@@ -589,6 +595,9 @@ const translations: Record<Language, Record<string, string>> = {
     'sell.step4': 'Negociación y Cierre',
     'sell.step4.desc': 'Filtramos compradores, negociamos términos y manejamos todo el proceso notarial.',
     'sell.step4.long': 'Protegemos sus intereses. Filtramos a los curiosos y negociamos las mejores condiciones, acompañándole hasta la firma.',
+    'sell.step5': 'Servicio Post-Venta',
+    'sell.step5.desc': 'Ayudamos con la plusvalía y cambio de suministros.',
+    'sell.step5.long': 'Nuestro compromiso va más allá de la notaría. Gestionamos la plusvalía municipal, cambio de suministros y reinversión.',
     'sell.ready.title': '¿Listo para vender?',
     'sell.ready.subtitle': "Obtenga una valoración real del potencial de su propiedad, no solo una estimación algorítmica.",
     'properties.title': 'Propiedades',
@@ -912,7 +921,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Landing - MIA Method & Extra
     'landing.mia.id': 'Método MIA',
-    'landing.mia.subtitle': 'Marketing de Alto Impacto',
+    'landing.mia.subtitle': 'Alto Impacto',
+    'landing.mia.fundamental': '* Este paso es fundamental en nuestro proceso exclusivo de venta.',
     'landing.mia.exclusive': 'Nuestro Método Exclusivo',
     'landing.mia.step1.title': 'Plan de Comunicación',
     'landing.mia.step1.subtitle': 'Con Vendedor',
