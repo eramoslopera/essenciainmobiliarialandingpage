@@ -31,8 +31,8 @@ const CineVideoSection = () => {
                         viewport={{ once: true }}
                         className="text-5xl md:text-7xl font-black text-editorial-black dark:text-white tracking-tighter leading-[0.9]"
                     >
-                        Reportaje <br />
-                        <span className="text-gray-300">Cinematográfico</span>
+                        Pack <br />
+                        <span className="text-gray-300">Visual Pro</span>
                     </motion.h2>
 
                     <p className="text-lg text-gray-500 font-medium max-w-md">
@@ -40,7 +40,7 @@ const CineVideoSection = () => {
                     </p>
 
                     <ul className="space-y-4 mt-4">
-                        {['4K Resolution', 'Drone FPV', 'Music Sync', 'Color Grading'].map((item, i) => (
+                        {['Fotografía Editorial', 'Video Cine', 'Tour Virtual 3D', 'Planos Esquemáticos', 'Home Staging Digital', 'Dron 4K'].map((item, i) => (
                             <li key={i} className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
                                 <span className="w-2 h-2 bg-editorial-black dark:bg-white rounded-full"></span>
                                 {item}

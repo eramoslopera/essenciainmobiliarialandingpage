@@ -24,6 +24,7 @@ const Landing: React.FC = () => {
 
     // Properties State
     const [salesProperties, setSalesProperties] = useState<Property[]>([]);
+    const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
 
     // SEO Title
     useEffect(() => {
@@ -317,7 +318,12 @@ const Landing: React.FC = () => {
                         </div>
                         <div ref={scrollRef} className="flex overflow-x-auto gap-8 pb-12 hide-scrollbar snap-x snap-mandatory">
                             {salesProperties.length > 0 ? salesProperties.map((property) => (
-                                <div key={property.id} className="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white dark:bg-background-dark shadow-sm flex flex-col md:flex-row h-auto md:h-[280px]">
+                                <div
+                                    key={property.id}
+                                    className="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white dark:bg-background-dark shadow-sm flex flex-col md:flex-row h-auto md:h-[280px] cursor-pointer"
+                                    onMouseEnter={() => setHoveredPropertyId(property.id)}
+                                    onMouseLeave={() => setHoveredPropertyId(null)}
+                                >
                                     <div className="w-full md:w-5/12 bg-cover bg-center h-56 md:h-full grayscale hover:grayscale-0 transition-all duration-500 relative"
                                         style={{ backgroundImage: `url("${property.image}")` }}>
                                         {property.status === 'sold' && (
@@ -378,8 +384,13 @@ const Landing: React.FC = () => {
                                 <CircleMarker
                                     key={property.id}
                                     center={[property.lat, property.lng]}
-                                    radius={8}
-                                    pathOptions={{ color: '#000', fillColor: '#000', fillOpacity: 0.8 }}
+                                    radius={hoveredPropertyId === property.id ? 12 : 8}
+                                    pathOptions={{
+                                        color: '#000',
+                                        fillColor: hoveredPropertyId === property.id ? '#FFFFFF' : '#000',
+                                        fillOpacity: 1,
+                                        weight: hoveredPropertyId === property.id ? 4 : 2
+                                    }}
                                 >
                                     <Popup>
                                         <div className="text-center font-display">
@@ -392,39 +403,6 @@ const Landing: React.FC = () => {
                         ))}
                     </MapContainer>
                     <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white dark:from-[#151f2b] to-transparent z-[400] pointer-events-none"></div>
-                </section>
-
-                {/* Sales Process */}
-                <section className="py-24 bg-[#f6f7f8] dark:bg-background-dark px-6">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.process.title')}</h2>
-                        <div className="relative">
-                            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-700 md:-translate-x-1/2"></div>
-
-                            {[
-                                { number: 1, title: t('landing.process.1'), desc: t('landing.process.1.desc'), side: 'left' },
-                                { number: 2, title: t('landing.process.2'), desc: t('landing.process.2.desc'), side: 'right' },
-                                { number: 3, title: t('landing.process.3'), desc: t('landing.process.3.desc'), side: 'left' },
-                                { number: 4, title: t('landing.process.4'), desc: t('landing.process.4.desc'), side: 'right' },
-                                { number: 5, title: t('landing.process.5'), desc: t('landing.process.5.desc'), side: 'left' }
-                            ].map((step) => (
-                                <div key={step.number} className="relative flex flex-col md:flex-row items-start md:items-center mb-12 last:mb-0">
-                                    {step.side === 'right' && <div className="hidden md:block md:w-1/2"></div>}
-
-                                    <div className={`md:w-1/2 ${step.side === 'left' ? 'md:pr-12 md:text-right pl-12 md:pl-0' : 'md:pl-12 pl-12'}`}>
-                                        <h3 className="text-xl font-black uppercase tracking-wide">{step.title}</h3>
-                                        <p className="text-sm text-gray-500 mt-2">{step.desc}</p>
-                                    </div>
-
-                                    <div className={`absolute left-0 md:left-1/2 top-0 md:top-1/2 w-8 h-8 -translate-y-0 md:-translate-y-1/2 md:-translate-x-1/2 ${step.number % 2 !== 0 ? 'bg-editorial-black text-white' : 'bg-white border-2 border-editorial-black text-editorial-black'} rounded-full flex items-center justify-center text-[10px] font-bold z-10`}>
-                                        {step.number}
-                                    </div>
-
-                                    {step.side === 'left' && <div className="hidden md:block md:w-1/2"></div>}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </section>
 
                 {/* FAQ Accordion */}
