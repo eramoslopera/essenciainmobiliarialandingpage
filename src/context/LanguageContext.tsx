@@ -378,6 +378,7 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.phone': 'Contact Phone',
     'landing.form.email': 'Email Address',
     'landing.form.files': 'Add Photos/Videos (Optional)',
+    'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'Request Valuation',
     'landing.form.success': 'Request received. We will contact you shortly.',
 
@@ -1779,6 +1780,7 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.phone': 'Kontakttelefon',
     'landing.form.email': 'E-Mail',
     'landing.form.files': 'Fotos/Videos Hinzufügen (Optional)',
+    'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'Bewertung Anfordern',
     'landing.form.success': 'Anfrage erhalten. Wir werden Sie in Kürze kontaktieren.',
 
@@ -2175,6 +2177,7 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.phone': 'Telèfon de contacte',
     'landing.form.email': 'Email',
     'landing.form.files': 'Afegir Fotos/Vídeos (Opcional)',
+    'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'Sol·licitar Valoració',
     'landing.form.success': 'Sol·licitud rebuda. Et contactarem aviat.',
 

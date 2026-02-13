@@ -496,7 +496,7 @@ const Landing: React.FC = () => {
                                                 name="name"
                                                 value={formState.name}
                                                 onChange={handleInputChange}
-                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
                                                 type="text"
                                                 placeholder={t('landing.form.name')}
                                             />
@@ -510,7 +510,7 @@ const Landing: React.FC = () => {
                                                 name="phone"
                                                 value={formState.phone}
                                                 onChange={handleInputChange}
-                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
                                                 type="tel"
                                                 placeholder={t('landing.form.phone')}
                                             />
@@ -526,7 +526,7 @@ const Landing: React.FC = () => {
                                             name="email"
                                             value={formState.email}
                                             onChange={handleInputChange}
-                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300"
+                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
                                             type="email"
                                             placeholder={t('landing.form.email')}
                                         />
@@ -542,7 +542,7 @@ const Landing: React.FC = () => {
                                                 name="address"
                                                 value={formState.address}
                                                 onChange={handleInputChange}
-                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 pl-8"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 pl-8 pr-0"
                                                 type="text"
                                                 placeholder={t('landing.cta.placeholder')}
                                             />
@@ -571,7 +571,7 @@ const Landing: React.FC = () => {
                                             />
                                             <div className="w-full h-12 border-b border-gray-300 dark:border-gray-700 flex items-center justify-between text-gray-400 group-hover:text-editorial-black dark:group-hover:text-white transition-colors">
                                                 <span className="text-sm font-medium italic">
-                                                    PDF, JPG, PNG, MP4...
+                                                    {t('landing.form.files_placeholder')}
                                                 </span>
                                                 <span className="material-symbols-outlined text-xl">attach_file</span>
                                             </div>
