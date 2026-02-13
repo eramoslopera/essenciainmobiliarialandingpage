@@ -49,7 +49,7 @@ const MiaMethodSection: React.FC = () => {
                     variants={{
                         visible: { transition: { staggerChildren: 0.05 } }
                     }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4"
+                    className="flex md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-6 -mx-6 md:px-0 md:mx-0 hide-scrollbar"
                 >
                     {steps.map((step) => (
                         <motion.div
@@ -60,7 +60,7 @@ const MiaMethodSection: React.FC = () => {
                             }}
                             whileHover={{ y: -5, borderColor: '#000' }}
                             onClick={() => handleStepClick(step.id)}
-                            className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group  transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl"
+                            className="shrink-0 snap-center w-[85vw] md:w-auto bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl"
                         >
                             {step.pro && (
                                 <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>

@@ -145,11 +145,11 @@ const MasonryGallery = () => {
                 </button>
             </div>
 
-            <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[300px]">
+            <div className="max-w-[1440px] mx-auto flex md:grid md:grid-cols-4 gap-4 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-0 md:px-0 -mx-6 md:mx-0 auto-rows-[300px] hide-scrollbar">
                 {images.map((img, i) => (
                     <motion.div
                         key={i}
-                        className={`relative group overflow-hidden cursor-pointer ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
+                        className={`relative group overflow-hidden cursor-pointer shrink-0 snap-center w-[85vw] md:w-auto h-[300px] md:h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}

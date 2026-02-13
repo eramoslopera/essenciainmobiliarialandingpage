@@ -407,9 +407,9 @@ const Landing: React.FC = () => {
 
                 {/* FAQ Accordion */}
                 <section id="faq" className="py-24 bg-white dark:bg-background-dark px-6">
-                    <div className="max-w-3xl mx-auto">
+                    <div className="max-w-5xl mx-auto">
                         <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
-                        <div className="space-y-4">
+                        <div className="columns-1 md:columns-2 gap-8 space-y-4">
                             {[
                                 { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
                                 { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
@@ -420,13 +420,13 @@ const Landing: React.FC = () => {
                                 { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
                                 { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') }
                             ].map((item, index) => (
-                                <div key={index} className="border-b border-gray-100 dark:border-gray-800">
+                                <div key={index} className="break-inside-avoid mb-4 border-b border-gray-100 dark:border-gray-800">
                                     <button
-                                        className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left"
+                                        className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
                                         onClick={() => toggleFaq(index)}
                                     >
                                         {item.q}
-                                        <span className={`material-symbols-outlined transition-transform ${openFaq === index ? 'rotate-180' : ''}`}>expand_more</span>
+                                        <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}>expand_more</span>
                                     </button>
                                     <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-40 pb-4' : 'max-h-0'}`}>
                                         <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
@@ -445,73 +445,84 @@ const Landing: React.FC = () => {
                         <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black dark:text-white tracking-tighter leading-none">
                             {t('landing.cta.title')}
                         </h2>
-                        <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto font-medium">
+                        <p className="text-lg text-gray-500 mb-16 max-w-2xl mx-auto font-medium">
                             {t('landing.cta.subtitle')}
                         </p>
-                        <div className="bg-white dark:bg-gray-800 p-8 border-2 border-editorial-black dark:border-gray-700 max-w-2xl mx-auto shadow-2xl">
+
+                        <div className="max-w-2xl mx-auto">
                             {formStatus === 'success' ? (
                                 <div className="text-center py-12">
                                     <span className="material-symbols-outlined text-6xl text-editorial-black dark:text-white mb-4">check_circle</span>
                                     <h3 className="text-2xl font-black mb-2">{t('landing.form.success')}</h3>
                                 </div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                                    <h3 className="text-xl font-black text-left mb-2 text-editorial-black dark:text-white uppercase tracking-widest border-b border-gray-100 pb-2">
-                                        {t('landing.form.title')}
-                                    </h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="flex flex-col items-start">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1 ml-1">{t('landing.form.name')}</label>
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-left">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                        <div className="relative group">
                                             <input
                                                 required
                                                 name="name"
                                                 value={formState.name}
                                                 onChange={handleInputChange}
-                                                className="w-full h-14 px-4 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:border-editorial-black focus:ring-0 text-editorial-black dark:text-white text-sm font-medium"
+                                                className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent"
                                                 type="text"
+                                                placeholder={t('landing.form.name')}
                                             />
+                                            <label className="absolute left-0 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
+                                                {t('landing.form.name')}
+                                            </label>
                                         </div>
-                                        <div className="flex flex-col items-start">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1 ml-1">{t('landing.form.phone')}</label>
+                                        <div className="relative group">
                                             <input
                                                 required
                                                 name="phone"
                                                 value={formState.phone}
                                                 onChange={handleInputChange}
-                                                className="w-full h-14 px-4 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:border-editorial-black focus:ring-0 text-editorial-black dark:text-white text-sm font-medium"
+                                                className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent"
                                                 type="tel"
+                                                placeholder={t('landing.form.phone')}
                                             />
+                                            <label className="absolute left-0 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
+                                                {t('landing.form.phone')}
+                                            </label>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col items-start">
-                                        <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1 ml-1">{t('landing.form.email')}</label>
+
+                                    <div className="relative group">
                                         <input
                                             required
                                             name="email"
                                             value={formState.email}
                                             onChange={handleInputChange}
-                                            className="w-full h-12 px-4 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:border-editorial-black focus:ring-0 text-editorial-black dark:text-white text-sm font-medium"
+                                            className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent"
                                             type="email"
+                                            placeholder={t('landing.form.email')}
                                         />
+                                        <label className="absolute left-0 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
+                                            {t('landing.form.email')}
+                                        </label>
                                     </div>
-                                    <div className="flex flex-col items-start">
-                                        <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1 ml-1">{t('landing.cta.placeholder')}</label>
-                                        <div className="relative w-full">
-                                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined">location_on</span>
-                                            <input
-                                                required
-                                                name="address"
-                                                value={formState.address}
-                                                onChange={handleInputChange}
-                                                className="w-full h-12 pl-12 pr-4 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:border-editorial-black focus:ring-0 text-editorial-black dark:text-white text-sm font-medium"
-                                                type="text"
-                                            />
-                                        </div>
+
+                                    <div className="relative group">
+                                        <input
+                                            required
+                                            name="address"
+                                            value={formState.address}
+                                            onChange={handleInputChange}
+                                            className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent pl-8"
+                                            type="text"
+                                            placeholder={t('landing.cta.placeholder')}
+                                        />
+                                        <span className="absolute left-0 top-2 text-gray-400 material-symbols-outlined text-xl">location_on</span>
+                                        <label className="absolute left-8 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
+                                            {t('landing.cta.placeholder')}
+                                        </label>
                                     </div>
+
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'submitting'}
-                                        className="mt-4 h-14 w-full bg-editorial-black hover:bg-gray-800 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-gray-800 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                                     >
                                         {formStatus === 'submitting' ? (
                                             <span className="material-symbols-outlined animate-spin">refresh</span>

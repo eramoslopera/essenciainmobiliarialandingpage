@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Logo from './Logo';
 import { useLanguage } from '../context/LanguageContext';
 
 const LandingHeader: React.FC = () => {
@@ -26,7 +27,7 @@ const LandingHeader: React.FC = () => {
                 {/* Logo - Rigid Left */}
                 <div className="flex-1 flex justify-start">
                     <a href="/" className="flex items-center gap-3">
-                        <img src="/Logo_Negro.svg" alt="Essencia Inmobiliaria" className="h-12 w-auto object-contain dark:invert" />
+                        <Logo className="h-12 w-auto object-contain dark:text-white text-editorial-black" />
                     </a>
                 </div>
 
