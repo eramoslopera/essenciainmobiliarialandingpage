@@ -406,33 +406,62 @@ const Landing: React.FC = () => {
                 </section>
 
                 {/* FAQ Accordion */}
+                {/* FAQ Accordion */}
                 <section id="faq" className="py-24 bg-white dark:bg-background-dark px-6">
                     <div className="max-w-5xl mx-auto">
                         <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
-                        <div className="columns-1 md:columns-2 gap-8 space-y-4">
-                            {[
-                                { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
-                                { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
-                                { q: t('landing.faq.3.q'), a: t('landing.faq.3.a') },
-                                { q: t('landing.faq.4.q'), a: t('landing.faq.4.a') },
-                                { q: t('landing.faq.5.q'), a: t('landing.faq.5.a') },
-                                { q: t('landing.faq.6.q'), a: t('landing.faq.6.a') },
-                                { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
-                                { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') }
-                            ].map((item, index) => (
-                                <div key={index} className="break-inside-avoid mb-4 border-b border-gray-100 dark:border-gray-800">
-                                    <button
-                                        className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
-                                        onClick={() => toggleFaq(index)}
-                                    >
-                                        {item.q}
-                                        <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}>expand_more</span>
-                                    </button>
-                                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-40 pb-4' : 'max-h-0'}`}>
-                                        <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
-                                    </div>
-                                </div>
-                            ))}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            {/* Left Column */}
+                            <div className="space-y-4">
+                                {[
+                                    { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
+                                    { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
+                                    { q: t('landing.faq.3.q'), a: t('landing.faq.3.a') },
+                                    { q: t('landing.faq.4.q'), a: t('landing.faq.4.a') }
+                                ].map((item, index) => {
+                                    const realIndex = index; // 0 to 3
+                                    return (
+                                        <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
+                                            <button
+                                                className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
+                                                onClick={() => toggleFaq(realIndex)}
+                                            >
+                                                {item.q}
+                                                <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
+                                            </button>
+                                            <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                                <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="space-y-4">
+                                {[
+                                    { q: t('landing.faq.5.q'), a: t('landing.faq.5.a') },
+                                    { q: t('landing.faq.6.q'), a: t('landing.faq.6.a') },
+                                    { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
+                                    { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') }
+                                ].map((item, index) => {
+                                    const realIndex = index + 4; // 4 to 7
+                                    return (
+                                        <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
+                                            <button
+                                                className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
+                                                onClick={() => toggleFaq(realIndex)}
+                                            >
+                                                {item.q}
+                                                <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
+                                            </button>
+                                            <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                                <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     </div>
                 </section>
