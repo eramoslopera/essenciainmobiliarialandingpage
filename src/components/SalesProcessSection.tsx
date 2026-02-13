@@ -71,7 +71,12 @@ const SalesProcessSection: React.FC = () => {
     }
 
     return (
-        <section className="bg-[#222222] text-white py-24 relative overflow-hidden">
+        <section
+            className="bg-[#222222] text-white py-24 relative overflow-hidden touch-pan-y"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+        >
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                     <div>

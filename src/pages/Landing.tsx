@@ -327,6 +327,14 @@ const Landing: React.FC = () => {
                                 if (progressBar) {
                                     progressBar.style.width = `${Math.max(0, Math.min(100, progress * 100))}%`;
                                 }
+
+                                // Update counter
+                                const itemWidth = width * 0.85; // approx item width
+                                const currentIndex = Math.round(scrollLeft / itemWidth) + 1;
+                                const counter = document.getElementById('sold-counter');
+                                if (counter) {
+                                    counter.innerText = `${Math.min(currentIndex, salesProperties.length)} / ${salesProperties.length}`;
+                                }
                             }}
                         >
                             {salesProperties.length > 0 ? salesProperties.map((property) => (
@@ -385,13 +393,9 @@ const Landing: React.FC = () => {
                                 <span className="material-symbols-outlined">arrow_back</span>
                             </button>
 
-                            {/* Progress Bar */}
-                            <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                                <div
-                                    id="sold-progress-bar"
-                                    className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"
-                                    style={{ width: '20%' }} // Initial width, updated by scroll event
-                                ></div>
+                            {/* 1 / N Counter */}
+                            <div className="flex-1 text-center text-sm font-bold text-editorial-black dark:text-white">
+                                <span id="sold-counter">1 / {salesProperties.length}</span>
                             </div>
 
                             <button
