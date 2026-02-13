@@ -1,9 +1,56 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import PhoneMockup from './PhoneMockup';
 import { useLanguage } from '../context/LanguageContext';
 
 // --- Sub-components ---
+
+// Reusable Video Component with Auto-Play on Scroll
+const AutoPlayVideo = ({ src, className }: { src: string, className?: string }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Simple Intersection Observer for Play/Pause
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    videoRef.current?.play().catch(() => { }); // catch play errors (e.g. low power mode)
+                } else {
+                    videoRef.current?.pause();
+                }
+            },
+            { threshold: 0.5 } // Play when 50% visible
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) {
+                observer.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
+    return (
+        <div ref={containerRef} className={className}>
+            <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                src={src}
+                muted
+                loop
+                playsInline
+            />
+        </div>
+    );
+};
 
 const CineVideoSection = () => {
     const { t } = useLanguage();
@@ -52,13 +99,9 @@ const CineVideoSection = () => {
                 <div className="md:w-1/2 relative flex justify-center">
                     <motion.div style={{ scale }} className="relative z-10">
                         <PhoneMockup className="h-[650px] w-[320px] border-gray-900 shadow-2xl skew-y-0 rotate-0">
-                            <video
-                                className="w-full h-full object-cover"
+                            <AutoPlayVideo
                                 src="/Packpro_Essencia.mp4"
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
+                                className="w-full h-full"
                             />
                         </PhoneMockup>
                     </motion.div>
@@ -80,82 +123,7 @@ const CineVideoSection = () => {
     );
 };
 
-const SocialStack = () => {
-    return (
-        <section className="py-32 bg-editorial-gray dark:bg-white/5 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-                <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
-                    Viralidad <span className="text-gray-400">Garantizada</span>
-                </h2>
-                <p className="max-w-xl mx-auto text-gray-500 font-medium">
-                    Ponemos tu casa donde están los ojos. Instagram, TikTok y YouTube Shorts.
-                </p>
-            </div>
-
-            <div className="relative h-[600px] w-full max-w-5xl mx-auto flex items-center justify-center perspective-1000">
-                {/* Stack of cards mimicking social posts */}
-                <motion.div
-                    initial={{ x: -100, rotate: -15, opacity: 0 }}
-                    whileInView={{ x: -250, rotate: -10, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="absolute z-10 w-[280px] h-[500px] bg-white shadow-2xl rounded-[2rem] p-4 flex flex-col gap-2 transform"
-                >
-                    <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-purple-600"></div>
-                        <div className="h-2 w-20 bg-gray-100 rounded"></div>
-                    </div>
-                    <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" />
-                        <div className="absolute bottom-4 right-4 flex flex-col gap-2">
-                            <div className="w-8 h-8 bg-white/20 backdrop-blur rounded-full"></div>
-                            <div className="w-8 h-8 bg-white/20 backdrop-blur rounded-full"></div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ y: 50, scale: 0.9, opacity: 0 }}
-                    whileInView={{ y: 0, scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="absolute z-20"
-                >
-                    <PhoneMockup className="h-[580px] w-[300px] !border-editorial-black shadow-2xl">
-                        <video
-                            className="w-full h-full object-cover"
-                            src="https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-luxury-building-interior-15227-large.mp4"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                        />
-                    </PhoneMockup>
-                </motion.div>
-
-                <motion.div
-                    initial={{ x: 100, rotate: 15, opacity: 0 }}
-                    whileInView={{ x: 250, rotate: 10, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="absolute z-10 w-[280px] h-[500px] bg-white shadow-2xl rounded-[2rem] p-4 flex flex-col gap-2 transform"
-                >
-                    <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-xs">Tk</div>
-                        <div className="h-2 w-20 bg-gray-100 rounded"></div>
-                    </div>
-                    <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1600596542815-22b5d0325e16?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" />
-                        <div className="absolute bottom-10 left-4 text-white">
-                            <div className="h-2 w-32 bg-white/50 rounded mb-2"></div>
-                            <div className="h-2 w-20 bg-white/50 rounded"></div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    )
-}
-
 const MasonryGallery = () => {
-    // Ideally use real images here
     const images = [
         "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop", // Modern Kitchen
         "https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800&auto=format&fit=crop", // Living Room
@@ -292,106 +260,40 @@ const BeforeAfterSlider = () => {
 }
 
 const VideoGallery = () => {
-    const [activeVideo, setActiveVideo] = useState<string | null>(null);
+    const { t } = useLanguage();
 
-    const videos = [
-        {
-            id: 'video1',
-            thumbnail: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
-            title: 'Penthouse en Gandia',
-            duration: '1:45',
-            url: 'https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4' // Placeholder
-        },
-        {
-            id: 'video2',
-            thumbnail: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
-            title: 'Villa en Oliva Nova',
-            duration: '2:15',
-            url: 'https://assets.mixkit.co/videos/preview/mixkit-living-room-in-a-modern-apartment-4309-large.mp4' // Placeholder
-        },
-        {
-            id: 'video3',
-            thumbnail: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop',
-            title: 'Apartamento Playa',
-            duration: '1:30',
-            url: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-in-modern-office-space-4384-large.mp4' // Placeholder
-        }
-    ];
+    // Using a high-quality varied footage video
+    const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
 
     return (
         <section className="py-24 px-6 md:px-12 bg-[#F6F7F8] dark:bg-white/5">
             <div className="max-w-[1440px] mx-auto">
                 <div className="mb-16 text-center">
                     <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
-                        Producción <span className="text-gray-400">Cinematográfica</span>
+                        Video <span className="text-gray-400">Profesional</span>
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                        No solo mostramos propiedades, contamos su historia. El vídeo es la herramienta más poderosa para conectar emocionalmente con el comprador.
+                        {t('landing.video.desc')}
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {videos.map((video) => (
-                        <motion.div
-                            key={video.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="group relative aspect-video bg-black cursor-pointer overflow-hidden rounded-lg shadow-lg"
-                            onClick={() => setActiveVideo(video.url)}
-                        >
-                            <img
-                                src={video.thumbnail}
-                                alt={video.title}
-                                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-                            />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                                <div className="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <span className="material-symbols-outlined text-white text-3xl">play_arrow</span>
-                                </div>
-                            </div>
-                            <div className="absolute bottom-4 left-4 text-white">
-                                <h3 className="font-bold text-lg">{video.title}</h3>
-                                <span className="text-xs font-mono bg-black/50 px-2 py-1 rounded">{video.duration}</span>
-                            </div>
-                        </motion.div>
-                    ))}
+                <div className="w-full max-w-6xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl relative bg-black">
+                    <AutoPlayVideo
+                        src={mainVideoUrl}
+                        className="w-full h-full"
+                    />
+
+                    {/* Overlay Title */}
+                    <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
+                        <div className="bg-editorial-black/80 backdrop-blur text-white px-4 py-2 rounded-sm inline-block mb-2">
+                            <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
+                        </div>
+                        <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
+                            Exhibición Inmobiliaria
+                        </h3>
+                    </div>
                 </div>
             </div>
-
-            {/* Video Modal */}
-            <AnimatePresence>
-                {activeVideo && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-                        onClick={() => setActiveVideo(null)}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9 }}
-                            animate={{ scale: 1 }}
-                            exit={{ scale: 0.9 }}
-                            className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <button
-                                onClick={() => setActiveVideo(null)}
-                                className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 backdrop-blur"
-                            >
-                                <span className="material-symbols-outlined text-2xl">close</span>
-                            </button>
-                            <video
-                                src={activeVideo}
-                                className="w-full h-full object-contain"
-                                controls
-                                autoPlay
-                            />
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </section>
     );
 }

@@ -958,9 +958,9 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.mia.step10.long_desc': 'Le acompañamos a notaría y seguimos a su lado tras la firma para cambios de suministros y gestiones administrativas.',
 
     // Video Gallery
-    'landing.video.title': 'Producción Cinematográfica',
+    'landing.video.title': 'Video Profesional',
     'landing.video.subtitle': 'Historias que venden.',
-    'landing.video.desc': 'No solo mostramos propiedades, contamos su historia. El vídeo es la herramienta más poderosa para conectar emocionalmente con el comprador.',
+    'landing.video.desc': 'Tomas aéreas con dron, recorridos fluidos en 4K y edición dinámica. Enseñamos cada rincón como se merece.',
 
     'landing.map.oliva': 'Propiedad en Oliva',
     'landing.map.gandia': 'Propiedad en Gandia',
