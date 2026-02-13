@@ -54,20 +54,39 @@ const SalesProcessSection: React.FC = () => {
                             {t('sell.process.title')}
                         </h2>
                     </div>
-                    <div className="flex gap-4 mt-8 md:mt-0">
-                        <button
-                            onClick={prevStep}
-                            className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
-                        >
-                            <span className="material-symbols-outlined">arrow_back</span>
-                        </button>
-                        <button
-                            onClick={nextStep}
-                            className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all"
-                        >
-                            <span className="material-symbols-outlined">arrow_forward</span>
-                        </button>
+                </div>
+
+                {/* Numbered Timeline */}
+                <div className="mb-16 relative hidden md:block">
+                    {/* Line Background */}
+                    <div className="absolute top-6 left-0 w-full h-[1px] bg-white/10 z-0"></div>
+
+                    <div className="flex justify-between relative z-10">
+                        {steps.map((step, index) => (
+                            <button
+                                key={step.id}
+                                onClick={() => setCurrentStep(index)}
+                                className={`group flex flex-col items-center gap-4 transition-all duration-300 w-48 ${currentStep === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+                            >
+                                <div className={`w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-[#222222] transition-all duration-300 ${currentStep === index ? 'border-white scale-110 shadow-[0_0_20px_rgba(255,255,255,0.2)]' : ''}`}>
+                                    <span className="font-mono text-sm font-bold">0{index + 1}</span>
+                                </div>
+                                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-center max-w-[150px] leading-relaxed">
+                                    {t(`sell.${step.id}`)}
+                                </span>
+                            </button>
+                        ))}
                     </div>
+                </div>
+
+                {/* Mobile Progress Bar */}
+                <div className="md:hidden flex items-center gap-2 mb-8">
+                    {steps.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`h-1 flex-1 rounded-full transition-all duration-300 ${currentStep === index ? 'bg-white' : 'bg-white/20'}`}
+                        />
+                    ))}
                 </div>
 
                 {/* Main Carousel Area */}
@@ -89,7 +108,7 @@ const SalesProcessSection: React.FC = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 p-8 md:p-16 max-w-2xl">
+                            <div className="absolute bottom-0 left-0 p-8 md:p-16 max-w-3xl">
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
@@ -99,7 +118,7 @@ const SalesProcessSection: React.FC = () => {
                                     <div className="w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center">
                                         <span className="material-symbols-outlined text-white">{steps[currentStep].icon}</span>
                                     </div>
-                                    <span className="text-sm font-bold uppercase tracking-widest text-gray-300">
+                                    <span className="md:hidden text-sm font-bold uppercase tracking-widest text-gray-300">
                                         Step {currentStep + 1} / {steps.length}
                                     </span>
                                 </motion.div>
@@ -125,14 +144,20 @@ const SalesProcessSection: React.FC = () => {
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Progress Bar */}
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-white/10">
-                        <motion.div
-                            className="h-full bg-white"
-                            initial={{ width: `${((currentStep) / steps.length) * 100}%` }}
-                            animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
-                            transition={{ duration: 0.5 }}
-                        />
+                    {/* Navigation Buttons (Floating) */}
+                    <div className="absolute bottom-8 right-8 flex gap-4">
+                        <button
+                            onClick={prevStep}
+                            className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all backdrop-blur-sm"
+                        >
+                            <span className="material-symbols-outlined">arrow_back</span>
+                        </button>
+                        <button
+                            onClick={nextStep}
+                            className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all shadow-lg"
+                        >
+                            <span className="material-symbols-outlined">arrow_forward</span>
+                        </button>
                     </div>
                 </div>
             </div>
