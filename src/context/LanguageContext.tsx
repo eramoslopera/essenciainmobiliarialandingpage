@@ -377,7 +377,8 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.name': 'Full Name',
     'landing.form.phone': 'Contact Phone',
     'landing.form.email': 'Email Address',
-    'landing.form.submit': 'GET FREE VALUATION',
+    'landing.form.files': 'Add Photos/Videos (Optional)',
+    'landing.form.submit': 'Request Valuation',
     'landing.form.success': 'Request received. We will contact you shortly.',
 
     // Landing Page
@@ -1776,8 +1777,9 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.title': 'Fordern Sie Ihre Expertenbewertung an',
     'landing.form.name': 'Vollständiger Name',
     'landing.form.phone': 'Kontakttelefon',
-    'landing.form.email': 'E-Mail-Adresse',
-    'landing.form.submit': 'KOSTENLOSE BEWERTUNG ERHALTEN',
+    'landing.form.email': 'E-Mail',
+    'landing.form.files': 'Fotos/Videos Hinzufügen (Optional)',
+    'landing.form.submit': 'Bewertung Anfordern',
     'landing.form.success': 'Anfrage erhalten. Wir werden Sie in Kürze kontaktieren.',
 
     // Landing Page
@@ -2172,7 +2174,8 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.name': 'Nom complet',
     'landing.form.phone': 'Telèfon de contacte',
     'landing.form.email': 'Email',
-    'landing.form.submit': 'OBTENIR VALORACIÓ GRATUÏTA',
+    'landing.form.files': 'Afegir Fotos/Vídeos (Opcional)',
+    'landing.form.submit': 'Sol·licitar Valoració',
     'landing.form.success': 'Sol·licitud rebuda. Et contactarem aviat.',
 
     // Landing Page

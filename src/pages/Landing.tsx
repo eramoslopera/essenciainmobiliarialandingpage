@@ -548,6 +548,34 @@ const Landing: React.FC = () => {
                                         </label>
                                     </div>
 
+                                    {/* File Upload Field */}
+                                    <div className="relative group">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            {t('landing.form.files')}
+                                        </label>
+                                        <div className="relative">
+                                            <input
+                                                type="file"
+                                                multiple
+                                                accept="image/*,video/*"
+                                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                                                onChange={(e) => {
+                                                    const files = e.target.files;
+                                                    if (files && files.length > 0) {
+                                                        // In a real app, handle file selection here
+                                                        console.log('Files selected:', files);
+                                                    }
+                                                }}
+                                            />
+                                            <div className="w-full h-12 border-b border-gray-300 dark:border-gray-700 flex items-center justify-between text-gray-400 group-hover:text-editorial-black dark:group-hover:text-white transition-colors">
+                                                <span className="text-sm font-medium italic">
+                                                    PDF, JPG, PNG, MP4...
+                                                </span>
+                                                <span className="material-symbols-outlined text-xl">attach_file</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'submitting'}
