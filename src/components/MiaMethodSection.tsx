@@ -70,20 +70,20 @@ const MiaMethodSection: React.FC = () => {
                         {steps.map((step) => (
                             <motion.div
                                 key={step.id}
-                                className="min-w-[85vw] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-transparent snap-center flex flex-col items-center text-center justify-center relative overflow-hidden group h-[320px]"
+                                className="min-w-[75vw] md:min-w-[280px] bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-transparent snap-center flex flex-col items-center text-center justify-center relative overflow-hidden group h-[260px]"
                                 whileHover={{ y: -5 }}
                                 transition={{ duration: 0.3 }}
                                 onClick={() => handleStepClick(step.id)}
                             >
                                 {step.pro && (
-                                    <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
+                                    <span className="absolute top-4 right-4 bg-editorial-black text-white text-[9px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
                                 )}
-                                <span className="text-4xl font-black text-gray-100 dark:text-gray-700 absolute top-2 left-4">{step.id}</span>
-                                <span className="material-symbols-outlined text-4xl mb-4 text-editorial-black dark:text-white mt-4 group-hover:scale-110 transition-transform">{step.icon}</span>
-                                <h3 className="text-lg font-black tracking-tight mb-2 leading-tight">{t(`landing.mia.step${step.id}.title`)}</h3>
-                                <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
+                                <span className="text-3xl font-black text-gray-100 dark:text-gray-700 absolute top-2 left-4">{step.id}</span>
+                                <span className="material-symbols-outlined text-3xl mb-3 text-editorial-black dark:text-white mt-2 group-hover:scale-110 transition-transform">{step.icon}</span>
+                                <h3 className="text-base font-black tracking-tight mb-2 leading-tight">{t(`landing.mia.step${step.id}.title`)}</h3>
+                                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
 
-                                <div className="mt-6 text-[10px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-full">
+                                <div className="mt-4 text-[9px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
                                     + Info
                                 </div>
                             </motion.div>
@@ -118,17 +118,17 @@ const MiaMethodSection: React.FC = () => {
                             }}
                             whileHover={{ y: -5, borderColor: '#000' }}
                             onClick={() => handleStepClick(step.id)}
-                            className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl h-full min-h-[280px] justify-center"
+                            className="bg-white dark:bg-gray-800 p-5 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl h-full min-h-[240px] justify-center"
                         >
                             {step.pro && (
-                                <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
+                                <span className="absolute top-4 right-4 bg-editorial-black text-white text-[9px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
                             )}
-                            <span className="text-4xl font-black text-gray-100 dark:text-gray-700 absolute top-2 left-4">{step.id}</span>
-                            <span className="material-symbols-outlined text-4xl mb-4 text-editorial-black dark:text-white mt-6 group-hover:scale-110 transition-transform">{step.icon}</span>
+                            <span className="text-3xl font-black text-gray-100 dark:text-gray-700 absolute top-2 left-4">{step.id}</span>
+                            <span className="material-symbols-outlined text-3xl mb-3 text-editorial-black dark:text-white mt-4 group-hover:scale-110 transition-transform">{step.icon}</span>
                             <h3 className="text-sm font-black tracking-tight mb-1">{t(`landing.mia.step${step.id}.title`)}</h3>
-                            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
+                            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
 
-                            <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
+                            <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity text-[9px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
                                 + Info
                             </div>
                         </motion.div>

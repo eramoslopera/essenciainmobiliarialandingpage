@@ -27,7 +27,7 @@ const LandingHeader: React.FC = () => {
                 {/* Logo - Rigid Left */}
                 <div className="flex-1 flex justify-start">
                     <a href="/" className="flex items-center gap-3">
-                        <Logo className="h-12 w-auto object-contain dark:text-white text-editorial-black" />
+                        <Logo className="h-10 md:h-12 w-auto object-contain dark:text-white text-editorial-black" />
                     </a>
                 </div>
 
@@ -45,7 +45,7 @@ const LandingHeader: React.FC = () => {
                 </nav>
 
                 {/* Actions - Rigid Right */}
-                <div className="flex-1 flex justify-end items-center gap-4">
+                <div className="flex-1 flex justify-end items-center gap-3 md:gap-4">
 
                     {/* Language Switcher Dropdown */}
                     <div className="hidden lg:block relative group">
@@ -62,7 +62,7 @@ const LandingHeader: React.FC = () => {
                         </div>
                     </div>
 
-                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-10 px-4 sm:px-6 items-center justify-center bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-editorial-black text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
                         {t('nav.contact')}
                     </a>
 
