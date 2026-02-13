@@ -161,7 +161,6 @@ const MasonryGallery = () => {
         "https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800&auto=format&fit=crop", // Living Room
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop", // Bedroom
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop", // Exterior / Pool
-        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800&auto=format&fit=crop", // Details
     ];
 
     return (
@@ -292,11 +291,117 @@ const BeforeAfterSlider = () => {
     )
 }
 
+const VideoGallery = () => {
+    const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+    const videos = [
+        {
+            id: 'video1',
+            thumbnail: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
+            title: 'Penthouse en Gandia',
+            duration: '1:45',
+            url: 'https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4' // Placeholder
+        },
+        {
+            id: 'video2',
+            thumbnail: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+            title: 'Villa en Oliva Nova',
+            duration: '2:15',
+            url: 'https://assets.mixkit.co/videos/preview/mixkit-living-room-in-a-modern-apartment-4309-large.mp4' // Placeholder
+        },
+        {
+            id: 'video3',
+            thumbnail: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop',
+            title: 'Apartamento Playa',
+            duration: '1:30',
+            url: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-in-modern-office-space-4384-large.mp4' // Placeholder
+        }
+    ];
+
+    return (
+        <section className="py-24 px-6 md:px-12 bg-[#F6F7F8] dark:bg-white/5">
+            <div className="max-w-[1440px] mx-auto">
+                <div className="mb-16 text-center">
+                    <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
+                        Producción <span className="text-gray-400">Cinematográfica</span>
+                    </h2>
+                    <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                        No solo mostramos propiedades, contamos su historia. El vídeo es la herramienta más poderosa para conectar emocionalmente con el comprador.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {videos.map((video) => (
+                        <motion.div
+                            key={video.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="group relative aspect-video bg-black cursor-pointer overflow-hidden rounded-lg shadow-lg"
+                            onClick={() => setActiveVideo(video.url)}
+                        >
+                            <img
+                                src={video.thumbnail}
+                                alt={video.title}
+                                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                                <div className="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <span className="material-symbols-outlined text-white text-3xl">play_arrow</span>
+                                </div>
+                            </div>
+                            <div className="absolute bottom-4 left-4 text-white">
+                                <h3 className="font-bold text-lg">{video.title}</h3>
+                                <span className="text-xs font-mono bg-black/50 px-2 py-1 rounded">{video.duration}</span>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Video Modal */}
+            <AnimatePresence>
+                {activeVideo && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+                        onClick={() => setActiveVideo(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.9 }}
+                            className="relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setActiveVideo(null)}
+                                className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 backdrop-blur"
+                            >
+                                <span className="material-symbols-outlined text-2xl">close</span>
+                            </button>
+                            <video
+                                src={activeVideo}
+                                className="w-full h-full object-contain"
+                                controls
+                                autoPlay
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </section>
+    );
+}
+
 const VisualProSection: React.FC = () => {
     return (
         <div className="w-full relative bg-white dark:bg-background-dark">
             <CineVideoSection />
             <MasonryGallery />
+            <VideoGallery />
             <BeforeAfterSlider />
         </div>
     );

@@ -956,6 +956,12 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.mia.step8.long_desc': 'Máxima exposición en los principales portales inmobiliarios nacionales e internacionales (Idealista, Fotocasa, Kyero, etc.).',
     'landing.mia.step9.long_desc': 'Asesoramiento jurídico, fiscal y técnico incluido para garantizar una operación segura y sin sorpresas.',
     'landing.mia.step10.long_desc': 'Le acompañamos a notaría y seguimos a su lado tras la firma para cambios de suministros y gestiones administrativas.',
+
+    // Video Gallery
+    'landing.video.title': 'Producción Cinematográfica',
+    'landing.video.subtitle': 'Historias que venden.',
+    'landing.video.desc': 'No solo mostramos propiedades, contamos su historia. El vídeo es la herramienta más poderosa para conectar emocionalmente con el comprador.',
+
     'landing.map.oliva': 'Propiedad en Oliva',
     'landing.map.gandia': 'Propiedad en Gandia',
     'landing.map.denia': 'Propiedad en Denia',
