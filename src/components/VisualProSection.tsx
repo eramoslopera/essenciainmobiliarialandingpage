@@ -284,12 +284,12 @@ const BeforeAfterSlider = () => {
                     </p>
                     <div className="grid grid-cols-2 gap-8">
                         <div>
-                            <span className="text-3xl font-black text-gray-700 block mb-2">100%</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Visualización</span>
+                            <span className="text-3xl font-black text-white block mb-2">100%</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Visualización</span>
                         </div>
                         <div>
-                            <span className="text-3xl font-black text-gray-700 block mb-2">x3</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Interés</span>
+                            <span className="text-3xl font-black text-white block mb-2">x3</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Más Interés</span>
                         </div>
                     </div>
                 </div>

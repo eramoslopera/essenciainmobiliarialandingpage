@@ -62,7 +62,7 @@ const LandingHeader: React.FC = () => {
                         </div>
                     </div>
 
-                    <a href="tel:+34647803355" className="hidden sm:flex h-10 px-6 items-center justify-center bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-10 px-4 sm:px-6 items-center justify-center bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
                         {t('nav.contact')}
                     </a>
 
@@ -93,7 +93,7 @@ const LandingHeader: React.FC = () => {
                         <button onClick={() => setLanguage('de')} className={`text-sm font-bold ${language === 'de' ? 'text-primary' : 'text-gray-400'}`}>DE</button>
                         <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
                     </div>
-                    <a href="tel:+34647803355" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
                         {t('nav.contact')}
                     </a>
                 </div>

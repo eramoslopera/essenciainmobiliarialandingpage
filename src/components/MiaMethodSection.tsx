@@ -67,25 +67,23 @@ const MiaMethodSection: React.FC = () => {
                             setCurrentSlide(Math.min(currentIndex, steps.length - 1));
                         }}
                     >
-                        {steps.map((step, index) => (
+                        {steps.map((step) => (
                             <motion.div
                                 key={step.id}
-                                className="min-w-[85vw] bg-white dark:bg-background-dark p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 snap-center flex flex-col h-[400px] relative overflow-hidden group"
+                                className="min-w-[85vw] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-transparent snap-center flex flex-col items-center text-center justify-center relative overflow-hidden group h-[320px]"
                                 whileHover={{ y: -5 }}
                                 transition={{ duration: 0.3 }}
                                 onClick={() => handleStepClick(step.id)}
                             >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 dark:bg-gray-800 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-
                                 {step.pro && (
                                     <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
                                 )}
-                                <span className="text-4xl font-black text-gray-200 absolute top-2 left-4">{step.id}</span>
-                                <span className="material-symbols-outlined text-5xl mb-6 text-editorial-black dark:text-white mt-2 group-hover:scale-110 transition-transform">{step.icon}</span>
-                                <h3 className="text-xl font-black tracking-tight mb-2">{t(`landing.mia.step${step.id}.title`)}</h3>
-                                <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
+                                <span className="text-4xl font-black text-gray-100 dark:text-gray-700 absolute top-2 left-4">{step.id}</span>
+                                <span className="material-symbols-outlined text-4xl mb-4 text-editorial-black dark:text-white mt-4 group-hover:scale-110 transition-transform">{step.icon}</span>
+                                <h3 className="text-lg font-black tracking-tight mb-2 leading-tight">{t(`landing.mia.step${step.id}.title`)}</h3>
+                                <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
 
-                                <div className="mt-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity text-[10px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-full">
+                                <div className="mt-6 text-[10px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-full">
                                     + Info
                                 </div>
                             </motion.div>
@@ -125,7 +123,7 @@ const MiaMethodSection: React.FC = () => {
                             {step.pro && (
                                 <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
                             )}
-                            <span className="text-4xl font-black text-gray-200 absolute top-2 left-4">{step.id}</span>
+                            <span className="text-4xl font-black text-gray-100 dark:text-gray-700 absolute top-2 left-4">{step.id}</span>
                             <span className="material-symbols-outlined text-4xl mb-4 text-editorial-black dark:text-white mt-6 group-hover:scale-110 transition-transform">{step.icon}</span>
                             <h3 className="text-sm font-black tracking-tight mb-1">{t(`landing.mia.step${step.id}.title`)}</h3>
                             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>

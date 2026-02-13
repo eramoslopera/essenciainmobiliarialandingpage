@@ -218,6 +218,8 @@ const Landing: React.FC = () => {
                                 alt="Interior de Villa Mediterránea"
                                 className="w-full h-full object-cover"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw"
+                                loading="eager"
+                                fetchPriority="high"
                             />
                         </motion.div>
                         <div className="absolute inset-0 bg-white/20 dark:bg-black/40"></div>
@@ -358,15 +360,15 @@ const Landing: React.FC = () => {
                                                         t('detail.label.exclusive')}
                                             </span>
                                             <h3 className="text-xl font-black tracking-tight leading-none mb-1">{property.title}</h3>
-                                            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">{property.location}</p>
+                                            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">{property.location}</p>
                                         </div>
                                         <div className="space-y-3 border-t border-gray-100 dark:border-gray-800 pt-4">
                                             <div className="flex justify-between items-center">
-                                                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('properties.filters.zone')}</span>
+                                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('properties.filters.zone')}</span>
                                                 <span className="text-xs font-black text-editorial-black dark:text-white uppercase">{property.location.split(',')[0]}</span>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{t('properties.filters.price')}</span>
+                                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('properties.filters.price')}</span>
                                                 <span className="text-xs font-black">{property.price}</span>
                                             </div>
                                         </div>
@@ -512,7 +514,7 @@ const Landing: React.FC = () => {
                                 <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-left">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                         <div className="relative group">
-                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                                                 {t('landing.form.name')}
                                             </label>
                                             <input
@@ -526,7 +528,7 @@ const Landing: React.FC = () => {
                                             />
                                         </div>
                                         <div className="relative group">
-                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                                                 {t('landing.form.phone')}
                                             </label>
                                             <input
@@ -542,7 +544,7 @@ const Landing: React.FC = () => {
                                     </div>
 
                                     <div className="relative group">
-                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                                             {t('landing.form.email')}
                                         </label>
                                         <input
@@ -557,7 +559,7 @@ const Landing: React.FC = () => {
                                     </div>
 
                                     <div className="relative group">
-                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                                             {t('landing.cta.placeholder')}
                                         </label>
                                         <div className="relative">
@@ -576,7 +578,7 @@ const Landing: React.FC = () => {
 
                                     {/* File Upload Field */}
                                     <div className="relative group">
-                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                                             {t('landing.form.files')}
                                         </label>
                                         <div className="relative">
