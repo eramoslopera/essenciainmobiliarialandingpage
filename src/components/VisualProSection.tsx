@@ -145,11 +145,67 @@ const MasonryGallery = () => {
                 </button>
             </div>
 
-            <div className="max-w-[1440px] mx-auto flex md:grid md:grid-cols-4 gap-4 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-0 md:px-0 -mx-6 md:mx-0 auto-rows-[300px] hide-scrollbar">
+            <div className="md:hidden relative px-6 -mx-6 mb-8">
+                <div
+                    id="editorial-carousel"
+                    className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 hide-scrollbar px-6 -mx-6"
+                    onScroll={(e) => {
+                        const scrollLeft = e.currentTarget.scrollLeft;
+                        const width = e.currentTarget.offsetWidth;
+                        const progress = scrollLeft / (e.currentTarget.scrollWidth - width);
+                        const progressBar = document.getElementById('editorial-progress-bar');
+                        if (progressBar) {
+                            progressBar.style.width = `${Math.max(0, Math.min(100, progress * 100))}%`;
+                        }
+                    }}
+                >
+                    {images.map((img, i) => (
+                        <div
+                            key={i}
+                            className="relative shrink-0 snap-center w-[85vw] h-[300px] rounded-lg overflow-hidden"
+                        >
+                            <img
+                                src={img}
+                                alt="Property Detail"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    ))}
+                </div>
+                {/* Mobile Navigation & Progress */}
+                <div className="flex flex-col gap-4 mt-4 px-6 md:hidden">
+                    {/* Progress Bar */}
+                    <div className="w-full h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                        <div id="editorial-progress-bar" className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"></div>
+                    </div>
+
+                    {/* Arrows */}
+                    <div className="flex justify-between w-full">
+                        <button
+                            onClick={() => {
+                                document.getElementById('editorial-carousel')?.scrollBy({ left: -window.innerWidth * 0.85, behavior: 'smooth' });
+                            }}
+                            className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                        >
+                            <span className="material-symbols-outlined">arrow_back</span>
+                        </button>
+                        <button
+                            onClick={() => {
+                                document.getElementById('editorial-carousel')?.scrollBy({ left: window.innerWidth * 0.85, behavior: 'smooth' });
+                            }}
+                            className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors"
+                        >
+                            <span className="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className="hidden md:grid max-w-[1440px] mx-auto md:grid-cols-4 gap-4 px-0 md:px-0 auto-rows-[300px]">
                 {images.map((img, i) => (
                     <motion.div
                         key={i}
-                        className={`relative group overflow-hidden cursor-pointer shrink-0 snap-center w-[85vw] md:w-auto h-[300px] md:h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
+                        className={`relative group overflow-hidden cursor-pointer w-auto h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}

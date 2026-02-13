@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import Logo from './Logo';
 
 const LandingFooter: React.FC = () => {
     const { t } = useLanguage();
@@ -9,8 +10,8 @@ const LandingFooter: React.FC = () => {
             <div className="max-w-[1440px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 border-b border-white/10 pb-16">
                     <div className="col-span-1">
-                        <div className="flex items-center gap-2 mb-8">
-                            <img src="/Logo_Blanco.svg" alt="Essencia Inmobiliaria" className="h-10 w-auto object-contain" />
+                        <div className="mb-8">
+                            <Logo variant="white" className="h-10 w-auto" />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed font-medium max-w-sm">
                             {t('footer.desc')}

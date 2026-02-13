@@ -144,8 +144,8 @@ const SalesProcessSection: React.FC = () => {
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Navigation Buttons (Floating) */}
-                    <div className="absolute bottom-8 right-8 flex gap-4">
+                    {/* Navigation Buttons (Desktop Floating / Mobile Bottom) */}
+                    <div className="absolute bottom-8 right-8 hidden md:flex gap-4">
                         <button
                             onClick={prevStep}
                             className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all backdrop-blur-sm"
@@ -155,6 +155,27 @@ const SalesProcessSection: React.FC = () => {
                         <button
                             onClick={nextStep}
                             className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all shadow-lg"
+                        >
+                            <span className="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Mobile Navigation Buttons (Outside Image) */}
+                <div className="flex md:hidden justify-between items-center mt-6">
+                    <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                        {currentStep + 1} / {steps.length}
+                    </span>
+                    <div className="flex gap-4">
+                        <button
+                            onClick={prevStep}
+                            className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                        >
+                            <span className="material-symbols-outlined">arrow_back</span>
+                        </button>
+                        <button
+                            onClick={nextStep}
+                            className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all"
                         >
                             <span className="material-symbols-outlined">arrow_forward</span>
                         </button>

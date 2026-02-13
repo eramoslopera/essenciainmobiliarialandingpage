@@ -42,6 +42,86 @@ const MiaMethodSection: React.FC = () => {
                     <p className="text-xl font-medium text-gray-400 tracking-widest uppercase">{t('landing.mia.subtitle')}</p>
                 </div>
 
+                {/* Mobile Carousel Controls */}
+                <div className="md:hidden relative">
+                    <motion.div
+                        id="mia-carousel"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={{
+                            visible: { transition: { staggerChildren: 0.05 } }
+                        }}
+                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 -mx-6 pb-8 hide-scrollbar"
+                        onScroll={(e) => {
+                            const scrollLeft = e.currentTarget.scrollLeft;
+                            const width = e.currentTarget.offsetWidth;
+                            const index = Math.round(scrollLeft / width);
+                            // Update a local state if we wanted strict tracking, 
+                            // but for simple progress bar based on scroll position:
+                            const progress = scrollLeft / (e.currentTarget.scrollWidth - width);
+                            const progressBar = document.getElementById('mia-progress-bar');
+                            if (progressBar) {
+                                progressBar.style.width = `${Math.max(0, Math.min(100, progress * 100))}%`;
+                            }
+                        }}
+                    >
+                        {steps.map((step) => (
+                            <motion.div
+                                key={step.id}
+                                variants={{
+                                    hidden: { opacity: 0, scale: 0.9 },
+                                    visible: { opacity: 1, scale: 1 }
+                                }}
+                                whileHover={{ y: -5, borderColor: '#000' }}
+                                onClick={() => handleStepClick(step.id)}
+                                className="shrink-0 snap-center w-[85vw] bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl h-[300px] justify-center"
+                            >
+                                {step.pro && (
+                                    <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
+                                )}
+                                <span className="text-4xl font-black text-gray-200 absolute top-2 left-4">{step.id}</span>
+                                <span className="material-symbols-outlined text-5xl mb-6 text-editorial-black dark:text-white mt-2 group-hover:scale-110 transition-transform">{step.icon}</span>
+                                <h3 className="text-xl font-black tracking-tight mb-2">{t(`landing.mia.step${step.id}.title`)}</h3>
+                                <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">{t(`landing.mia.step${step.id}.subtitle`)}</p>
+
+                                <div className="mt-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity text-[10px] uppercase font-black tracking-widest bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-full">
+                                    + Info
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* Mobile Navigation & Progress */}
+                    <div className="flex flex-col gap-4 mt-4 px-6 md:hidden">
+                        {/* Progress Bar */}
+                        <div className="w-full h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                            <div id="mia-progress-bar" className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"></div>
+                        </div>
+
+                        {/* Arrows */}
+                        <div className="flex justify-between w-full">
+                            <button
+                                onClick={() => {
+                                    document.getElementById('mia-carousel')?.scrollBy({ left: -window.innerWidth * 0.85, behavior: 'smooth' });
+                                }}
+                                className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                            >
+                                <span className="material-symbols-outlined">arrow_back</span>
+                            </button>
+                            <button
+                                onClick={() => {
+                                    document.getElementById('mia-carousel')?.scrollBy({ left: window.innerWidth * 0.85, behavior: 'smooth' });
+                                }}
+                                className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors"
+                            >
+                                <span className="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Desktop Grid */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -49,7 +129,7 @@ const MiaMethodSection: React.FC = () => {
                     variants={{
                         visible: { transition: { staggerChildren: 0.05 } }
                     }}
-                    className="flex md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-6 -mx-6 md:px-0 md:mx-0 hide-scrollbar"
+                    className="hidden md:grid md:grid-cols-2 lg:grid-cols-5 gap-4"
                 >
                     {steps.map((step) => (
                         <motion.div
@@ -60,7 +140,7 @@ const MiaMethodSection: React.FC = () => {
                             }}
                             whileHover={{ y: -5, borderColor: '#000' }}
                             onClick={() => handleStepClick(step.id)}
-                            className="shrink-0 snap-center w-[85vw] md:w-auto bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl"
+                            className="bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl h-full min-h-[280px] justify-center"
                         >
                             {step.pro && (
                                 <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
