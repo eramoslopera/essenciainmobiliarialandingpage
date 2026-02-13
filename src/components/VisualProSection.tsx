@@ -296,7 +296,6 @@ const VisualProSection: React.FC = () => {
     return (
         <div className="w-full relative bg-white dark:bg-background-dark">
             <CineVideoSection />
-            <SocialStack />
             <MasonryGallery />
             <BeforeAfterSlider />
         </div>
