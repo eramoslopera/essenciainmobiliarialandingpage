@@ -488,64 +488,66 @@ const Landing: React.FC = () => {
                                 <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-left">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                         <div className="relative group">
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                                {t('landing.form.name')}
+                                            </label>
                                             <input
                                                 required
                                                 name="name"
                                                 value={formState.name}
                                                 onChange={handleInputChange}
-                                                className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300"
                                                 type="text"
                                                 placeholder={t('landing.form.name')}
                                             />
-                                            <label className="absolute left-0 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
-                                                {t('landing.form.name')}
-                                            </label>
                                         </div>
                                         <div className="relative group">
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                                {t('landing.form.phone')}
+                                            </label>
                                             <input
                                                 required
                                                 name="phone"
                                                 value={formState.phone}
                                                 onChange={handleInputChange}
-                                                className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300"
                                                 type="tel"
                                                 placeholder={t('landing.form.phone')}
                                             />
-                                            <label className="absolute left-0 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
-                                                {t('landing.form.phone')}
-                                            </label>
                                         </div>
                                     </div>
 
                                     <div className="relative group">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            {t('landing.form.email')}
+                                        </label>
                                         <input
                                             required
                                             name="email"
                                             value={formState.email}
                                             onChange={handleInputChange}
-                                            className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent"
+                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300"
                                             type="email"
                                             placeholder={t('landing.form.email')}
                                         />
-                                        <label className="absolute left-0 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
-                                            {t('landing.form.email')}
-                                        </label>
                                     </div>
 
                                     <div className="relative group">
-                                        <input
-                                            required
-                                            name="address"
-                                            value={formState.address}
-                                            onChange={handleInputChange}
-                                            className="peer w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-transparent pl-8"
-                                            type="text"
-                                            placeholder={t('landing.cta.placeholder')}
-                                        />
-                                        <span className="absolute left-0 top-2 text-gray-400 material-symbols-outlined text-xl">location_on</span>
-                                        <label className="absolute left-8 -top-3.5 text-xs font-bold uppercase tracking-wider text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 dark:peer-focus:text-gray-300 peer-focus:text-xs">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
                                             {t('landing.cta.placeholder')}
                                         </label>
+                                        <div className="relative">
+                                            <input
+                                                required
+                                                name="address"
+                                                value={formState.address}
+                                                onChange={handleInputChange}
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 pl-8"
+                                                type="text"
+                                                placeholder={t('landing.cta.placeholder')}
+                                            />
+                                            <span className="absolute left-0 top-2 text-gray-400 material-symbols-outlined text-xl">location_on</span>
+                                        </div>
                                     </div>
 
                                     {/* File Upload Field */}
