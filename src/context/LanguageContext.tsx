@@ -944,6 +944,18 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.mia.step9.subtitle': 'Legal | Fiscal | Tasación',
     'landing.mia.step10.title': 'Acompañamiento',
     'landing.mia.step10.subtitle': 'Firma y Post Venta',
+
+    // MIA Long Descriptions (Spanish)
+    'landing.mia.step1.long_desc': 'Definimos el mensaje clave y la narrativa única de su propiedad para atraer al comprador ideal desde el primer momento.',
+    'landing.mia.step2.long_desc': 'Diseñamos una estrategia de difusión personalizada que combina canales digitales, eventos exclusivos y marketing directo.',
+    'landing.mia.step3.long_desc': 'Utilizamos algoritmos avanzados para segmentar audiencias y predecir el comportamiento de los compradores potenciales.',
+    'landing.mia.step4.long_desc': 'Multiplicamos la visibilidad compartiendo su propiedad con una red de más de 400 agencias colaboradoras de confianza.',
+    'landing.mia.step5.long_desc': 'Nos encargamos de todo: desde la calificación financiera de los compradores hasta la negociación de las ofertas.',
+    'landing.mia.step6.long_desc': 'Producción de vídeo cinematográfico con drones FPV y edición profesional que emociona y conecta.',
+    'landing.mia.step7.long_desc': 'Pack visual completo: fotografía de revista, planos técnicos detallados, renders hiperrealistas y tours virtuales 360°.',
+    'landing.mia.step8.long_desc': 'Máxima exposición en los principales portales inmobiliarios nacionales e internacionales (Idealista, Fotocasa, Kyero, etc.).',
+    'landing.mia.step9.long_desc': 'Asesoramiento jurídico, fiscal y técnico incluido para garantizar una operación segura y sin sorpresas.',
+    'landing.mia.step10.long_desc': 'Le acompañamos a notaría y seguimos a su lado tras la firma para cambios de suministros y gestiones administrativas.',
     'landing.map.oliva': 'Propiedad en Oliva',
     'landing.map.gandia': 'Propiedad en Gandia',
     'landing.map.denia': 'Propiedad en Denia',

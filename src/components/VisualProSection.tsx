@@ -22,7 +22,7 @@ const CineVideoSection = () => {
                 <div className="md:w-1/2 flex flex-col gap-6">
                     <motion.div style={{ opacity }} className="flex items-center gap-2">
                         <span className="px-3 py-1 bg-editorial-black text-white text-[10px] uppercase font-black tracking-widest rounded-full">New</span>
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Visual Pro Pack</span>
+                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Pack Visual Pro</span>
                     </motion.div>
 
                     <motion.h2
@@ -40,7 +40,7 @@ const CineVideoSection = () => {
                     </p>
 
                     <ul className="space-y-4 mt-4">
-                        {['Fotografía Editorial', 'Video Cine', 'Tour Virtual 3D', 'Planos Esquemáticos', 'Home Staging Digital', 'Dron 4K'].map((item, i) => (
+                        {['Fotos y videos con DRON', 'Render con IA', 'Fotografía editorial', 'Video profesional', 'Planos en 3D', 'Tour Virtual'].map((item, i) => (
                             <li key={i} className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
                                 <span className="w-2 h-2 bg-editorial-black dark:bg-white rounded-full"></span>
                                 {item}
@@ -157,11 +157,11 @@ const SocialStack = () => {
 const MasonryGallery = () => {
     // Ideally use real images here
     const images = [
-        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop", // Kitchen
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop", // Modern Kitchen
+        "https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800&auto=format&fit=crop", // Living Room
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop", // Bedroom
-        "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=800&auto=format&fit=crop", // Detail
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop", // Exterior
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=800&auto=format&fit=crop", // Pool
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop", // Exterior / Pool
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800&auto=format&fit=crop", // Details
     ];
 
     return (
@@ -231,22 +231,22 @@ const BeforeAfterSlider = () => {
                         onMouseMove={handleMouseMove}
                         onTouchMove={handleTouchMove}
                     >
-                        {/* After Image (Background) */}
+                        {/* After Image (Rendered) */}
                         <img
-                            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
                             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                            alt="After"
+                            alt="Propiedad Renderizada con IA"
                         />
 
-                        {/* Before Image (Clipped) */}
+                        {/* Before Image (Construction/Empty) */}
                         <div
                             className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
                             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop" // A darker/messier version ideally
-                                className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-75 brightness-75"
-                                alt="Before"
+                                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop" // Construction/Structure
+                                className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
+                                alt="Estado Actual"
                             />
                             <div className="absolute top-4 left-4 bg-black/50 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">
                                 Antes
@@ -271,19 +271,19 @@ const BeforeAfterSlider = () => {
 
                 <div className="order-1 lg:order-2">
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-                        Home Staging
+                        Render con IA
                     </h2>
                     <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                        No vendemos casas vacías, vendemos hogares. Nuestro equipo de estilismo transforma cada espacio para maximizar su potencial y precio de venta.
+                        Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
                     </p>
                     <div className="grid grid-cols-2 gap-8">
                         <div>
-                            <span className="text-3xl font-black text-gray-700 block mb-2">+15%</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Valor de Venta</span>
+                            <span className="text-3xl font-black text-gray-700 block mb-2">100%</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Visualización</span>
                         </div>
                         <div>
-                            <span className="text-3xl font-black text-gray-700 block mb-2">-40%</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Tiempo en mercado</span>
+                            <span className="text-3xl font-black text-gray-700 block mb-2">x3</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Interés</span>
                         </div>
                     </div>
                 </div>
