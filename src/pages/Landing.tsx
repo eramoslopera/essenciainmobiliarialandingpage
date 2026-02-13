@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import LandingHeader from '../components/LandingHeader';
 import LandingFooter from '../components/LandingFooter';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, CircleMarker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import CarouselProgress from '../components/ui/CarouselProgress';
@@ -17,6 +17,26 @@ import { Property } from '../types/property';
 import VisualProSection from '../components/VisualProSection';
 import MiaMethodSection from '../components/MiaMethodSection';
 import SalesProcessSection from '../components/SalesProcessSection';
+
+// Component to update map bounds based on properties
+const MapBoundsUpdater: React.FC<{ properties: Property[] }> = ({ properties }) => {
+    const map = useMap();
+
+    useEffect(() => {
+        if (properties.length > 0) {
+            const markers = properties
+                .filter(p => p.lat && p.lng)
+                .map(p => [p.lat, p.lng] as [number, number]);
+
+            if (markers.length > 0) {
+                const bounds = L.latLngBounds(markers);
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+        }
+    }, [properties, map]);
+
+    return null;
+};
 
 const Landing: React.FC = () => {
     // State for FAQ accordion
@@ -179,25 +199,7 @@ const Landing: React.FC = () => {
         }
     };
 
-    // Component to update map bounds based on properties
-    const MapBoundsUpdater: React.FC<{ properties: Property[] }> = ({ properties }) => {
-        const map = useMap();
 
-        useEffect(() => {
-            if (properties.length > 0) {
-                const markers = properties
-                    .filter(p => p.lat && p.lng)
-                    .map(p => [p.lat, p.lng] as [number, number]);
-
-                if (markers.length > 0) {
-                    const bounds = L.latLngBounds(markers);
-                    map.fitBounds(bounds, { padding: [50, 50] });
-                }
-            }
-        }, [properties, map]);
-
-        return null;
-    };
 
     return (
         <>
