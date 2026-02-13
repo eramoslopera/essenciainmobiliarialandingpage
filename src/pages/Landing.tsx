@@ -374,266 +374,266 @@ const Landing: React.FC = () => {
                                 <div className="w-full text-center py-10 text-gray-400">Loading properties...</div>
                             )}
                         </div>
-                    </div>
 
-                    {/* Mobile Navigation & Progress */}
-                    <div className="flex items-center gap-4 mt-8 px-0 md:hidden">
-                        <button
-                            onClick={() => scroll('left')}
-                            className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0"
-                        >
-                            <span className="material-symbols-outlined">arrow_back</span>
-                        </button>
 
-                        {/* Progress Bar */}
-                        <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                            <div
-                                id="sold-progress-bar"
-                                className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"
-                                style={{ width: '20%' }} // Initial width, updated by scroll event
-                            ></div>
-                        </div>
-
-                        <button
-                            onClick={() => scroll('right')}
-                            className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0"
-                        >
-                            <span className="material-symbols-outlined">arrow_forward</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            {/* Interactive Map */}
-            <section className="h-[500px] w-full relative z-0">
-                <MapContainer
-                    center={[38.97, -0.15]}
-                    zoom={11}
-                    scrollWheelZoom={false}
-                    className="h-full w-full z-0"
-                    style={{ height: '100%', width: '100%' }}
-                >
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-                    />
-                    <MapBoundsUpdater properties={salesProperties} />
-                    {salesProperties.map((property) => (
-                        property.lat && property.lng ? (
-                            <CircleMarker
-                                key={property.id}
-                                center={[property.lat, property.lng]}
-                                radius={hoveredPropertyId === property.id ? 12 : 8}
-                                pathOptions={{
-                                    color: '#000',
-                                    fillColor: hoveredPropertyId === property.id ? '#FFFFFF' : '#000',
-                                    fillOpacity: 1,
-                                    weight: hoveredPropertyId === property.id ? 4 : 2
-                                }}
+                        {/* Mobile Navigation & Progress */}
+                        <div className="flex items-center gap-4 mt-8 px-0 md:hidden">
+                            <button
+                                onClick={() => scroll('left')}
+                                className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0"
                             >
-                                <Popup>
-                                    <div className="text-center font-display">
-                                        <strong className="block mb-1 text-sm">{property.title}</strong>
-                                        <span className="text-xs text-gray-500 uppercase tracking-wider">{property.location}</span>
-                                    </div>
-                                </Popup>
-                            </CircleMarker>
-                        ) : null
-                    ))}
-                </MapContainer>
-                <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white dark:from-[#151f2b] to-transparent z-[400] pointer-events-none"></div>
-            </section>
+                                <span className="material-symbols-outlined">arrow_back</span>
+                            </button>
 
-            {/* FAQ Accordion */}
-            {/* FAQ Accordion */}
-            <section id="faq" className="py-24 bg-white dark:bg-background-dark px-6">
-                <div className="max-w-5xl mx-auto">
-                    <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                        {/* Left Column */}
-                        <div className="space-y-4">
-                            {[
-                                { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
-                                { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
-                                { q: t('landing.faq.3.q'), a: t('landing.faq.3.a') },
-                                { q: t('landing.faq.4.q'), a: t('landing.faq.4.a') }
-                            ].map((item, index) => {
-                                const realIndex = index; // 0 to 3
-                                return (
-                                    <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
-                                        <button
-                                            className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
-                                            onClick={() => toggleFaq(realIndex)}
-                                        >
-                                            {item.q}
-                                            <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
-                                        </button>
-                                        <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
-                                            <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-4">
-                            {[
-                                { q: t('landing.faq.5.q'), a: t('landing.faq.5.a') },
-                                { q: t('landing.faq.6.q'), a: t('landing.faq.6.a') },
-                                { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
-                                { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') }
-                            ].map((item, index) => {
-                                const realIndex = index + 4; // 4 to 7
-                                return (
-                                    <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
-                                        <button
-                                            className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
-                                            onClick={() => toggleFaq(realIndex)}
-                                        >
-                                            {item.q}
-                                            <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
-                                        </button>
-                                        <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
-                                            <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Final CTA */}
-            <section id="start-valuation" className="py-24 bg-white dark:bg-background-dark relative overflow-hidden">
-                <div className="absolute right-0 top-0 w-1/3 h-full bg-editorial-black opacity-[0.03] -skew-x-12 hidden lg:block"></div>
-                <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-                    <span className="text-editorial-black font-black tracking-[0.3em] uppercase text-[10px] mb-6 block">{t('landing.cta.location')}</span>
-                    <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black dark:text-white tracking-tighter leading-none">
-                        {t('landing.cta.title')}
-                    </h2>
-                    <p className="text-lg text-gray-500 mb-16 max-w-2xl mx-auto font-medium">
-                        {t('landing.cta.subtitle')}
-                    </p>
-
-                    <div className="max-w-2xl mx-auto">
-                        {formStatus === 'success' ? (
-                            <div className="text-center py-12">
-                                <span className="material-symbols-outlined text-6xl text-editorial-black dark:text-white mb-4">check_circle</span>
-                                <h3 className="text-2xl font-black mb-2">{t('landing.form.success')}</h3>
+                            {/* Progress Bar */}
+                            <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                                <div
+                                    id="sold-progress-bar"
+                                    className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"
+                                    style={{ width: '20%' }} // Initial width, updated by scroll event
+                                ></div>
                             </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-left">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                    <div className="relative group">
-                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-                                            {t('landing.form.name')}
-                                        </label>
-                                        <input
-                                            required
-                                            name="name"
-                                            value={formState.name}
-                                            onChange={handleInputChange}
-                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
-                                            type="text"
-                                            placeholder={t('landing.form.name')}
-                                        />
-                                    </div>
-                                    <div className="relative group">
-                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-                                            {t('landing.form.phone')}
-                                        </label>
-                                        <input
-                                            required
-                                            name="phone"
-                                            value={formState.phone}
-                                            onChange={handleInputChange}
-                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
-                                            type="tel"
-                                            placeholder={t('landing.form.phone')}
-                                        />
-                                    </div>
-                                </div>
 
-                                <div className="relative group">
-                                    <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-                                        {t('landing.form.email')}
-                                    </label>
-                                    <input
-                                        required
-                                        name="email"
-                                        value={formState.email}
-                                        onChange={handleInputChange}
-                                        className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
-                                        type="email"
-                                        placeholder={t('landing.form.email')}
-                                    />
-                                </div>
+                            <button
+                                onClick={() => scroll('right')}
+                                className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0"
+                            >
+                                <span className="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
 
-                                <div className="relative group">
-                                    <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-                                        {t('landing.cta.placeholder')}
-                                    </label>
-                                    <div className="relative">
-                                        <input
-                                            required
-                                            name="address"
-                                            value={formState.address}
-                                            onChange={handleInputChange}
-                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 pl-8 pr-0"
-                                            type="text"
-                                            placeholder={t('landing.cta.placeholder')}
-                                        />
-                                        <span className="absolute left-0 top-2 text-gray-400 material-symbols-outlined text-xl">location_on</span>
-                                    </div>
-                                </div>
+                {/* Interactive Map */}
+                <section className="h-[500px] w-full relative z-0">
+                    <MapContainer
+                        center={[38.97, -0.15]}
+                        zoom={11}
+                        scrollWheelZoom={false}
+                        className="h-full w-full z-0"
+                        style={{ height: '100%', width: '100%' }}
+                    >
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                        />
+                        <MapBoundsUpdater properties={salesProperties} />
+                        {salesProperties.map((property) => (
+                            property.lat && property.lng ? (
+                                <CircleMarker
+                                    key={property.id}
+                                    center={[property.lat, property.lng]}
+                                    radius={hoveredPropertyId === property.id ? 12 : 8}
+                                    pathOptions={{
+                                        color: '#000',
+                                        fillColor: hoveredPropertyId === property.id ? '#FFFFFF' : '#000',
+                                        fillOpacity: 1,
+                                        weight: hoveredPropertyId === property.id ? 4 : 2
+                                    }}
+                                >
+                                    <Popup>
+                                        <div className="text-center font-display">
+                                            <strong className="block mb-1 text-sm">{property.title}</strong>
+                                            <span className="text-xs text-gray-500 uppercase tracking-wider">{property.location}</span>
+                                        </div>
+                                    </Popup>
+                                </CircleMarker>
+                            ) : null
+                        ))}
+                    </MapContainer>
+                    <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white dark:from-[#151f2b] to-transparent z-[400] pointer-events-none"></div>
+                </section>
 
-                                {/* File Upload Field */}
-                                <div className="relative group">
-                                    <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-                                        {t('landing.form.files')}
-                                    </label>
-                                    <div className="relative">
-                                        <input
-                                            type="file"
-                                            multiple
-                                            accept="image/*,video/*"
-                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                                            onChange={(e) => {
-                                                const files = e.target.files;
-                                                if (files && files.length > 0) {
-                                                    // In a real app, handle file selection here
-                                                    console.log('Files selected:', files);
-                                                }
-                                            }}
-                                        />
-                                        <div className="w-full h-12 border-b border-gray-300 dark:border-gray-700 flex items-center justify-between text-gray-400 group-hover:text-editorial-black dark:group-hover:text-white transition-colors">
-                                            <span className="text-sm font-medium italic">
-                                                {t('landing.form.files_placeholder')}
-                                            </span>
-                                            <span className="material-symbols-outlined text-xl">attach_file</span>
+                {/* FAQ Accordion */}
+                {/* FAQ Accordion */}
+                <section id="faq" className="py-24 bg-white dark:bg-background-dark px-6">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                            {/* Left Column */}
+                            <div className="space-y-4">
+                                {[
+                                    { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
+                                    { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
+                                    { q: t('landing.faq.3.q'), a: t('landing.faq.3.a') },
+                                    { q: t('landing.faq.4.q'), a: t('landing.faq.4.a') }
+                                ].map((item, index) => {
+                                    const realIndex = index; // 0 to 3
+                                    return (
+                                        <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
+                                            <button
+                                                className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
+                                                onClick={() => toggleFaq(realIndex)}
+                                            >
+                                                {item.q}
+                                                <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
+                                            </button>
+                                            <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                                <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="space-y-4">
+                                {[
+                                    { q: t('landing.faq.5.q'), a: t('landing.faq.5.a') },
+                                    { q: t('landing.faq.6.q'), a: t('landing.faq.6.a') },
+                                    { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
+                                    { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') }
+                                ].map((item, index) => {
+                                    const realIndex = index + 4; // 4 to 7
+                                    return (
+                                        <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
+                                            <button
+                                                className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
+                                                onClick={() => toggleFaq(realIndex)}
+                                            >
+                                                {item.q}
+                                                <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
+                                            </button>
+                                            <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
+                                                <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Final CTA */}
+                <section id="start-valuation" className="py-24 bg-white dark:bg-background-dark relative overflow-hidden">
+                    <div className="absolute right-0 top-0 w-1/3 h-full bg-editorial-black opacity-[0.03] -skew-x-12 hidden lg:block"></div>
+                    <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+                        <span className="text-editorial-black font-black tracking-[0.3em] uppercase text-[10px] mb-6 block">{t('landing.cta.location')}</span>
+                        <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black dark:text-white tracking-tighter leading-none">
+                            {t('landing.cta.title')}
+                        </h2>
+                        <p className="text-lg text-gray-500 mb-16 max-w-2xl mx-auto font-medium">
+                            {t('landing.cta.subtitle')}
+                        </p>
+
+                        <div className="max-w-2xl mx-auto">
+                            {formStatus === 'success' ? (
+                                <div className="text-center py-12">
+                                    <span className="material-symbols-outlined text-6xl text-editorial-black dark:text-white mb-4">check_circle</span>
+                                    <h3 className="text-2xl font-black mb-2">{t('landing.form.success')}</h3>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-left">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                        <div className="relative group">
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                                {t('landing.form.name')}
+                                            </label>
+                                            <input
+                                                required
+                                                name="name"
+                                                value={formState.name}
+                                                onChange={handleInputChange}
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
+                                                type="text"
+                                                placeholder={t('landing.form.name')}
+                                            />
+                                        </div>
+                                        <div className="relative group">
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                                {t('landing.form.phone')}
+                                            </label>
+                                            <input
+                                                required
+                                                name="phone"
+                                                value={formState.phone}
+                                                onChange={handleInputChange}
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
+                                                type="tel"
+                                                placeholder={t('landing.form.phone')}
+                                            />
                                         </div>
                                     </div>
-                                </div>
 
-                                <button
-                                    type="submit"
-                                    disabled={formStatus === 'submitting'}
-                                    className="mt-8 h-14 w-full bg-editorial-black hover:bg-gray-800 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-                                >
-                                    {formStatus === 'submitting' ? (
-                                        <span className="material-symbols-outlined animate-spin">refresh</span>
-                                    ) : (
-                                        t('landing.form.submit')
-                                    )}
-                                </button>
-                            </form>
-                        )}
+                                    <div className="relative group">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            {t('landing.form.email')}
+                                        </label>
+                                        <input
+                                            required
+                                            name="email"
+                                            value={formState.email}
+                                            onChange={handleInputChange}
+                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
+                                            type="email"
+                                            placeholder={t('landing.form.email')}
+                                        />
+                                    </div>
+
+                                    <div className="relative group">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            {t('landing.cta.placeholder')}
+                                        </label>
+                                        <div className="relative">
+                                            <input
+                                                required
+                                                name="address"
+                                                value={formState.address}
+                                                onChange={handleInputChange}
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 pl-8 pr-0"
+                                                type="text"
+                                                placeholder={t('landing.cta.placeholder')}
+                                            />
+                                            <span className="absolute left-0 top-2 text-gray-400 material-symbols-outlined text-xl">location_on</span>
+                                        </div>
+                                    </div>
+
+                                    {/* File Upload Field */}
+                                    <div className="relative group">
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                                            {t('landing.form.files')}
+                                        </label>
+                                        <div className="relative">
+                                            <input
+                                                type="file"
+                                                multiple
+                                                accept="image/*,video/*"
+                                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                                                onChange={(e) => {
+                                                    const files = e.target.files;
+                                                    if (files && files.length > 0) {
+                                                        // In a real app, handle file selection here
+                                                        console.log('Files selected:', files);
+                                                    }
+                                                }}
+                                            />
+                                            <div className="w-full h-12 border-b border-gray-300 dark:border-gray-700 flex items-center justify-between text-gray-400 group-hover:text-editorial-black dark:group-hover:text-white transition-colors">
+                                                <span className="text-sm font-medium italic">
+                                                    {t('landing.form.files_placeholder')}
+                                                </span>
+                                                <span className="material-symbols-outlined text-xl">attach_file</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        disabled={formStatus === 'submitting'}
+                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-gray-800 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                                    >
+                                        {formStatus === 'submitting' ? (
+                                            <span className="material-symbols-outlined animate-spin">refresh</span>
+                                        ) : (
+                                            t('landing.form.submit')
+                                        )}
+                                    </button>
+                                </form>
+                            )}
+                        </div>
                     </div>
-                </div>
-            </section>
-        </main >
+                </section>
+            </main >
             <LandingFooter />
             <FloatingWhatsApp />
             <button

@@ -145,6 +145,7 @@ const MasonryGallery = () => {
                 </button>
             </div>
 
+            {/* Mobile Carousel */}
             <div className="md:hidden relative px-6 -mx-6 mb-8">
                 <div
                     id="editorial-carousel"
@@ -166,165 +167,203 @@ const MasonryGallery = () => {
                         >
                             <img
                                 src={img}
-                                key={i}
-                                className={`relative group overflow-hidden cursor-pointer w-auto h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                viewport={{ once: true }}
-                            >
-                                <img
-                                    src={img}
-                                    alt="Property Detail"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-                            </motion.div>
-                ))}
+                                alt="Property Detail"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
+                    ))}
+                </div>
+
+                {/* Mobile Navigation & Progress */}
+                <div className="flex items-center gap-4 mt-4 px-6 md:hidden">
+                    <button
+                        onClick={() => {
+                            document.getElementById('editorial-carousel')?.scrollBy({ left: -window.innerWidth * 0.85, behavior: 'smooth' });
+                        }}
+                        className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0"
+                    >
+                        <span className="material-symbols-outlined">arrow_back</span>
+                    </button>
+
+                    {/* Progress Bar */}
+                    <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                        <div id="editorial-progress-bar" className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"></div>
+                    </div>
+
+                    <button
+                        onClick={() => {
+                            document.getElementById('editorial-carousel')?.scrollBy({ left: window.innerWidth * 0.85, behavior: 'smooth' });
+                        }}
+                        className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0"
+                    >
+                        <span className="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            {/* Desktop Grid */}
+            <div className="hidden md:grid max-w-[1440px] mx-auto md:grid-cols-4 gap-4 px-0 md:px-0 auto-rows-[300px]">
+                {images.map((img, i) => (
+                    <motion.div
+                        key={i}
+                        className={`relative group overflow-hidden cursor-pointer w-auto h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        viewport={{ once: true }}
+                    >
+                        <img
+                            src={img}
+                            alt="Property Detail"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                    </motion.div>
+                ))}
+            </div>
         </section>
-                )
-}
+    );
+};
 
 const BeforeAfterSlider = () => {
     const [sliderPosition, setSliderPosition] = useState(50);
-                const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
-                    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!containerRef.current) return;
-                        const rect = containerRef.current.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const percentage = Math.min(Math.max((x / rect.width) * 100, 0), 100);
-                        setSliderPosition(percentage);
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+        setSliderPosition(percentage);
     };
 
-                        const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
         if (!containerRef.current) return;
-                            const rect = containerRef.current.getBoundingClientRect();
-                            const x = e.touches[0].clientX - rect.left;
-                            const percentage = Math.min(Math.max((x / rect.width) * 100, 0), 100);
-                            setSliderPosition(percentage);
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left;
+        const percentage = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+        setSliderPosition(percentage);
     }
 
-                            return (
-                            <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
-                                <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                                    <div className="order-2 lg:order-1">
-                                        <div
-                                            ref={containerRef}
-                                            className="relative w-full aspect-[4/3] rounded-sm overflow-hidden cursor-ew-resize select-none"
-                                            onMouseMove={handleMouseMove}
-                                            onTouchMove={handleTouchMove}
-                                        >
-                                            {/* After Image (Rendered) */}
-                                            <img
-                                                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
-                                                className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                                                alt="Propiedad Renderizada con IA"
-                                            />
+    return (
+        <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="order-2 lg:order-1">
+                    <div
+                        ref={containerRef}
+                        className="relative w-full aspect-[4/3] rounded-sm overflow-hidden cursor-ew-resize select-none"
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleTouchMove}
+                    >
+                        {/* After Image (Rendered) */}
+                        <img
+                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
+                            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                            alt="Propiedad Renderizada con IA"
+                        />
 
-                                            {/* Before Image (Construction/Empty) */}
-                                            <div
-                                                className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-                                                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-                                            >
-                                                <img
-                                                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop" // Construction/Structure
-                                                    className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
-                                                    alt="Estado Actual"
-                                                />
-                                                <div className="absolute top-4 left-4 bg-black/50 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">
-                                                    Antes
-                                                </div>
-                                            </div>
+                        {/* Before Image (Construction/Empty) */}
+                        <div
+                            className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
+                            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop" // Construction/Structure
+                                className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
+                                alt="Estado Actual"
+                            />
+                            <div className="absolute top-4 left-4 bg-black/50 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">
+                                Antes
+                            </div>
+                        </div>
 
-                                            <div className="absolute top-4 right-4 bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
-                                                Después
-                                            </div>
+                        <div className="absolute top-4 right-4 bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
+                            Después
+                        </div>
 
-                                            {/* Slider Handle */}
-                                            <div
-                                                className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20"
-                                                style={{ left: `${sliderPosition}%` }}
-                                            >
-                                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                                                    <span className="material-symbols-outlined text-black text-sm">code</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        {/* Slider Handle */}
+                        <div
+                            className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20"
+                            style={{ left: `${sliderPosition}%` }}
+                        >
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                <span className="material-symbols-outlined text-black text-sm">code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                    <div className="order-1 lg:order-2">
-                                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-                                            Render con IA
-                                        </h2>
-                                        <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                                            Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
-                                        </p>
-                                        <div className="grid grid-cols-2 gap-8">
-                                            <div>
-                                                <span className="text-3xl font-black text-gray-700 block mb-2">100%</span>
-                                                <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Visualización</span>
-                                            </div>
-                                            <div>
-                                                <span className="text-3xl font-black text-gray-700 block mb-2">x3</span>
-                                                <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Interés</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            )
+                <div className="order-1 lg:order-2">
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
+                        Render con IA
+                    </h2>
+                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
+                    </p>
+                    <div className="grid grid-cols-2 gap-8">
+                        <div>
+                            <span className="text-3xl font-black text-gray-700 block mb-2">100%</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Visualización</span>
+                        </div>
+                        <div>
+                            <span className="text-3xl font-black text-gray-700 block mb-2">x3</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Interés</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
 }
 
 const VideoGallery = () => {
-    const {t} = useLanguage();
+    const { t } = useLanguage();
 
-                            // Using a high-quality varied footage video
-                            const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
+    // Using a high-quality varied footage video
+    const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
 
-                            return (
-                            <section className="py-24 px-6 md:px-12 bg-[#F6F7F8] dark:bg-white/5">
-                                <div className="max-w-[1440px] mx-auto">
-                                    <div className="mb-16 text-center">
-                                        <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
-                                            Video <span className="text-gray-400">Profesional</span>
-                                        </h2>
-                                        <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                                            {t('landing.video.desc')}
-                                        </p>
-                                    </div>
+    return (
+        <section className="py-24 px-6 md:px-12 bg-[#F6F7F8] dark:bg-white/5">
+            <div className="max-w-[1440px] mx-auto">
+                <div className="mb-16 text-center">
+                    <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
+                        Video <span className="text-gray-400">Profesional</span>
+                    </h2>
+                    <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                        {t('landing.video.desc')}
+                    </p>
+                </div>
 
-                                    <div className="w-full max-w-6xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl relative bg-black">
-                                        <AutoPlayVideo
-                                            src={mainVideoUrl}
-                                            className="w-full h-full"
-                                        />
+                <div className="w-full max-w-6xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl relative bg-black">
+                    <AutoPlayVideo
+                        src={mainVideoUrl}
+                        className="w-full h-full"
+                    />
 
-                                        {/* Overlay Title */}
-                                        <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
-                                            <div className="bg-editorial-black/80 backdrop-blur text-white px-4 py-2 rounded-sm inline-block mb-2">
-                                                <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
-                                            </div>
-                                            <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
-                                                Exhibición Inmobiliaria
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            );
+                    {/* Overlay Title */}
+                    <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
+                        <div className="bg-editorial-black/80 backdrop-blur text-white px-4 py-2 rounded-sm inline-block mb-2">
+                            <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
+                        </div>
+                        <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
+                            Exhibición Inmobiliaria
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 }
 
 const VisualProSection: React.FC = () => {
     return (
-                            <div className="w-full relative bg-white dark:bg-background-dark">
-                                <CineVideoSection />
-                                <MasonryGallery />
-                                <VideoGallery />
-                                <BeforeAfterSlider />
-                            </div>
-                            );
+        <div className="w-full relative bg-white dark:bg-background-dark">
+            <CineVideoSection />
+            <MasonryGallery />
+            <VideoGallery />
+            <BeforeAfterSlider />
+        </div>
+    );
 };
 
-                            export default VisualProSection;
+export default VisualProSection;
