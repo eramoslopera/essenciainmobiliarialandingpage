@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import CarouselProgress from './ui/CarouselProgress';
 import Modal from './Modal';
 
 const MiaMethodSection: React.FC = () => {
     const { t } = useLanguage();
+    const [currentSlide, setCurrentSlide] = useState(0);
     const [selectedStep, setSelectedStep] = useState<{ id: number; title: string; content: string } | null>(null);
 
     const steps = [
@@ -60,23 +62,21 @@ const MiaMethodSection: React.FC = () => {
                             // Update a local state if we wanted strict tracking, 
                             // but for simple progress bar based on scroll position:
                             const progress = scrollLeft / (e.currentTarget.scrollWidth - width);
-                            const progressBar = document.getElementById('mia-progress-bar');
-                            if (progressBar) {
-                                progressBar.style.width = `${Math.max(0, Math.min(100, progress * 100))}%`;
-                            }
+                            const itemWidth = width * 0.85;
+                            const currentIndex = Math.round(scrollLeft / itemWidth);
+                            setCurrentSlide(Math.min(currentIndex, steps.length - 1));
                         }}
                     >
-                        {steps.map((step) => (
+                        {steps.map((step, index) => (
                             <motion.div
                                 key={step.id}
-                                variants={{
-                                    hidden: { opacity: 0, scale: 0.9 },
-                                    visible: { opacity: 1, scale: 1 }
-                                }}
-                                whileHover={{ y: -5, borderColor: '#000' }}
+                                className="min-w-[85vw] bg-white dark:bg-background-dark p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 snap-center flex flex-col h-[400px] relative overflow-hidden group"
+                                whileHover={{ y: -5 }}
+                                transition={{ duration: 0.3 }}
                                 onClick={() => handleStepClick(step.id)}
-                                className="shrink-0 snap-center w-[85vw] bg-white dark:bg-gray-800 p-6 flex flex-col items-center text-center relative group transition-all duration-300 shadow-sm border border-transparent hover:shadow-xl hover:z-10 cursor-pointer rounded-xl h-[300px] justify-center"
                             >
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 dark:bg-gray-800 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+
                                 {step.pro && (
                                     <span className="absolute top-4 right-4 bg-editorial-black text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">PRO</span>
                                 )}
@@ -93,29 +93,11 @@ const MiaMethodSection: React.FC = () => {
                     </motion.div>
 
                     {/* Mobile Navigation & Progress */}
-                    <div className="flex items-center gap-4 mt-6 px-6 md:hidden relative z-20">
-                        <button
-                            onClick={() => {
-                                document.getElementById('mia-carousel')?.scrollBy({ left: -window.innerWidth * 0.85, behavior: 'smooth' });
-                            }}
-                            className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0 bg-white dark:bg-editorial-black"
-                        >
-                            <span className="material-symbols-outlined">arrow_back</span>
-                        </button>
-
-                        {/* Progress Bar */}
-                        <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                            <div id="mia-progress-bar" className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"></div>
-                        </div>
-
-                        <button
-                            onClick={() => {
-                                document.getElementById('mia-carousel')?.scrollBy({ left: window.innerWidth * 0.85, behavior: 'smooth' });
-                            }}
-                            className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0"
-                        >
-                            <span className="material-symbols-outlined">arrow_forward</span>
-                        </button>
+                    <div className="mt-4 px-6 md:hidden relative z-20">
+                        <CarouselProgress
+                            total={steps.length}
+                            current={currentSlide}
+                        />
                     </div>
                 </div>
 

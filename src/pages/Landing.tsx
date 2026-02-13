@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import LandingHeader from '../components/LandingHeader';
 import LandingFooter from '../components/LandingFooter';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
-import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import CarouselProgress from '../components/ui/CarouselProgress';
 import 'leaflet/dist/leaflet.css';
 import { fetchProperties } from '../utils/xmlParser';
 import { Property } from '../types/property';
@@ -25,6 +27,7 @@ const Landing: React.FC = () => {
     // Properties State
     const [salesProperties, setSalesProperties] = useState<Property[]>([]);
     const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     // SEO Title
     useEffect(() => {
@@ -322,19 +325,9 @@ const Landing: React.FC = () => {
                             onScroll={(e) => {
                                 const scrollLeft = e.currentTarget.scrollLeft;
                                 const width = e.currentTarget.offsetWidth;
-                                const progress = scrollLeft / (e.currentTarget.scrollWidth - width);
-                                const progressBar = document.getElementById('sold-progress-bar');
-                                if (progressBar) {
-                                    progressBar.style.width = `${Math.max(0, Math.min(100, progress * 100))}%`;
-                                }
-
-                                // Update counter
                                 const itemWidth = width * 0.85; // approx item width
-                                const currentIndex = Math.round(scrollLeft / itemWidth) + 1;
-                                const counter = document.getElementById('sold-counter');
-                                if (counter) {
-                                    counter.innerText = `${Math.min(currentIndex, salesProperties.length)} / ${salesProperties.length}`;
-                                }
+                                const currentIndex = Math.round(scrollLeft / itemWidth);
+                                setCurrentSlide(Math.min(currentIndex, salesProperties.length - 1));
                             }}
                         >
                             {salesProperties.length > 0 ? salesProperties.map((property) => (
@@ -385,25 +378,11 @@ const Landing: React.FC = () => {
 
 
                         {/* Mobile Navigation & Progress */}
-                        <div className="flex items-center gap-4 mt-8 px-0 md:hidden">
-                            <button
-                                onClick={() => scroll('left')}
-                                className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0"
-                            >
-                                <span className="material-symbols-outlined">arrow_back</span>
-                            </button>
-
-                            {/* 1 / N Counter */}
-                            <div className="flex-1 text-center text-sm font-bold text-editorial-black dark:text-white">
-                                <span id="sold-counter">1 / {salesProperties.length}</span>
-                            </div>
-
-                            <button
-                                onClick={() => scroll('right')}
-                                className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0"
-                            >
-                                <span className="material-symbols-outlined">arrow_forward</span>
-                            </button>
+                        <div className="md:hidden mt-4">
+                            <CarouselProgress
+                                total={salesProperties.length}
+                                current={currentSlide}
+                            />
                         </div>
                     </div>
                 </section>

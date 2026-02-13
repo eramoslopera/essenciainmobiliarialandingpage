@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import PhoneMockup from './PhoneMockup';
 import { useLanguage } from '../context/LanguageContext';
+import CarouselProgress from './ui/CarouselProgress';
 
 // --- Sub-components ---
 
@@ -130,6 +131,7 @@ const MasonryGallery = () => {
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop", // Bedroom
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop", // Exterior / Pool
     ];
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
         <section className="py-24 px-6 md:px-12 bg-white dark:bg-background-dark">
@@ -153,11 +155,9 @@ const MasonryGallery = () => {
                     onScroll={(e) => {
                         const scrollLeft = e.currentTarget.scrollLeft;
                         const width = e.currentTarget.offsetWidth;
-                        const progress = scrollLeft / (e.currentTarget.scrollWidth - width);
-                        const progressBar = document.getElementById('editorial-progress-bar');
-                        if (progressBar) {
-                            progressBar.style.width = `${Math.max(0, Math.min(100, progress * 100))}%`;
-                        }
+                        const itemWidth = width * 0.85;
+                        const currentIndex = Math.round(scrollLeft / itemWidth);
+                        setCurrentSlide(Math.min(currentIndex, images.length - 1));
                     }}
                 >
                     {images.map((img, i) => (
@@ -175,29 +175,11 @@ const MasonryGallery = () => {
                 </div>
 
                 {/* Mobile Navigation & Progress */}
-                <div className="flex items-center gap-4 mt-4 px-6 md:hidden">
-                    <button
-                        onClick={() => {
-                            document.getElementById('editorial-carousel')?.scrollBy({ left: -window.innerWidth * 0.85, behavior: 'smooth' });
-                        }}
-                        className="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white transition-colors shrink-0"
-                    >
-                        <span className="material-symbols-outlined">arrow_back</span>
-                    </button>
-
-                    {/* Progress Bar */}
-                    <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                        <div id="editorial-progress-bar" className="h-full bg-editorial-black dark:bg-white w-0 transition-all duration-100"></div>
-                    </div>
-
-                    <button
-                        onClick={() => {
-                            document.getElementById('editorial-carousel')?.scrollBy({ left: window.innerWidth * 0.85, behavior: 'smooth' });
-                        }}
-                        className="w-10 h-10 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0"
-                    >
-                        <span className="material-symbols-outlined">arrow_forward</span>
-                    </button>
+                <div className="mt-4 px-6 md:hidden">
+                    <CarouselProgress
+                        total={images.length}
+                        current={currentSlide}
+                    />
                 </div>
             </div>
 
