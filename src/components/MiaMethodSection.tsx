@@ -62,7 +62,7 @@ const MiaMethodSection: React.FC = () => {
                             // Update a local state if we wanted strict tracking, 
                             // but for simple progress bar based on scroll position:
                             const progress = scrollLeft / (e.currentTarget.scrollWidth - width);
-                            const itemWidth = width * 0.85;
+                            const itemWidth = width * 0.75;
                             const currentIndex = Math.round(scrollLeft / itemWidth);
                             setCurrentSlide(Math.min(currentIndex, steps.length - 1));
                         }}
