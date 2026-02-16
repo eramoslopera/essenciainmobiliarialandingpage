@@ -15,13 +15,13 @@ const ManagementClosingSection: React.FC = () => {
             key: 'process.management.step1',
             icon: 'filter_alt',
             // Buyer Filtering: Person reviewing profiles/iPad (Subagent Verified: Business person using iPad)
-            image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step2',
             icon: 'key',
             // Guided Visits: Bright, premium interior showing / Open door (Subagent Verified: Modern Living Room)
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step3',

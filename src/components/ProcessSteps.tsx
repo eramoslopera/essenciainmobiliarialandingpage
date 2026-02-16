@@ -20,7 +20,7 @@ const ProcessSteps: React.FC = () => {
             titleKey: 'process.step2.title',
             descKey: 'process.step2.desc',
             // Coffee meeting / Professional conversation (Subagent Verified)
-            image: "https://images.unsplash.com/photo-1543269865-4ed69e11d7b6?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop"
         },
         {
             id: 'step3',
