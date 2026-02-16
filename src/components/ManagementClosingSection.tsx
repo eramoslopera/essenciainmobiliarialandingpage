@@ -5,30 +5,44 @@ import { useLanguage } from '../context/LanguageContext';
 const ManagementClosingSection: React.FC = () => {
     const { t } = useLanguage();
 
-    // State for the Closing section accordion
+    // State for the Management section
+    const [activeManagementStep, setActiveManagementStep] = useState<number>(0);
+    // State for the Closing section
     const [activeClosingStep, setActiveClosingStep] = useState<number>(0);
 
     const managementSteps = [
-        { key: 'process.management.step1', icon: 'filter_alt' },
-        { key: 'process.management.step2', icon: 'key' },
-        { key: 'process.management.step3', icon: 'request_quote' },
+        {
+            key: 'process.management.step1',
+            icon: 'filter_alt',
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop" // Analysis/Filtering
+        },
+        {
+            key: 'process.management.step2',
+            icon: 'key',
+            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop" // Open House/Visits
+        },
+        {
+            key: 'process.management.step3',
+            icon: 'request_quote',
+            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop" // Offers/Paperwork
+        },
     ];
 
     const closingSteps = [
         {
             key: 'process.closing.step1',
             icon: 'handshake',
-            image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop" // Negotiation / Handshake
+            image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2000&auto=format&fit=crop" // Negotiation/Meeting
         },
         {
             key: 'process.closing.step2',
             icon: 'description',
-            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop" // Contract / Signing
+            image: "https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=2000&auto=format&fit=crop" // Arras/Signing
         },
         {
             key: 'process.closing.step3',
             icon: 'history_edu', // Notary
-            image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop" // Official papers / Pen
+            image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop" // Official papers / Seal
         },
         {
             key: 'process.closing.step4',
@@ -57,7 +71,7 @@ const ManagementClosingSection: React.FC = () => {
                             {t('process.management.title')}
                         </h2>
 
-                        <div className="space-y-6">
+                        <div className="space-y-4">
                             {managementSteps.map((step, index) => (
                                 <motion.div
                                     key={step.key}
@@ -65,16 +79,25 @@ const ManagementClosingSection: React.FC = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="flex items-start gap-6 p-6 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 hover:shadow-lg transition-all duration-300 bg-gray-50 dark:bg-white/5"
+                                    onClick={() => setActiveManagementStep(index)}
+                                    className={`flex items-start gap-6 p-6 rounded-2xl border cursor-pointer transition-all duration-300 ${activeManagementStep === index ? 'border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-white/10 shadow-lg scale-[1.02]' : 'border-transparent hover:bg-gray-50 dark:hover:bg-white/5'}`}
                                 >
-                                    <div className="w-12 h-12 rounded-full bg-white dark:bg-white/10 flex items-center justify-center shadow-sm shrink-0">
-                                        <span className="material-symbols-outlined text-editorial-black dark:text-white">{step.icon}</span>
+                                    <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300'}`}>
+                                        <span className="material-symbols-outlined">{step.icon}</span>
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-bold mb-1">{t(step.key)}</h3>
-                                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-                                            Everything handled by our expert team.
-                                        </p>
+                                        <h3 className={`text-xl font-bold mb-1 transition-colors ${activeManagementStep === index ? 'text-black dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
+                                            {t(step.key)}
+                                        </h3>
+                                        {activeManagementStep === index && (
+                                            <motion.p
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                className="text-gray-600 dark:text-gray-300 text-sm font-medium mt-2 leading-relaxed"
+                                            >
+                                                {t(`${step.key}.desc`)}
+                                            </motion.p>
+                                        )}
                                     </div>
                                 </motion.div>
                             ))}
@@ -82,19 +105,25 @@ const ManagementClosingSection: React.FC = () => {
                     </motion.div>
 
                     {/* Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="h-[500px] rounded-3xl overflow-hidden relative shadow-2xl"
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop"
-                            alt="Management"
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    </motion.div>
+                    <div className="h-[500px] rounded-3xl overflow-hidden relative shadow-2xl">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeManagementStep}
+                                initial={{ opacity: 0, scale: 1.05 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0"
+                            >
+                                <img
+                                    src={managementSteps[activeManagementStep].image}
+                                    alt={t(managementSteps[activeManagementStep].key)}
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </div>
             </section>
 

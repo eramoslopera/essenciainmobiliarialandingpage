@@ -11,21 +11,21 @@ const ProcessSteps: React.FC = () => {
             icon: 'chat',
             titleKey: 'process.step1.title',
             descKey: 'process.step1.desc',
-            image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2000&auto=format&fit=crop" // Meeting/Discussion
+            image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop" // Digital/Contact (Laptop/Phone)
         },
         {
             id: 'step2',
             icon: 'support_agent',
             titleKey: 'process.step2.title',
             descKey: 'process.step2.desc',
-            image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop" // Handshake/Agreement
+            image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2000&auto=format&fit=crop" // Meeting/Discussion (People talking)
         },
         {
             id: 'step3',
             icon: 'real_estate_agent',
             titleKey: 'process.step3.title',
             descKey: 'process.step3.desc',
-            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop" // Property Check/Keys
+            image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" // Valuation (Plans/Architecture)
         }
     ];
 
