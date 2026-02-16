@@ -4,149 +4,191 @@ import { useLanguage } from '../context/LanguageContext';
 
 const ManagementClosingSection: React.FC = () => {
     const { t } = useLanguage();
-    const [activeTab, setActiveTab] = useState<'management' | 'closing'>('management');
 
-    const content = {
-        management: {
-            titleKey: 'process.management.title',
-            subtitleKey: 'process.management.subtitle',
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop", // Agent showing a luxury house
-            steps: [
-                { key: 'process.management.step1', icon: 'filter_alt' },
-                { key: 'process.management.step2', icon: 'key' },
-                { key: 'process.management.step3', icon: 'request_quote' },
-            ]
+    // State for the Closing section accordion
+    const [activeClosingStep, setActiveClosingStep] = useState<number>(0);
+
+    const managementSteps = [
+        { key: 'process.management.step1', icon: 'filter_alt' },
+        { key: 'process.management.step2', icon: 'key' },
+        { key: 'process.management.step3', icon: 'request_quote' },
+    ];
+
+    const closingSteps = [
+        {
+            key: 'process.closing.step1',
+            icon: 'handshake',
+            image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop" // Negotiation / Handshake
         },
-        closing: {
-            titleKey: 'process.closing.title',
-            subtitleKey: 'process.closing.subtitle',
-            image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=2000&auto=format&fit=crop", // Signing papers / Plans
-            steps: [
-                { key: 'process.closing.step1', icon: 'handshake' },
-                { key: 'process.closing.step2', icon: 'description' },
-                { key: 'process.closing.step3', icon: 'history_edu' },
-                { key: 'process.closing.step4', icon: 'celebration' },
-            ]
-        }
-    };
+        {
+            key: 'process.closing.step2',
+            icon: 'description',
+            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop" // Contract / Signing
+        },
+        {
+            key: 'process.closing.step3',
+            icon: 'history_edu', // Notary
+            image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop" // Official papers / Pen
+        },
+        {
+            key: 'process.closing.step4',
+            icon: 'celebration',
+            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop" // Keys / Celebration
+        },
+    ];
 
     return (
-        <section className="bg-editorial-black text-white py-24 md:py-32 overflow-hidden relative">
-            {/* Background Texture */}
-            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none" />
+        <div className="flex flex-col">
 
-            <div className="max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* SECTION 1: MANAGEMENT (Clean Style) */}
+            <section className="bg-white dark:bg-[#151f2b] text-editorial-black dark:text-white py-24 px-6 md:px-12">
+                <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                {/* Left Column: Accordion Navigation */}
-                <div className="flex flex-col gap-8 z-10">
-                    <div>
+                    {/* Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
                         <span className="text-xs font-black tracking-[0.2em] text-gray-500 uppercase block mb-4">
-                            {t('sell.process.label')}
-                        </span>
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
                             {t('process.management.subtitle')} {/* "We handle everything" */}
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-8">
+                            {t('process.management.title')}
                         </h2>
+
+                        <div className="space-y-6">
+                            {managementSteps.map((step, index) => (
+                                <motion.div
+                                    key={step.key}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="flex items-start gap-6 p-6 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 hover:shadow-lg transition-all duration-300 bg-gray-50 dark:bg-white/5"
+                                >
+                                    <div className="w-12 h-12 rounded-full bg-white dark:bg-white/10 flex items-center justify-center shadow-sm shrink-0">
+                                        <span className="material-symbols-outlined text-editorial-black dark:text-white">{step.icon}</span>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold mb-1">{t(step.key)}</h3>
+                                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                                            Everything handled by our expert team.
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Image */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="h-[500px] rounded-3xl overflow-hidden relative shadow-2xl"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop"
+                            alt="Management"
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* SECTION 2: CLOSING (Premium / AI Render Style) */}
+            <section className="bg-[#0f0f0f] text-white py-24 px-6 md:px-12 relative overflow-hidden">
+                {/* Background Texture/Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#050505]" />
+                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+
+                <div className="max-w-[1440px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+                    {/* Left: Accordion */}
+                    <div>
+                        <span className="text-xs font-black tracking-[0.2em] text-blue-400 uppercase block mb-4">
+                            {t('process.closing.subtitle')} {/* "The final mile" */}
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-12">
+                            {t('process.closing.title')}
+                        </h2>
+
+                        <div className="flex flex-col gap-4">
+                            {closingSteps.map((step, index) => (
+                                <div
+                                    key={step.key}
+                                    onClick={() => setActiveClosingStep(index)}
+                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeClosingStep === index ? 'bg-white/10 border-white/20' : 'bg-transparent border-white/5 hover:border-white/10'}`}
+                                >
+                                    <div className="p-6 flex items-center justify-between">
+                                        <div className="flex items-center gap-4">
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-blue-500 text-white' : 'bg-white/10 text-gray-400'}`}>
+                                                <span className="material-symbols-outlined text-sm">{step.icon}</span>
+                                            </div>
+                                            <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}>
+                                                {t(step.key)}
+                                            </h3>
+                                        </div>
+                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeClosingStep === index ? 'rotate-180 text-white' : 'text-gray-600'}`}>
+                                            expand_more
+                                        </span>
+                                    </div>
+
+                                    <motion.div
+                                        initial={false}
+                                        animate={{ height: activeClosingStep === index ? 'auto' : 0, opacity: activeClosingStep === index ? 1 : 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="px-6 pb-6 pl-20">
+                                            <p className="text-gray-400 leading-relaxed max-w-md">
+                                                {t(`${step.key}.desc`)}
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                    <div className="flex flex-col gap-4 mt-8">
-                        {/* Tab: Management */}
-                        <div
-                            className={`p-8 border rounded-2xl cursor-pointer transition-all duration-300 ${activeTab === 'management' ? 'border-white bg-white/5' : 'border-white/10 hover:border-white/30 hover:bg-white/5'}`}
-                            onClick={() => setActiveTab('management')}
-                        >
-                            <div className="flex justify-between items-center mb-4">
-                                <h3 className={`text-2xl font-bold ${activeTab === 'management' ? 'text-white' : 'text-gray-400'}`}>
-                                    {t('process.management.title')}
-                                </h3>
-                                <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${activeTab === 'management' ? 'border-white bg-white text-black' : 'border-white/20 text-gray-500'}`}>
-                                    <span className="material-symbols-outlined text-sm">
-                                        {activeTab === 'management' ? 'remove' : 'add'}
-                                    </span>
-                                </div>
-                            </div>
+                    {/* Right: Dynamic Image Display */}
+                    <div className="lg:h-[700px] h-[400px] sticky top-24">
+                        <div className="w-full h-full rounded-2xl overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeClosingStep}
+                                    initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+                                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="absolute inset-0"
+                                >
+                                    <img
+                                        src={closingSteps[activeClosingStep].image}
+                                        alt={t(closingSteps[activeClosingStep].key)}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
-                            <motion.div
-                                initial={false}
-                                animate={{ height: activeTab === 'management' ? 'auto' : 0, opacity: activeTab === 'management' ? 1 : 0 }}
-                                className="overflow-hidden"
-                            >
-                                <ul className="space-y-4 pt-2">
-                                    {content.management.steps.map((step) => (
-                                        <li key={step.key} className="flex items-center gap-3 text-gray-300">
-                                            <span className="material-symbols-outlined text-white/50 text-sm">{step.icon}</span>
-                                            {t(step.key)}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        </div>
-
-                        {/* Tab: Closing */}
-                        <div
-                            className={`p-8 border rounded-2xl cursor-pointer transition-all duration-300 ${activeTab === 'closing' ? 'border-white bg-white/5' : 'border-white/10 hover:border-white/30 hover:bg-white/5'}`}
-                            onClick={() => setActiveTab('closing')}
-                        >
-                            <div className="flex justify-between items-center mb-4">
-                                <h3 className={`text-2xl font-bold ${activeTab === 'closing' ? 'text-white' : 'text-gray-400'}`}>
-                                    {t('process.closing.title')}
-                                </h3>
-                                <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${activeTab === 'closing' ? 'border-white bg-white text-black' : 'border-white/20 text-gray-500'}`}>
-                                    <span className="material-symbols-outlined text-sm">
-                                        {activeTab === 'closing' ? 'remove' : 'add'}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <motion.div
-                                initial={false}
-                                animate={{ height: activeTab === 'closing' ? 'auto' : 0, opacity: activeTab === 'closing' ? 1 : 0 }}
-                                className="overflow-hidden"
-                            >
-                                <ul className="space-y-4 pt-2">
-                                    {content.closing.steps.map((step) => (
-                                        <li key={step.key} className="flex items-center gap-3 text-gray-300">
-                                            <span className="material-symbols-outlined text-white/50 text-sm">{step.icon}</span>
-                                            {t(step.key)}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
+                                    {/* Overlay Text */}
+                                    <div className="absolute bottom-0 left-0 p-8">
+                                        <span className="px-3 py-1 bg-blue-500 text-white text-[10px] uppercase font-black tracking-widest rounded-full mb-3 inline-block">
+                                            Step {activeClosingStep + 4}
+                                        </span>
+                                        <h4 className="text-2xl font-bold text-white">
+                                            {t(closingSteps[activeClosingStep].key)}
+                                        </h4>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                     </div>
+
                 </div>
+            </section>
 
-                {/* Right Column: Dynamic Image */}
-                <div className="h-[500px] lg:h-[700px] relative rounded-3xl overflow-hidden shadow-2xl z-10">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeTab}
-                            initial={{ opacity: 0, scale: 1.05 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="absolute inset-0"
-                        >
-                            <div
-                                className="absolute inset-0 bg-cover bg-center"
-                                style={{ backgroundImage: `url(${content[activeTab].image})` }}
-                            />
-                            <div className="absolute inset-0 bg-black/20" /> {/* Subtle tint */}
-
-                            {/* Floating Badge */}
-                            <div className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl max-w-xs">
-                                <span className="block text-white font-black text-xl mb-1">
-                                    {activeTab === 'management' ? '55 Days' : '100% Secure'}
-                                </span>
-                                <span className="text-xs text-gray-300 uppercase tracking-widest">
-                                    {activeTab === 'management' ? 'Avg. Sale Time' : 'Certified Process'}
-                                </span>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
-            </div>
-        </section>
+        </div>
     );
 };
 
