@@ -16,7 +16,8 @@ import { Property } from '../types/property';
 
 import VisualProSection from '../components/VisualProSection';
 import MiaMethodSection from '../components/MiaMethodSection';
-import SalesProcessSection from '../components/SalesProcessSection';
+import ProcessSteps from '../components/ProcessSteps';
+import ManagementClosingSection from '../components/ManagementClosingSection';
 
 // Component to update map bounds based on properties
 const MapBoundsUpdater: React.FC<{ properties: Property[] }> = ({ properties }) => {
@@ -297,11 +298,11 @@ const Landing: React.FC = () => {
 
                 {/* MIA Method Section */}
 
-                <MiaMethodSection />
-                <SalesProcessSection />
 
-                {/* Visual Pro Section (New) */}
+                <ProcessSteps />
+                <MiaMethodSection />
                 <VisualProSection />
+                <ManagementClosingSection />
 
                 {/* Recent Sales Carousel */}
                 <section id="recent-sales" className="py-24 bg-white dark:bg-[#151f2b] overflow-hidden">
