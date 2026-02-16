@@ -35,8 +35,8 @@ const ManagementClosingSection: React.FC = () => {
         {
             key: 'process.closing.step1',
             icon: 'handshake',
-            // Negotiation: Handshake / Meeting (Subagent Verified: Professional Handshake)
-            image: "https://images.unsplash.com/photo-1507141704767-f15ad6e1befd?q=80&w=2000&auto=format&fit=crop"
+            // Negotiation: Discussion/Analysis (Subagent Verified: People analyzing document)
+            image: "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step2',
