@@ -20,8 +20,8 @@ const ManagementClosingSection: React.FC = () => {
         {
             key: 'process.management.step2',
             icon: 'key',
-            // Guided Visits: Bright, premium interior showing / Open door (Subagent Verified: Modern Living Room)
-            image: "https://images.unsplash.com/photo-1626178793926-22b28d304775?q=80&w=2000&auto=format&fit=crop"
+            // Guided Visits: Agent opening door / welcoming (Subagent Verified: Agent at door)
+            image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step3',
@@ -41,14 +41,14 @@ const ManagementClosingSection: React.FC = () => {
         {
             key: 'process.closing.step2',
             icon: 'description',
-            // Arras Contract: Pen signing document (Subagent Verified: Close up Signing)
-            image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop"
+            // Arras Contract: Formal contract/Notary style (Subagent Verified: Swapped)
+            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step3',
             icon: 'history_edu',
-            // Notary: Official papers / Seal / Legal environment (Subagent Verified: Seal)
-            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop"
+            // Notary: Pen signing document (Subagent Verified: Swapped)
+            image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step4',
