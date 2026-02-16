@@ -14,17 +14,20 @@ const ManagementClosingSection: React.FC = () => {
         {
             key: 'process.management.step1',
             icon: 'filter_alt',
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop" // Analysis/Filtering
+            // Buyer Filtering: Person reviewing profiles/iPad (Analysis focus)
+            image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step2',
             icon: 'key',
-            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop" // Open House/Visits
+            // Guided Visits: Bright, premium interior showing / Open door (Welcome focus)
+            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step3',
             icon: 'request_quote',
-            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop" // Offers/Paperwork
+            // Offer Management: Contract review / Financial calculator (Deal focus)
+            image: "https://images.unsplash.com/photo-1554224154-260327c00c40?q=80&w=2000&auto=format&fit=crop"
         },
     ];
 
@@ -32,22 +35,26 @@ const ManagementClosingSection: React.FC = () => {
         {
             key: 'process.closing.step1',
             icon: 'handshake',
-            image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2000&auto=format&fit=crop" // Negotiation/Meeting
+            // Negotiation: Handshake / Meeting (Agreement focus)
+            image: "https://images.unsplash.com/photo-1565514020176-dbf2277cc120?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step2',
             icon: 'description',
-            image: "https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=2000&auto=format&fit=crop" // Arras/Signing
+            // Arras Contract: Pen signing document (Signature focus)
+            image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step3',
-            icon: 'history_edu', // Notary
-            image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop" // Official papers / Seal
+            icon: 'history_edu',
+            // Notary: Official papers / Seal / Legal environment
+            image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step4',
             icon: 'celebration',
-            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop" // Keys / Celebration
+            // Post-Sale: Keys in hand / Champagne (Celebration focus)
+            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop"
         },
     ];
 
