@@ -300,13 +300,44 @@ const BeforeAfterSlider = () => {
 
 const VideoGallery = () => {
     const { t } = useLanguage();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
-    // Using a high-quality varied footage video
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Transform logic: 
+    // From 80% width (max-w-6xl) to 100% width
+    // We'll use a width percentage animation for smoother layout flow
+    const width = useTransform(scrollYProgress, [0.1, 0.4], ["80%", "100%"]);
+    const borderRadius = useTransform(scrollYProgress, [0.1, 0.4], [12, 0]);
+
+    // Playback control
+    useEffect(() => {
+        const unsubscribe = scrollYProgress.on("change", (latest) => {
+            if (videoRef.current) {
+                // Play when the section is significantly active/expanding
+                if (latest > 0.1 && latest < 0.9) {
+                    if (videoRef.current.paused) {
+                        videoRef.current.play().catch(() => { });
+                    }
+                } else {
+                    if (!videoRef.current.paused) {
+                        videoRef.current.pause();
+                    }
+                }
+            }
+        });
+        return () => unsubscribe();
+    }, [scrollYProgress]);
+
     const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-[#F6F7F8] dark:bg-white/5">
-            <div className="max-w-[1440px] mx-auto">
+        <section ref={containerRef} className="py-24 bg-[#F6F7F8] dark:bg-white/5 overflow-hidden flex flex-col items-center">
+            <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full">
                 <div className="mb-16 text-center">
                     <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
                         Video <span className="text-gray-400">Profesional</span>
@@ -315,24 +346,35 @@ const VideoGallery = () => {
                         {t('landing.video.desc')}
                     </p>
                 </div>
-
-                <div className="w-full max-w-6xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl relative bg-black">
-                    <AutoPlayVideo
-                        src={mainVideoUrl}
-                        className="w-full h-full"
-                    />
-
-                    {/* Overlay Title */}
-                    <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
-                        <div className="bg-editorial-black/80 backdrop-blur text-white px-4 py-2 rounded-sm inline-block mb-2">
-                            <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
-                        </div>
-                        <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
-                            Exhibición Inmobiliaria
-                        </h3>
-                    </div>
-                </div>
             </div>
+
+            {/* Cinematic Video Container */}
+            <motion.div
+                style={{
+                    width: width,
+                    borderRadius: borderRadius
+                }}
+                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto"
+            >
+                <video
+                    ref={videoRef}
+                    src={mainVideoUrl}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                    playsInline
+                />
+
+                {/* Overlay Title */}
+                <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
+                    <div className="bg-editorial-black/80 backdrop-blur text-white px-4 py-2 rounded-sm inline-block mb-2">
+                        <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
+                    </div>
+                    <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
+                        Exhibición Inmobiliaria
+                    </h3>
+                </div>
+            </motion.div>
         </section>
     );
 }
