@@ -15,13 +15,13 @@ const ManagementClosingSection: React.FC = () => {
             key: 'process.management.step1',
             icon: 'filter_alt',
             // Buyer Filtering: Person reviewing profiles/iPad (Subagent Verified: Business person using iPad)
-            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step2',
             icon: 'key',
             // Guided Visits: Bright, premium interior showing / Open door (Subagent Verified: Modern Living Room)
-            image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1626178793926-22b28d304775?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.management.step3',
@@ -48,13 +48,13 @@ const ManagementClosingSection: React.FC = () => {
             key: 'process.closing.step3',
             icon: 'history_edu',
             // Notary: Official papers / Seal / Legal environment (Subagent Verified: Seal)
-            image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop"
         },
         {
             key: 'process.closing.step4',
             icon: 'celebration',
             // Post-Sale: Keys in hand / Champagne (Subagent Verified: Keys)
-            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2000&auto=format&fit=crop"
         },
     ];
 
@@ -140,10 +140,10 @@ const ManagementClosingSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#050505]" />
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
-                <div className="max-w-[1440px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                <div className="max-w-[1440px] mx-auto relative z-10 flex flex-col-reverse lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
                     {/* Left: Accordion */}
-                    <div>
+                    <div className="w-full">
                         <span className="text-xs font-black tracking-[0.2em] text-blue-400 uppercase block mb-4">
                             {t('process.closing.subtitle')} {/* "The final mile" */}
                         </span>
@@ -189,7 +189,7 @@ const ManagementClosingSection: React.FC = () => {
                     </div>
 
                     {/* Right: Dynamic Image Display */}
-                    <div className="lg:h-[700px] h-[400px] sticky top-24">
+                    <div className="lg:h-[700px] h-[400px] lg:sticky lg:top-24 w-full mb-8 lg:mb-0">
                         <div className="w-full h-full rounded-2xl overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
                             <AnimatePresence mode="wait">
                                 <motion.div

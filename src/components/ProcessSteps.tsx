@@ -80,12 +80,13 @@ const ProcessSteps: React.FC = () => {
                     </motion.h2>
                 </div>
 
+                {/* Desktop Grid */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    className="hidden md:grid md:grid-cols-3 gap-8"
                 >
                     {steps.map((step, index) => (
                         <motion.div
@@ -122,6 +123,45 @@ const ProcessSteps: React.FC = () => {
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* Mobile Carousel */}
+                <div className="md:hidden">
+                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar px-1 -mx-6 md:mx-0">
+                        {steps.map((step, index) => (
+                            <div
+                                key={step.id}
+                                className="snap-center shrink-0 w-[85vw] h-[400px] rounded-2xl overflow-hidden relative ml-6 last:mr-6"
+                            >
+                                {/* Background Image */}
+                                <div
+                                    className="absolute inset-0 bg-cover bg-center"
+                                    style={{ backgroundImage: `url(${step.image})` }}
+                                />
+
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80" />
+
+                                {/* Content */}
+                                <div className="absolute inset-0 p-8 flex flex-col justify-end items-start text-left">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-6">
+                                        <span className="material-symbols-outlined text-white text-2xl">
+                                            {step.icon}
+                                        </span>
+                                    </div>
+
+                                    <span className="text-6xl font-black text-white/5 absolute top-6 right-6">0{index + 1}</span>
+
+                                    <h3 className="text-2xl font-bold text-white mb-2">
+                                        {t(step.titleKey)}
+                                    </h3>
+                                    <p className="text-gray-300 font-medium">
+                                        {t(step.descKey)}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );
