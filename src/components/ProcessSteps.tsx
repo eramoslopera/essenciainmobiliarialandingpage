@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import CarouselProgress from './ui/CarouselProgress';
 
 const ProcessSteps: React.FC = () => {
     const { t } = useLanguage();
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const steps = [
         {
@@ -125,8 +127,17 @@ const ProcessSteps: React.FC = () => {
                 </motion.div>
 
                 {/* Mobile Carousel */}
-                <div className="md:hidden">
-                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar px-1 -mx-6 md:mx-0">
+                <div className="md:hidden relative">
+                    <div
+                        className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar px-1 -mx-6 md:mx-0"
+                        onScroll={(e) => {
+                            const scrollLeft = e.currentTarget.scrollLeft;
+                            const width = e.currentTarget.offsetWidth;
+                            const itemWidth = width * 0.85; // Approx width of card
+                            const currentIndex = Math.round(scrollLeft / itemWidth);
+                            setCurrentSlide(Math.min(currentIndex, steps.length - 1));
+                        }}
+                    >
                         {steps.map((step, index) => (
                             <div
                                 key={step.id}
@@ -160,6 +171,14 @@ const ProcessSteps: React.FC = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Mobile Progress */}
+                    <div className="px-6 mt-4">
+                        <CarouselProgress
+                            total={steps.length}
+                            current={currentSlide}
+                        />
                     </div>
                 </div>
             </div>

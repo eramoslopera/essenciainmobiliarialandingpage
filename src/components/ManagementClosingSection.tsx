@@ -87,32 +87,47 @@ const ManagementClosingSection: React.FC = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
                                     onClick={() => setActiveManagementStep(index)}
-                                    className={`flex items-start gap-6 p-6 rounded-2xl border cursor-pointer transition-all duration-300 ${activeManagementStep === index ? 'border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-white/10 shadow-lg scale-[1.02]' : 'border-transparent hover:bg-gray-50 dark:hover:bg-white/5'}`}
+                                    className={`flex flex-col gap-4 p-6 rounded-2xl border cursor-pointer transition-all duration-300 ${activeManagementStep === index ? 'border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-white/10 shadow-lg scale-[1.02]' : 'border-transparent hover:bg-gray-50 dark:hover:bg-white/5'}`}
                                 >
-                                    <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300'}`}>
-                                        <span className="material-symbols-outlined">{step.icon}</span>
+                                    <div className="flex items-start gap-4">
+                                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300'}`}>
+                                            <span className="material-symbols-outlined">{step.icon}</span>
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className={`text-xl font-bold mb-1 transition-colors ${activeManagementStep === index ? 'text-black dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
+                                                {t(step.key)}
+                                            </h3>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 className={`text-xl font-bold mb-1 transition-colors ${activeManagementStep === index ? 'text-black dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
-                                            {t(step.key)}
-                                        </h3>
-                                        {activeManagementStep === index && (
-                                            <motion.p
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                className="text-gray-600 dark:text-gray-300 text-sm font-medium mt-2 leading-relaxed"
-                                            >
+
+                                    {activeManagementStep === index && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            className="overflow-hidden"
+                                        >
+                                            {/* Mobile Embedded Image */}
+                                            <div className="lg:hidden w-full h-48 rounded-xl overflow-hidden mb-4 relative mt-2">
+                                                <img
+                                                    src={step.image}
+                                                    alt={t(step.key)}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                                <div className="absolute inset-0 bg-black/10" />
+                                            </div>
+
+                                            <p className="text-gray-600 dark:text-gray-300 text-sm font-medium leading-relaxed pl-[64px] lg:pl-0">
                                                 {t(`${step.key}.desc`)}
-                                            </motion.p>
-                                        )}
-                                    </div>
+                                            </p>
+                                        </motion.div>
+                                    )}
                                 </motion.div>
                             ))}
                         </div>
                     </motion.div>
 
-                    {/* Image */}
-                    <div className="h-[500px] rounded-3xl overflow-hidden relative shadow-2xl">
+                    {/* Image - Hidden on Mobile, Visible on Desktop */}
+                    <div className="hidden lg:block h-[500px] rounded-3xl overflow-hidden relative shadow-2xl">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeManagementStep}
@@ -140,7 +155,7 @@ const ManagementClosingSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#050505]" />
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
-                <div className="max-w-[1440px] mx-auto relative z-10 flex flex-col-reverse lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                <div className="max-w-[1440px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
                     {/* Left: Accordion */}
                     <div className="w-full">
@@ -177,6 +192,15 @@ const ManagementClosingSection: React.FC = () => {
                                         animate={{ height: activeClosingStep === index ? 'auto' : 0, opacity: activeClosingStep === index ? 1 : 0 }}
                                         className="overflow-hidden"
                                     >
+                                        {/* Mobile Embedded Image */}
+                                        <div className="lg:hidden w-full h-48 rounded-xl overflow-hidden mb-4 relative mx-6 mt-2 max-w-[calc(100%-48px)]">
+                                            <img
+                                                src={step.image}
+                                                alt={t(step.key)}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+
                                         <div className="px-6 pb-6 pl-20">
                                             <p className="text-gray-400 leading-relaxed max-w-md">
                                                 {t(`${step.key}.desc`)}
@@ -188,8 +212,8 @@ const ManagementClosingSection: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Right: Dynamic Image Display */}
-                    <div className="lg:h-[700px] h-[400px] lg:sticky lg:top-24 w-full mb-8 lg:mb-0">
+                    {/* Right: Dynamic Image Display - Hidden on Mobile */}
+                    <div className="hidden lg:block lg:h-[700px] lg:sticky lg:top-24 w-full">
                         <div className="w-full h-full rounded-2xl overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
                             <AnimatePresence mode="wait">
                                 <motion.div
