@@ -103,29 +103,27 @@ const ManagementClosingSection: React.FC = () => {
                                         </span>
                                     </div>
 
-                                    {activeManagementStep === index && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            className="overflow-hidden"
-                                        >
-                                            {/* Mobile Embedded Image */}
-                                            <div className="lg:hidden w-full h-48 rounded-xl overflow-hidden mb-4 relative mx-6 mt-2 max-w-[calc(100%-48px)]">
-                                                <img
-                                                    src={step.image}
-                                                    alt={t(step.key)}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                                <div className="absolute inset-0 bg-black/10" />
-                                            </div>
+                                    <motion.div
+                                        initial={false}
+                                        animate={{ height: activeManagementStep === index ? 'auto' : 0, opacity: activeManagementStep === index ? 1 : 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        {/* Mobile Embedded Image */}
+                                        <div className="lg:hidden w-full h-48 rounded-xl overflow-hidden mb-4 relative mx-6 mt-2 max-w-[calc(100%-48px)]">
+                                            <img
+                                                src={step.image}
+                                                alt={t(step.key)}
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-black/10" />
+                                        </div>
 
-                                            <div className="px-6 pb-6 lg:pl-[88px]">
-                                                <p className="text-gray-600 dark:text-gray-300 text-sm font-medium leading-relaxed">
-                                                    {t(`${step.key}.desc`)}
-                                                </p>
-                                            </div>
-                                        </motion.div>
-                                    )}
+                                        <div className="px-6 pb-6 lg:pl-[88px]">
+                                            <p className="text-gray-600 dark:text-gray-300 text-sm font-medium leading-relaxed">
+                                                {t(`${step.key}.desc`)}
+                                            </p>
+                                        </div>
+                                    </motion.div>
                                 </motion.div>
                             ))}
                         </div>
