@@ -87,17 +87,20 @@ const ManagementClosingSection: React.FC = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
                                     onClick={() => setActiveManagementStep(index)}
-                                    className={`flex flex-col gap-4 p-6 rounded-2xl border cursor-pointer transition-all duration-300 ${activeManagementStep === index ? 'border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-white/10 shadow-lg scale-[1.02]' : 'border-transparent hover:bg-gray-50 dark:hover:bg-white/5'}`}
+                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeManagementStep === index ? 'border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-white/10 shadow-lg' : 'border-transparent hover:bg-gray-50 dark:hover:bg-white/5'}`}
                                 >
-                                    <div className="flex items-start gap-4">
-                                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300'}`}>
-                                            <span className="material-symbols-outlined">{step.icon}</span>
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className={`text-xl font-bold mb-1 transition-colors ${activeManagementStep === index ? 'text-black dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
+                                    <div className="p-6 flex items-center justify-between">
+                                        <div className="flex items-center gap-4">
+                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300'}`}>
+                                                <span className="material-symbols-outlined">{step.icon}</span>
+                                            </div>
+                                            <h3 className={`text-xl font-bold transition-colors ${activeManagementStep === index ? 'text-black dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
                                                 {t(step.key)}
                                             </h3>
                                         </div>
+                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeManagementStep === index ? 'rotate-180 text-black dark:text-white' : 'text-gray-400'}`}>
+                                            expand_more
+                                        </span>
                                     </div>
 
                                     {activeManagementStep === index && (
@@ -107,7 +110,7 @@ const ManagementClosingSection: React.FC = () => {
                                             className="overflow-hidden"
                                         >
                                             {/* Mobile Embedded Image */}
-                                            <div className="lg:hidden w-full h-48 rounded-xl overflow-hidden mb-4 relative mt-2">
+                                            <div className="lg:hidden w-full h-48 rounded-xl overflow-hidden mb-4 relative mx-6 mt-2 max-w-[calc(100%-48px)]">
                                                 <img
                                                     src={step.image}
                                                     alt={t(step.key)}
@@ -116,9 +119,11 @@ const ManagementClosingSection: React.FC = () => {
                                                 <div className="absolute inset-0 bg-black/10" />
                                             </div>
 
-                                            <p className="text-gray-600 dark:text-gray-300 text-sm font-medium leading-relaxed pl-[64px] lg:pl-0">
-                                                {t(`${step.key}.desc`)}
-                                            </p>
+                                            <div className="px-6 pb-6 lg:pl-[88px]">
+                                                <p className="text-gray-600 dark:text-gray-300 text-sm font-medium leading-relaxed">
+                                                    {t(`${step.key}.desc`)}
+                                                </p>
+                                            </div>
                                         </motion.div>
                                     )}
                                 </motion.div>
@@ -201,7 +206,7 @@ const ManagementClosingSection: React.FC = () => {
                                             />
                                         </div>
 
-                                        <div className="px-6 pb-6 pl-20">
+                                        <div className="px-6 pb-6 lg:pl-20">
                                             <p className="text-gray-400 leading-relaxed max-w-md">
                                                 {t(`${step.key}.desc`)}
                                             </p>
