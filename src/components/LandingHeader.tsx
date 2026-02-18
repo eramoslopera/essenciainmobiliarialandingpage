@@ -54,15 +54,15 @@ const LandingHeader: React.FC = () => {
                             <span className="material-symbols-outlined text-[14px]">expand_more</span>
                         </button>
                         <div className="absolute top-full right-0 w-24 bg-white dark:bg-background-dark shadow-xl border border-gray-100 dark:border-gray-800 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                            <button onClick={() => setLanguage('en')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'en' ? 'text-primary' : 'text-gray-400'}`}>EN</button>
-                            <button onClick={() => setLanguage('es')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'es' ? 'text-primary' : 'text-gray-400'}`}>ES</button>
-                            <button onClick={() => setLanguage('fr')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'fr' ? 'text-primary' : 'text-gray-400'}`}>FR</button>
-                            <button onClick={() => setLanguage('de')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'de' ? 'text-primary' : 'text-gray-400'}`}>DE</button>
-                            <button onClick={() => setLanguage('va')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
+                            <button onClick={() => setLanguage('en')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'en' ? 'text-brand-blue-500' : 'text-gray-400'}`}>EN</button>
+                            <button onClick={() => setLanguage('es')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'es' ? 'text-brand-blue-500' : 'text-gray-400'}`}>ES</button>
+                            <button onClick={() => setLanguage('fr')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'fr' ? 'text-brand-blue-500' : 'text-gray-400'}`}>FR</button>
+                            <button onClick={() => setLanguage('de')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'de' ? 'text-brand-blue-500' : 'text-gray-400'}`}>DE</button>
+                            <button onClick={() => setLanguage('va')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'va' ? 'text-brand-blue-500' : 'text-gray-400'}`}>VA</button>
                         </div>
                     </div>
 
-                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-editorial-black text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-brand-blue-500 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-blue-600 transition-colors shadow-lg shadow-brand-blue-500/20">
                         {t('nav.contact')}
                     </a>
 

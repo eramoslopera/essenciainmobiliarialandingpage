@@ -173,7 +173,7 @@ const ManagementClosingSection: React.FC = () => {
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-white text-black' : 'bg-white/10 text-gray-400'}`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-brand-blue-500 text-white' : 'bg-white/10 text-gray-400'}`}>
                                                 <span className="material-symbols-outlined text-sm">{step.icon}</span>
                                             </div>
                                             <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}>

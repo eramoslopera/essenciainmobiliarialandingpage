@@ -6,7 +6,7 @@ const LandingFooter: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <footer className="bg-editorial-black text-white pt-24 pb-12 px-6 lg:px-24 border-t border-white/10">
+        <footer className="bg-brand-grey-900 text-white pt-24 pb-12 px-6 lg:px-24 border-t border-white/10">
             <div className="max-w-[1440px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 border-b border-white/10 pb-16">
                     <div className="col-span-1">
@@ -26,7 +26,7 @@ const LandingFooter: React.FC = () => {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="material-symbols-outlined text-white text-xl">call</span>
-                                <a href="tel:+34647803355" className="hover:text-white transition-colors">+34 647 803 355</a>
+                                <a href="tel:+34647803355" className="hover:text-brand-blue-500 transition-colors">+34 647 803 355</a>
                             </li>
                         </ul>
                     </div>
@@ -34,8 +34,8 @@ const LandingFooter: React.FC = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
                     <p>{t('footer.rights')}</p>
                     <div className="flex gap-10">
-                        <span className="hover:text-white transition-colors cursor-pointer">{t('footer.privacy')}</span>
-                        <span className="hover:text-white transition-colors cursor-pointer">{t('footer.cookies')}</span>
+                        <span className="hover:text-brand-blue-500 transition-colors cursor-pointer">{t('footer.privacy')}</span>
+                        <span className="hover:text-brand-blue-500 transition-colors cursor-pointer">{t('footer.cookies')}</span>
                     </div>
                 </div>
             </div>

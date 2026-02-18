@@ -253,7 +253,7 @@ const Landing: React.FC = () => {
                         >
                             <button
                                 onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-editorial-black hover:bg-gray-800 text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                                className="h-14 px-10 bg-brand-blue-500 hover:bg-brand-blue-600 text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-lg hover:shadow-brand-blue-500/40 hover:-translate-y-1"
                             >
                                 {t('landing.hero.valuation')}
                             </button>
@@ -611,7 +611,7 @@ const Landing: React.FC = () => {
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'submitting'}
-                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-gray-800 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                                        className="mt-8 h-14 w-full bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-brand-blue-500/30"
                                     >
                                         {formStatus === 'submitting' ? (
                                             <span className="material-symbols-outlined animate-spin">refresh</span>
