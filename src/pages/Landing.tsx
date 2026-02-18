@@ -253,13 +253,13 @@ const Landing: React.FC = () => {
                         >
                             <button
                                 onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-editorial-black hover:bg-gray-900 border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xl hover:shadow-brand-blue-500/20 hover:-translate-y-1"
+                                className="h-14 px-10 bg-editorial-black hover:bg-brand-blue-500 border border-editorial-black hover:border-brand-blue-500 hover:text-editorial-black text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xl hover:shadow-brand-blue-500/20 hover:-translate-y-1"
                             >
                                 {t('landing.hero.valuation')}
                             </button>
                             <button
                                 onClick={() => document.getElementById('recent-sales')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-white hover:bg-gray-50 text-editorial-black border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
+                                className="h-14 px-10 bg-white hover:bg-brand-blue-500 text-editorial-black hover:text-editorial-black border border-editorial-black hover:border-brand-blue-500 text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
                             >
                                 {t('landing.hero.sales')}
                             </button>
@@ -351,17 +351,17 @@ const Landing: React.FC = () => {
                                         style={{ backgroundImage: `url("${property.image}")` }}>
                                         {property.status === 'sold' && (
                                             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                                <span className="text-white font-black uppercase tracking-[0.2em] border-2 border-white px-4 py-2 rotate-[-12deg]">{t('landing.sales.sold')}</span>
+                                                <span className="bg-brand-blue-500 text-editorial-black font-black uppercase tracking-[0.2em] px-4 py-2 rotate-[-12deg]">{t('landing.sales.sold')}</span>
                                             </div>
                                         )}
                                     </div>
                                     <div className="w-full md:w-7/12 p-8 flex flex-col justify-center border border-gray-100 dark:border-gray-800 md:border-l-0">
                                         <div className="mb-6">
-                                            <span className={`text-[10px] font-black text-white px-2 py-1 uppercase tracking-[0.2em] mb-3 inline-block ${property.status === 'sold' ? 'bg-editorial-black' :
-                                                property.status === 'reserved' ? 'bg-gray-400' :
-                                                    'bg-editorial-black'
+                                            <span className={`text-[10px] font-black px-2 py-1 uppercase tracking-[0.2em] mb-3 inline-block ${property.status === 'sold' ? 'bg-brand-blue-500 text-editorial-black' :
+                                                property.status === 'reserved' ? 'bg-gray-400 text-white' :
+                                                    'bg-editorial-black text-white'
                                                 }`}>
-                                                {property.status === 'sold' ? <span className="text-brand-blue-500">{t('landing.sales.sold')}</span> :
+                                                {property.status === 'sold' ? t('landing.sales.sold') :
                                                     property.status === 'reserved' ? 'Reserved' :
                                                         t('detail.label.exclusive')}
                                             </span>
@@ -613,7 +613,7 @@ const Landing: React.FC = () => {
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'submitting'}
-                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-gray-900 border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-brand-blue-500/20"
+                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-brand-blue-500 border border-editorial-black hover:border-brand-blue-500 hover:text-editorial-black text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-brand-blue-500/20"
                                     >
                                         {formStatus === 'submitting' ? (
                                             <span className="material-symbols-outlined animate-spin">refresh</span>

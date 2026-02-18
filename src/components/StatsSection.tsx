@@ -44,7 +44,7 @@ const StatsSection: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <section className="bg-brand-grey-500 text-white py-12 md:py-20 relative overflow-hidden">
+        <section className="bg-black text-white py-12 md:py-20 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-12">
 
@@ -56,7 +56,15 @@ const StatsSection: React.FC = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="relative z-10"
                     >
-                        {/* Removed "En Directo" Badge as requested */}
+                        {/* Title and Subtitle added as per request */}
+                        <div className="mb-12">
+                            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-brand-blue-500">
+                                ¿Por qué elegirnos?
+                            </h2>
+                            <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                                Estos son los datos que muestran nuestro trabajo
+                            </p>
+                        </div>
 
                         <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6">
                             <AnimatedCounter value={13000000} suffix="€" duration={2.5} />
