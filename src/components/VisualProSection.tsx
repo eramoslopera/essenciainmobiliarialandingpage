@@ -80,7 +80,7 @@ const CineVideoSection = () => {
                         className="text-5xl md:text-7xl font-black text-editorial-black dark:text-white tracking-tighter leading-[0.9]"
                     >
                         Pack <br />
-                        <span className="text-gray-300">Visual Pro</span>
+                        <span className="text-brand-blue-500">Visual Pro</span>
                     </motion.h2>
 
                     <p className="text-lg text-gray-500 font-medium max-w-md">

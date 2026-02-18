@@ -62,7 +62,7 @@ const LandingHeader: React.FC = () => {
                         </div>
                     </div>
 
-                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-brand-blue-500 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-blue-600 transition-colors shadow-lg shadow-brand-blue-500/20">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-editorial-black hover:bg-gray-900 border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-lg hover:shadow-brand-blue-500/20">
                         {t('nav.contact')}
                     </a>
 

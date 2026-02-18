@@ -380,6 +380,8 @@ const translations: Record<Language, Record<string, string>> = {
     'stats.days.label': 'Average Days on Market',
     'stats.active_listings.label': 'Active Exclusive Listings',
     'stats.success.label': 'Success Ratio',
+    'stats.title': 'Why choose us?',
+    'stats.subtitle': 'These are the data that show our work',
 
     // Landing Form
     'landing.form.title': 'Request Your Expert Valuation',
@@ -736,6 +738,14 @@ const translations: Record<Language, Record<string, string>> = {
     'stories.s5.desc': 'Viviendo entre historia: Cómo el patrimonio cultural añade valor intangible a las inversiones en el centro histórico.',
     'stories.s6.title': 'Gala de Verano Lion Style',
     'stories.s6.desc': 'Un vistazo a nuestro evento exclusivo en el Palau Ducal con jazz en vivo.',
+    'stats.status': 'EN DIRECTO',
+    'stats.vol.label': 'Volumen Total Ventas 2025',
+    'stats.sold_per_month.label': 'Ventas Promedio Mensuales',
+    'stats.days.label': 'Días Promedio en Mercado',
+    'stats.active_listings.label': 'Propiedades Exclusivas Activas',
+    'stats.success.label': 'Ratio de Éxito',
+    'stats.title': '¿Por qué elegirnos?',
+    'stats.subtitle': 'Estos son los datos que muestran nuestro trabajo',
     'stories.nav.all': 'Todo',
     'stories.nav.market': 'Insights de Mercado',
     'stories.nav.lifestyle': 'Estilo de Vida',
@@ -806,12 +816,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.location.camino': 'Camino Real',
 
     // Stats Section
-    'stats.status': 'EN DIRECTO',
-    'stats.vol.label': 'Volumen Total Ventas 2025',
-    'stats.sold_per_month.label': 'Media Vendidas al Mes',
-    'stats.days.label': 'Días Media Venta',
-    'stats.active_listings.label': 'Propiedades en Venta',
-    'stats.success.label': 'Ratio Éxito',
+
 
     // About
     'about.experts_intro': 'Conozca a los expertos detrás de la marca.',

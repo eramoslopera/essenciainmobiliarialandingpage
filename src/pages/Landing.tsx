@@ -253,13 +253,13 @@ const Landing: React.FC = () => {
                         >
                             <button
                                 onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-brand-blue-500 hover:bg-brand-blue-600 text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-lg hover:shadow-brand-blue-500/40 hover:-translate-y-1"
+                                className="h-14 px-10 bg-editorial-black hover:bg-gray-900 border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xl hover:shadow-brand-blue-500/20 hover:-translate-y-1"
                             >
                                 {t('landing.hero.valuation')}
                             </button>
                             <button
                                 onClick={() => document.getElementById('recent-sales')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-white hover:bg-gray-100 text-editorial-black border border-editorial-black text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
+                                className="h-14 px-10 bg-white hover:bg-gray-50 text-editorial-black border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
                             >
                                 {t('landing.hero.sales')}
                             </button>
@@ -267,7 +267,7 @@ const Landing: React.FC = () => {
                     </div>
                 </section>
 
-                <StatsSection />
+
 
                 {/* Services Options */}
                 <section className="py-16 px-6 lg:px-12 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-gray-800">
@@ -296,6 +296,8 @@ const Landing: React.FC = () => {
                         </motion.div>
                     </div>
                 </section>
+
+                <StatsSection />
 
                 {/* Why Essencia ... (Skipping as it is already updated) */}
 
@@ -359,7 +361,7 @@ const Landing: React.FC = () => {
                                                 property.status === 'reserved' ? 'bg-gray-400' :
                                                     'bg-editorial-black'
                                                 }`}>
-                                                {property.status === 'sold' ? t('landing.sales.sold') :
+                                                {property.status === 'sold' ? <span className="text-brand-blue-500">{t('landing.sales.sold')}</span> :
                                                     property.status === 'reserved' ? 'Reserved' :
                                                         t('detail.label.exclusive')}
                                             </span>
@@ -611,7 +613,7 @@ const Landing: React.FC = () => {
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'submitting'}
-                                        className="mt-8 h-14 w-full bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-brand-blue-500/30"
+                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-gray-900 border border-editorial-black hover:border-brand-blue-500 hover:text-brand-blue-500 text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-brand-blue-500/20"
                                     >
                                         {formStatus === 'submitting' ? (
                                             <span className="material-symbols-outlined animate-spin">refresh</span>
