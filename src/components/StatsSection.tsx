@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useInView, animate } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 const AnimatedCounter = ({
@@ -16,30 +16,22 @@ const AnimatedCounter = ({
     className?: string;
 }) => {
     const ref = useRef<HTMLSpanElement>(null);
-    const motionValue = useMotionValue(0);
-    const springValue = useSpring(motionValue, {
-        damping: 50,
-        stiffness: 100,
-        duration: duration * 1000
-    });
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-50px" }); // Adjusted margin for better trigger
 
     useEffect(() => {
-        if (isInView) {
-            motionValue.set(value);
+        if (isInView && ref.current) {
+            const node = ref.current;
+            const controls = animate(0, value, {
+                duration: duration,
+                ease: "easeOut", // Smoother linear-like easing without the spring "bounce/brake"
+                onUpdate: (latest) => {
+                    node.textContent = `${prefix}${Math.floor(latest).toLocaleString('es-ES')}${suffix}`;
+                }
+            });
+
+            return () => controls.stop();
         }
-    }, [isInView, value, motionValue]);
-
-    useEffect(() => {
-        return springValue.on("change", (latest) => {
-            if (ref.current) {
-                // Determine formatting based on the magnitude of the number or specific requirements
-                // For the main volume (13,000,000), we want specific formatting
-                // For others, standard locale string is usually fine
-                ref.current.textContent = `${prefix}${Math.floor(latest).toLocaleString('es-ES')}${suffix}`;
-            }
-        });
-    }, [springValue, suffix, prefix]);
+    }, [isInView, value, duration, prefix, suffix]);
 
     return <span ref={ref} className={className} />;
 };
@@ -49,31 +41,21 @@ const StatsSection: React.FC = () => {
 
     return (
         <section className="bg-[#222222] text-white py-16 md:py-24 relative overflow-hidden">
-            {/* Subtle background element/gradient if needed, keeping it clean for now to match brand */}
-
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center text-center space-y-12 md:space-y-16">
 
                     {/* Main Highligh Stat: Volume */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         className="relative z-10"
                     >
-                        <div className="flex items-center justify-center space-x-3 mb-4">
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                            </span>
-                            <span className="text-sm font-medium tracking-widest text-gray-400 uppercase">
-                                {t('stats.status')}
-                            </span>
-                        </div>
+                        {/* Removed "En Directo" Badge as requested */}
 
-                        <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-4">
-                            <AnimatedCounter value={13000000} suffix="€" />
+                        <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6">
+                            <AnimatedCounter value={13000000} suffix="€" duration={2.5} />
                         </div>
 
                         <p className="text-lg md:text-xl text-gray-400 font-light max-w-lg mx-auto">
@@ -88,11 +70,11 @@ const StatsSection: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
                             className="flex flex-col items-center p-4"
                         >
                             <span className="text-4xl md:text-5xl font-bold mb-2">
-                                <AnimatedCounter value={10} />
+                                <AnimatedCounter value={10} duration={2} />
                             </span>
                             <span className="text-sm md:text-base text-gray-400 font-light">
                                 {t('stats.sold_per_month.label')}
@@ -104,11 +86,11 @@ const StatsSection: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
                             className="flex flex-col items-center p-4"
                         >
                             <span className="text-4xl md:text-5xl font-bold mb-2">
-                                <AnimatedCounter value={30} />
+                                <AnimatedCounter value={30} duration={2} />
                             </span>
                             <span className="text-sm md:text-base text-gray-400 font-light">
                                 {t('stats.days.label')}
@@ -120,11 +102,11 @@ const StatsSection: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
                             className="flex flex-col items-center p-4"
                         >
                             <span className="text-4xl md:text-5xl font-bold mb-2">
-                                <AnimatedCounter value={150} prefix="+" />
+                                <AnimatedCounter value={150} prefix="+" duration={2} />
                             </span>
                             <span className="text-sm md:text-base text-gray-400 font-light">
                                 {t('stats.active_listings.label')}
@@ -136,11 +118,11 @@ const StatsSection: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
                             className="flex flex-col items-center p-4"
                         >
                             <span className="text-4xl md:text-5xl font-bold mb-2">
-                                <AnimatedCounter value={95} suffix="%" />
+                                <AnimatedCounter value={95} suffix="%" duration={2} />
                             </span>
                             <span className="text-sm md:text-base text-gray-400 font-light">
                                 {t('stats.success.label')}
