@@ -16,20 +16,24 @@ const AnimatedCounter = ({
     className?: string;
 }) => {
     const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true, margin: "-50px" }); // Adjusted margin for better trigger
+    const isInView = useInView(ref, { once: false, margin: "-50px" }); // Enable re-triggering
 
     useEffect(() => {
-        if (isInView && ref.current) {
-            const node = ref.current;
+        const node = ref.current;
+        if (!node) return;
+
+        if (isInView) {
             const controls = animate(0, value, {
                 duration: duration,
-                ease: "easeOut", // Smoother linear-like easing without the spring "bounce/brake"
+                ease: "easeOut",
                 onUpdate: (latest) => {
                     node.textContent = `${prefix}${Math.floor(latest).toLocaleString('es-ES')}${suffix}`;
                 }
             });
-
             return () => controls.stop();
+        } else {
+            // Optional: Reset to 0 when out of view so it starts fresh next time
+            node.textContent = `${prefix}0${suffix}`;
         }
     }, [isInView, value, duration, prefix, suffix]);
 
@@ -48,7 +52,7 @@ const StatsSection: React.FC = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }} // Re-trigger animation
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="relative z-10"
                     >
@@ -69,7 +73,7 @@ const StatsSection: React.FC = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }} // Re-trigger animation
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="flex flex-col items-center p-4"
                         >
@@ -85,7 +89,7 @@ const StatsSection: React.FC = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }} // Re-trigger animation
                             transition={{ duration: 0.6, delay: 0.3 }}
                             className="flex flex-col items-center p-4"
                         >
@@ -101,7 +105,7 @@ const StatsSection: React.FC = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }} // Re-trigger animation
                             transition={{ duration: 0.6, delay: 0.4 }}
                             className="flex flex-col items-center p-4"
                         >
@@ -117,7 +121,7 @@ const StatsSection: React.FC = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }} // Re-trigger animation
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="flex flex-col items-center p-4"
                         >
