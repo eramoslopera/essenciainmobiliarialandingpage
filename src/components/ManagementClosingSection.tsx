@@ -80,12 +80,8 @@ const ManagementClosingSection: React.FC = () => {
 
                         <div className="space-y-4">
                             {managementSteps.map((step, index) => (
-                                <motion.div
+                                <div
                                     key={step.key}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
                                     onClick={() => setActiveManagementStep(index)}
                                     className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeManagementStep === index ? 'border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-white/10 shadow-lg' : 'border-transparent hover:bg-gray-50 dark:hover:bg-white/5'}`}
                                 >
@@ -124,7 +120,7 @@ const ManagementClosingSection: React.FC = () => {
                                             </p>
                                         </div>
                                     </motion.div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </motion.div>
