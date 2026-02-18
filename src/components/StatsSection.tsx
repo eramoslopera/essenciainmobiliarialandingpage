@@ -40,9 +40,9 @@ const StatsSection: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <section className="bg-[#222222] text-white py-16 md:py-24 relative overflow-hidden">
+        <section className="bg-[#222222] text-white py-12 md:py-20 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center text-center space-y-12 md:space-y-16">
+                <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-12">
 
                     {/* Main Highligh Stat: Volume */}
                     <motion.div
@@ -64,7 +64,7 @@ const StatsSection: React.FC = () => {
                     </motion.div>
 
                     {/* Secondary Stats Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 w-full max-w-6xl mx-auto border-t border-gray-800 pt-12">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 w-full max-w-6xl mx-auto border-t border-gray-800 pt-8">
                         {/* Stat 1: Props Sold/Month */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -73,10 +73,10 @@ const StatsSection: React.FC = () => {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="flex flex-col items-center p-4"
                         >
-                            <span className="text-4xl md:text-5xl font-bold mb-2">
+                            <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={10} duration={2} />
                             </span>
-                            <span className="text-sm md:text-base text-gray-400 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.sold_per_month.label')}
                             </span>
                         </motion.div>
@@ -89,10 +89,10 @@ const StatsSection: React.FC = () => {
                             transition={{ duration: 0.6, delay: 0.3 }}
                             className="flex flex-col items-center p-4"
                         >
-                            <span className="text-4xl md:text-5xl font-bold mb-2">
+                            <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={30} duration={2} />
                             </span>
-                            <span className="text-sm md:text-base text-gray-400 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.days.label')}
                             </span>
                         </motion.div>
@@ -105,10 +105,10 @@ const StatsSection: React.FC = () => {
                             transition={{ duration: 0.6, delay: 0.4 }}
                             className="flex flex-col items-center p-4"
                         >
-                            <span className="text-4xl md:text-5xl font-bold mb-2">
+                            <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={150} prefix="+" duration={2} />
                             </span>
-                            <span className="text-sm md:text-base text-gray-400 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.active_listings.label')}
                             </span>
                         </motion.div>
@@ -121,10 +121,10 @@ const StatsSection: React.FC = () => {
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="flex flex-col items-center p-4"
                         >
-                            <span className="text-4xl md:text-5xl font-bold mb-2">
+                            <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={95} suffix="%" duration={2} />
                             </span>
-                            <span className="text-sm md:text-base text-gray-400 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.success.label')}
                             </span>
                         </motion.div>
