@@ -18,6 +18,7 @@ import VisualProSection from '../components/VisualProSection';
 import MiaMethodSection from '../components/MiaMethodSection';
 import ProcessSteps from '../components/ProcessSteps';
 import ManagementClosingSection from '../components/ManagementClosingSection';
+import StatsSection from '../components/StatsSection';
 
 // Component to update map bounds based on properties
 const MapBoundsUpdater: React.FC<{ properties: Property[] }> = ({ properties }) => {
@@ -265,6 +266,8 @@ const Landing: React.FC = () => {
                         </motion.div>
                     </div>
                 </section>
+
+                <StatsSection />
 
                 {/* Services Options */}
                 <section className="py-16 px-6 lg:px-12 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-gray-800">

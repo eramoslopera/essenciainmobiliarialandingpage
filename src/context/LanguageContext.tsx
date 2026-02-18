@@ -361,6 +361,7 @@ const translations: Record<Language, Record<string, string>> = {
 
 
 
+
     // New additions for sweep
     'valuation.process.step1_of_4': 'Step 1 of 4',
     'valuation.process.completed': '25% Completed',
@@ -371,6 +372,14 @@ const translations: Record<Language, Record<string, string>> = {
     'valuation.help.subtitle': 'Talk to a specialist.',
     'sell.hero.start': 'Start',
     'sell.disclaimer': 'No obligation. 100% Confidential.',
+
+    // Stats Section
+    'stats.status': 'LIVE',
+    'stats.vol.label': 'Total Sales Volume 2025',
+    'stats.sold_per_month.label': 'Average Sales Per Month',
+    'stats.days.label': 'Average Days on Market',
+    'stats.active_listings.label': 'Active Exclusive Listings',
+    'stats.success.label': 'Success Ratio',
 
     // Landing Form
     'landing.form.title': 'Request Your Expert Valuation',
@@ -795,6 +804,14 @@ const translations: Record<Language, Record<string, string>> = {
     'home.location.germanies': 'Passeig de les Germanies',
     'home.location.daimus': 'Playa de Daimús',
     'home.location.camino': 'Camino Real',
+
+    // Stats Section
+    'stats.status': 'EN DIRECTO',
+    'stats.vol.label': 'Volumen Total Ventas 2025',
+    'stats.sold_per_month.label': 'Media Vendidas al Mes',
+    'stats.days.label': 'Días Media Venta',
+    'stats.active_listings.label': 'Propiedades en Venta',
+    'stats.success.label': 'Ratio Éxito',
 
     // About
     'about.experts_intro': 'Conozca a los expertos detrás de la marca.',
