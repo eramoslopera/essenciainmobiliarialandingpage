@@ -149,16 +149,15 @@ const ManagementClosingSection: React.FC = () => {
             </section>
 
             {/* SECTION 2: CLOSING (Premium / AI Render Style) */}
-            <section className="bg-[#0f0f0f] text-white py-24 px-6 md:px-12 relative overflow-hidden">
+            <section className="bg-[#222222] text-white py-24 px-6 md:px-12 relative overflow-hidden">
                 {/* Background Texture/Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#050505]" />
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
                 <div className="max-w-[1440px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
                     {/* Left: Accordion */}
                     <div className="w-full">
-                        <span className="text-xs font-black tracking-[0.2em] text-blue-400 uppercase block mb-4">
+                        <span className="text-xs font-black tracking-[0.2em] text-gray-400 uppercase block mb-4">
                             {t('process.closing.subtitle')} {/* "The final mile" */}
                         </span>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-12">
@@ -174,7 +173,7 @@ const ManagementClosingSection: React.FC = () => {
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-blue-500 text-white' : 'bg-white/10 text-gray-400'}`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-white text-black' : 'bg-white/10 text-gray-400'}`}>
                                                 <span className="material-symbols-outlined text-sm">{step.icon}</span>
                                             </div>
                                             <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}>
@@ -232,7 +231,7 @@ const ManagementClosingSection: React.FC = () => {
 
                                     {/* Overlay Text */}
                                     <div className="absolute bottom-0 left-0 p-8">
-                                        <span className="px-3 py-1 bg-blue-500 text-white text-[10px] uppercase font-black tracking-widest rounded-full mb-3 inline-block">
+                                        <span className="px-3 py-1 bg-white text-black text-[10px] uppercase font-black tracking-widest rounded-full mb-3 inline-block">
                                             Step {activeClosingStep + 4}
                                         </span>
                                         <h4 className="text-2xl font-bold text-white">
