@@ -63,7 +63,7 @@ const ManagementClosingSection: React.FC = () => {
 
             {/* SECTION 1: MANAGEMENT (Clean Style) */}
             <section className="bg-white dark:bg-[#151f2b] text-editorial-black dark:text-white py-24 px-6 md:px-12">
-                <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     {/* Content */}
                     <motion.div
@@ -78,7 +78,7 @@ const ManagementClosingSection: React.FC = () => {
                             {t('process.management.title')}
                         </h2>
 
-                        <div className="space-y-4">
+                        <div className="flex flex-col gap-4">
                             {managementSteps.map((step, index) => (
                                 <div
                                     key={step.key}
