@@ -14,7 +14,7 @@ const LandingHeader: React.FC = () => {
     };
 
     const navLinks = [
-        { id: 'mia-method', label: 'MIA' },
+        { id: 'process-start', label: t('nav.process') },
         { id: 'recent-sales', label: t('landing.hero.sales') },
         { id: 'faq', label: 'FAQ' },
         { id: 'start-valuation', label: t('nav.sell_now') },

@@ -12,6 +12,7 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
     'nav.buy': 'Buy',
+    'nav.process': 'The Process',
     'nav.properties': 'All Properties',
     'nav.developments': 'New Developments',
     'nav.sell': 'Sell',
@@ -541,6 +542,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   es: {
     'nav.buy': 'Comprar',
+    'nav.process': 'El Proceso',
     'nav.properties': 'Propiedades',
     'nav.developments': 'Obra Nueva',
     'nav.sell': 'Vender',
@@ -1057,6 +1059,7 @@ const translations: Record<Language, Record<string, string>> = {
   // Add simplified/placeholders for FR/DE to avoid excessive length, repeating EN structure
   fr: {
     'nav.buy': 'Acheter',
+    'nav.process': 'Le Processus',
     'nav.properties': 'Propriétés',
     'nav.developments': 'Nouveaux Projets',
     'nav.sell': 'Vendre',
@@ -1532,6 +1535,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   de: {
     'nav.buy': 'Kaufen',
+    'nav.process': 'Der Prozess',
     'nav.properties': 'Immobilien',
     'nav.developments': 'Neubauprojekte',
     'nav.sell': 'Verkaufen',
@@ -2006,6 +2010,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   va: {
     'nav.buy': 'Comprar',
+    'nav.process': 'El Procés',
     'nav.properties': 'Propietats',
     'nav.developments': 'Obra Nova',
     'nav.sell': 'Vendre',
