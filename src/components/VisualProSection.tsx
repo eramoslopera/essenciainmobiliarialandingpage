@@ -226,17 +226,77 @@ const BeforeAfterSlider = () => {
         setSliderPosition(percentage);
     }
 
+    const beforeImage = "https://images.unsplash.com/photo-1581467655410-0c218a3b03e0?q=80&w=2000&auto=format&fit=crop"; // Empty Room
+    const afterImage = "https://images.unsplash.com/photo-1513511935574-3c66fafa3e02?q=80&w=2000&auto=format&fit=crop"; // Furnished Room
+
     return (
-        <section className="py-24 bg-editorial-dark text-editorial-black overflow-hidden relative">
+        <section className="py-24 bg-white dark:bg-editorial-black text-editorial-black dark:text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
                     <div
                         ref={containerRef}
-                        className="relative w-full aspect-[4/3] rounded-sm overflow-hidden cursor-ew-resize select-none">
+                        className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-2xl"
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleTouchMove}
+                    >
+                        {/* After Image (Background) */}
+                        <img
+                            src={afterImage}
+                            alt="Furnished / After"
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10 pointer-events-none">
+                            {t('common.after')}
+                        </div>
+
+                        {/* Before Image (Foreground - Clipped) */}
+                        <div
+                            className="absolute inset-0 w-full h-full overflow-hidden"
+                            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+                        >
+                            <img
+                                src={beforeImage}
+                                alt="Empty / Before"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                            <div className="absolute top-4 left-4 bg-brand-blue-500 text-editorial-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10 pointer-events-none">
+                                {t('common.before')}
+                            </div>
+                        </div>
+
+                        {/* Slider Handle */}
+                        <div
+                            className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                            style={{ left: `${sliderPosition}%` }}
+                        >
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                <span className="material-symbols-outlined text-black text-lg">code</span>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <span className="text-3xl font-black text-editorial-black block mb-2">x3</span>
-                        <span className="text-xs uppercase tracking-widest text-gray-600 font-bold">Más Interés</span>
+                </div>
+
+                <div className="order-1 lg:order-2">
+                    <span className="text-brand-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">
+                        Virtual Staging
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
+                        El poder del <br />
+                        <span className="text-gray-400">staging virtual</span>.
+                    </h2>
+                    <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8">
+                        Transformamos espacios vacíos en hogares llenos de vida. Ayudamos a los compradores a visualizar el potencial real de cada vivienda sin necesidad de reformas reales.
+                    </p>
+
+                    <div className="flex items-center gap-12 border-t border-gray-100 dark:border-white/10 pt-8">
+                        <div>
+                            <span className="text-4xl font-black block mb-1">x3</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Visitas</span>
+                        </div>
+                        <div>
+                            <span className="text-4xl font-black block mb-1">-40%</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Tiempo Venta</span>
+                        </div>
                     </div>
                 </div>
             </div>

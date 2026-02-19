@@ -6,7 +6,7 @@ const LandingFooter: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <footer className="bg-editorial-dark text-editorial-black pt-24 pb-12 px-6 lg:px-24 border-t border-gray-300">
+        <footer className="bg-gray-500 text-white pt-24 pb-12 px-6 lg:px-24 border-t border-gray-400">
             <div className="max-w-[1440px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 border-b border-gray-300 pb-16">
                     <div className="col-span-1">
