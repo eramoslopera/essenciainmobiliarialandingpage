@@ -73,52 +73,53 @@ const CineVideoSection = () => {
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Pack Visual Pro</span>
                     </motion.div>
 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]"
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]"
                     >
-                    Pack <br />
-                    <span className="text-brand-blue-500">Visual Pro</span>
-                </motion.h2>
+                        Pack <br />
+                        <span className="text-brand-blue-500">Visual Pro</span>
+                    </motion.h2>
 
-                <p className="text-lg text-gray-500 font-medium max-w-md">
-                    No son solo fotos. Es una experiencia inmersiva. Creamos un "Portal" digital a tu vivienda con vídeos verticales estilo cine.
-                </p>
+                    <p className="text-lg text-gray-500 font-medium max-w-md">
+                        No son solo fotos. Es una experiencia inmersiva. Creamos un "Portal" digital a tu vivienda con vídeos verticales estilo cine.
+                    </p>
 
-                <ul className="space-y-4 mt-4">
-                    {['Fotos y videos con DRON', 'Render con IA', 'Fotografía editorial', 'Video profesional', 'Planos en 3D', 'Tour Virtual'].map((item, i) => (
-                        <li key={i} className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
-                            <span className="w-2 h-2 bg-editorial-black dark:bg-white rounded-full"></span>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
+                    <ul className="space-y-4 mt-4">
+                        {['Fotos y videos con DRON', 'Render con IA', 'Fotografía editorial', 'Video profesional', 'Planos en 3D', 'Tour Virtual'].map((item, i) => (
+                            <li key={i} className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
+                                <span className="w-2 h-2 bg-editorial-black dark:bg-white rounded-full"></span>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="md:w-1/2 relative flex justify-center">
+                    <motion.div style={{ scale }} className="relative z-10">
+                        <PhoneMockup className="h-[650px] w-[320px] border-gray-900 shadow-2xl skew-y-0 rotate-0">
+                            <AutoPlayVideo
+                                src="/Packpro_Essencia.mp4"
+                                className="w-full h-full"
+                            />
+                        </PhoneMockup>
+                    </motion.div>
+
+                    {/* Abstract decorative elements */}
+                    <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-gray-100 rounded-full -z-10 opacity-50"
+                    ></motion.div>
+                    <motion.div
+                        animate={{ rotate: -360 }}
+                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-dashed border-gray-200 rounded-full -z-10 opacity-30"
+                    ></motion.div>
+                </div>
             </div>
-
-            <div className="md:w-1/2 relative flex justify-center">
-                <motion.div style={{ scale }} className="relative z-10">
-                    <PhoneMockup className="h-[650px] w-[320px] border-gray-900 shadow-2xl skew-y-0 rotate-0">
-                        <AutoPlayVideo
-                            src="/Packpro_Essencia.mp4"
-                            className="w-full h-full"
-                        />
-                    </PhoneMockup>
-                </motion.div>
-
-                {/* Abstract decorative elements */}
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-gray-100 rounded-full -z-10 opacity-50"
-                ></motion.div>
-                <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-dashed border-gray-200 rounded-full -z-10 opacity-30"
-                ></motion.div>
-            </div>
-        </div>
         </section >
     );
 };
@@ -186,7 +187,6 @@ const MasonryGallery = () => {
                     <motion.div
                         key={i}
                         className={`relative group overflow-hidden cursor-pointer w-auto h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
-                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
