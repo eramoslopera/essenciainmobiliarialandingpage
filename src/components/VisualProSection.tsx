@@ -142,9 +142,7 @@ const MasonryGallery = () => {
                         Cada ángulo cuenta una historia. Capturamos la esencia, no solo el espacio.
                     </p>
                 </div>
-                <button className="hidden md:block px-8 py-3 border border-editorial-black uppercase text-xs font-black tracking-widest hover:bg-editorial-black hover:text-white transition-colors">
-                    Ver Portfolio
-                </button>
+
             </div>
 
             {/* Mobile Carousel */}
