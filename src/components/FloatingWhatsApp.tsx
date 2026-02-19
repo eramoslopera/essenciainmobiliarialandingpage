@@ -5,18 +5,32 @@ const FloatingWhatsApp: React.FC = () => {
     // Replace with actual phone number if provided, otherwise use a placeholder or generic link
     // Format: https://wa.me/<number>
     const whatsappUrl = "https://wa.me/34647803355";
-    const [isVisible, setIsVisible] = useState(false);
+    const [isAutoVisible, setIsAutoVisible] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsVisible(true);
+        const showTimer = setTimeout(() => {
+            setIsAutoVisible(true);
         }, 3000); // Show message after 3 seconds
 
-        return () => clearTimeout(timer);
+        const hideTimer = setTimeout(() => {
+            setIsAutoVisible(false);
+        }, 8000); // Hide message 5 seconds after showing (3s + 5s)
+
+        return () => {
+            clearTimeout(showTimer);
+            clearTimeout(hideTimer);
+        };
     }, []);
 
+    const isVisible = isAutoVisible || isHovered;
+
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+        <div
+            className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <AnimatePresence>
                 {isVisible && (
                     <motion.div
@@ -28,7 +42,7 @@ const FloatingWhatsApp: React.FC = () => {
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
-                                setIsVisible(false);
+                                setIsAutoVisible(false);
                             }}
                             className="absolute -top-2 -left-2 w-5 h-5 bg-gray-200 dark:bg-zinc-700 rounded-full flex items-center justify-center text-xs text-gray-500 hover:bg-red-500 hover:text-white transition-colors"
                         >
@@ -47,10 +61,11 @@ const FloatingWhatsApp: React.FC = () => {
                 rel="noopener noreferrer"
                 className="relative w-16 h-16 bg-[#25D366] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 group"
                 aria-label="Contact on WhatsApp"
-                onMouseEnter={() => setIsVisible(true)}
             >
-                {/* Ping Animation */}
-                <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:animate-ping"></div>
+                {/* Ping Animation - Only active when NOT hovered/visible to avoid distraction when reading */}
+                {!isVisible && (
+                    <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:animate-ping"></div>
+                )}
 
                 {/* Notification Badge */}
                 <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 border-2 border-white dark:border-zinc-900 rounded-full flex items-center justify-center">
