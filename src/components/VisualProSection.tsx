@@ -230,10 +230,11 @@ const BeforeAfterSlider = () => {
     const afterImage = "https://images.unsplash.com/photo-1513511935574-3c66fafa3e02?q=80&w=2000&auto=format&fit=crop"; // Furnished Room
 
     return (
-        <section className="py-24 bg-white dark:bg-editorial-black text-editorial-black dark:text-white overflow-hidden relative">
+    return (
+        <section className="py-24 bg-gray-100 dark:bg-editorial-black text-editorial-black dark:text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                {/* Text Content - Order 1 on Desktop */}
-                <div className="order-2 lg:order-1">
+                {/* Text Content - Order 2 on Mobile, Order 2 on Desktop (Right) */}
+                <div className="order-2 lg:order-2">
                     <span className="text-brand-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">
                         Potencial Ilimitado
                     </span>
@@ -245,7 +246,7 @@ const BeforeAfterSlider = () => {
                         No dejes que una habitación vacía o anticuada frene la venta. Con nuestros renders fotorrealistas, mostramos todo el potencial de tu vivienda antes de que el comprador ponga un pie en ella.
                     </p>
 
-                    <div className="flex items-center gap-12 border-t border-gray-100 dark:border-white/10 pt-8">
+                    <div className="flex items-center gap-12 border-t border-gray-200 dark:border-white/10 pt-8">
                         <div>
                             <span className="text-4xl font-black block mb-1">100%</span>
                             <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Visualización</span>
@@ -257,42 +258,47 @@ const BeforeAfterSlider = () => {
                     </div>
                 </div>
 
-                {/* Slider - Order 2 on Desktop */}
-                <div className="order-1 lg:order-2">
+                {/* Slider - Order 1 on Mobile, Order 1 on Desktop (Left) */}
+                <div className="order-1 lg:order-1">
                     <div
                         ref={containerRef}
-                        className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-2xl"
+                        className="relative w-full aspect-[4/3] min-h-[300px] md:min-h-[400px] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-2xl bg-gray-200"
                         onMouseMove={handleMouseMove}
                         onTouchMove={handleTouchMove}
                     >
-                        {/* After Image (Background) */}
-                        <img
-                            src={afterImage}
-                            alt="Furnished / After"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10 pointer-events-none">
+                        {/* After Image (Background - Base Layer) */}
+                        <div className="absolute inset-0">
+                            <img
+                                src={afterImage}
+                                alt="Furnished / After"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: 'center' }}
+                            />
+                        </div>
+
+                        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest z-30 pointer-events-none">
                             {t('common.after')}
                         </div>
 
-                        {/* Before Image (Foreground - Clipped) */}
+                        {/* Before Image (Foreground - Clipped Layer) */}
                         <div
-                            className="absolute inset-0 w-full h-full overflow-hidden"
+                            className="absolute inset-0 w-full h-full overflow-hidden z-20 bg-gray-300"
                             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                         >
                             <img
                                 src={beforeImage}
                                 alt="Empty / Before"
                                 className="absolute inset-0 w-full h-full object-cover"
+                                style={{ objectPosition: 'center' }}
                             />
-                            <div className="absolute top-4 left-4 bg-brand-blue-500 text-editorial-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10 pointer-events-none">
+                            <div className="absolute top-4 left-4 bg-brand-blue-500 text-editorial-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest z-30 pointer-events-none">
                                 {t('common.before')}
                             </div>
                         </div>
 
                         {/* Slider Handle */}
                         <div
-                            className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                            className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-40 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                             style={{ left: `${sliderPosition}%` }}
                         >
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
