@@ -149,15 +149,15 @@ const ManagementClosingSection: React.FC = () => {
             </section>
 
             {/* SECTION 2: CLOSING (Premium / AI Render Style) */}
-            <section className="bg-editorial-dark text-white py-24 px-6 md:px-12 relative overflow-hidden">
+            <section className="bg-editorial-dark text-editorial-black py-24 px-6 md:px-12 relative overflow-hidden">
                 {/* Background Texture/Gradient */}
-                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
                 <div className="max-w-[1440px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
                     {/* Left: Accordion */}
                     <div className="w-full">
-                        <span className="text-xs font-black tracking-[0.2em] text-gray-400 uppercase block mb-4">
+                        <span className="text-xs font-black tracking-[0.2em] text-gray-500 uppercase block mb-4">
                             {t('process.closing.subtitle')} {/* "The final mile" */}
                         </span>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-12">
@@ -169,18 +169,18 @@ const ManagementClosingSection: React.FC = () => {
                                 <div
                                     key={step.key}
                                     onClick={() => setActiveClosingStep(index)}
-                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeClosingStep === index ? 'bg-white/10 border-white/20' : 'bg-transparent border-white/5 hover:border-white/10'}`}
+                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeClosingStep === index ? 'bg-white/50 border-gray-300 shadow-sm' : 'bg-transparent border-gray-200 hover:border-gray-300'}`}
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-brand-blue-500 text-white' : 'bg-white/10 text-gray-400'}`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-brand-blue-500 text-white' : 'bg-white text-gray-400'}`}>
                                                 <span className="material-symbols-outlined text-sm">{step.icon}</span>
                                             </div>
-                                            <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}>
+                                            <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-editorial-black' : 'text-gray-400 group-hover:text-gray-600'}`}>
                                                 {t(step.key)}
                                             </h3>
                                         </div>
-                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeClosingStep === index ? 'rotate-180 text-white' : 'text-gray-600'}`}>
+                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeClosingStep === index ? 'rotate-180 text-editorial-black' : 'text-gray-400'}`}>
                                             expand_more
                                         </span>
                                     </div>
@@ -200,7 +200,7 @@ const ManagementClosingSection: React.FC = () => {
                                         </div>
 
                                         <div className="px-6 pb-6 lg:pl-20">
-                                            <p className="text-gray-400 leading-relaxed max-w-md">
+                                            <p className="text-gray-600 leading-relaxed max-w-md">
                                                 {t(`${step.key}.desc`)}
                                             </p>
                                         </div>
@@ -212,7 +212,7 @@ const ManagementClosingSection: React.FC = () => {
 
                     {/* Right: Dynamic Image Display - Hidden on Mobile */}
                     <div className="hidden lg:block lg:h-[700px] lg:sticky lg:top-24 w-full">
-                        <div className="w-full h-full rounded-2xl overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10">
+                        <div className="w-full h-full rounded-2xl overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.1)] border border-gray-200">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeClosingStep}

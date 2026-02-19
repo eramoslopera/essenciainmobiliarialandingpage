@@ -233,67 +233,15 @@ const BeforeAfterSlider = () => {
                     <div
                         ref={containerRef}
                         className="relative w-full aspect-[4/3] rounded-sm overflow-hidden cursor-ew-resize select-none"
-                        onMouseMove={handleMouseMove}
-                        onTouchMove={handleTouchMove}
-                    >
-                        {/* After Image (Rendered) */}
-                        <img
-                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
-                            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                            alt="Propiedad Renderizada con IA"
-                        />
-
-                        <div className="absolute top-4 right-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black shadow-lg">
-                            {t('common.after')}
                         </div>
-
-                        {/* Before Image (Construction/Empty) */}
-                        <div
-                            className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-                            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-                        >
-                            <img
-                                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop" // Construction/Structure
-                                className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
-                                alt="Estado Actual"
-                            />
-                            <div className="absolute top-4 left-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black">
-                                {t('common.before')}
-                            </div>
-                        </div>
-
-                        {/* Slider Handle */}
-                        <div
-                            className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20"
-                            style={{ left: `${sliderPosition}%` }}
-                        >
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                                <span className="material-symbols-outlined text-black text-sm">code</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="order-1 lg:order-2">
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-                        Render con IA
-                    </h2>
-                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                        Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
-                    </p>
-                    <div className="grid grid-cols-2 gap-8">
-                        <div>
-                            <span className="text-3xl font-black text-white block mb-2">100%</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Visualización</span>
-                        </div>
-                        <div>
-                            <span className="text-3xl font-black text-white block mb-2">x3</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Más Interés</span>
-                        </div>
-                    </div>
+                <div>
+                    <span className="text-3xl font-black text-white block mb-2">x3</span>
+                    <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Más Interés</span>
                 </div>
             </div>
-        </section>
+        </div>
+            </div >
+        </section >
     )
 }
 
