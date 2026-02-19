@@ -235,11 +235,11 @@ const BeforeAfterSlider = () => {
                 {/* Text Content - Order 1 on Desktop */}
                 <div className="order-2 lg:order-1">
                     <span className="text-brand-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">
-                        Render con IA
+                        Potencial Ilimitado
                     </span>
                     <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
-                        Potencial <br />
-                        <span className="text-gray-400">Ilimitado</span>.
+                        Render <br />
+                        <span className="text-gray-400">con IA</span>.
                     </h2>
                     <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8">
                         No dejes que una habitación vacía o anticuada frene la venta. Con nuestros renders fotorrealistas, mostramos todo el potencial de tu vivienda antes de que el comprador ponga un pie en ella.
