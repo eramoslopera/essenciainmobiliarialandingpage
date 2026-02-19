@@ -15,7 +15,7 @@ export default {
                 "background-light": "#FFFFFF",
                 "background-dark": "#222222",
                 "editorial-black": "#222222",
-                "editorial-dark": "#151f2b",
+                "editorial-dark": "#36454F", // Lighter blue-gray (Charcoal)
                 "editorial-gray": "#f6f7f8",
                 charcoal: "#36454F",
                 "brand-grey": {
