@@ -206,7 +206,7 @@ const Landing: React.FC = () => {
     return (
         <>
             <LandingHeader />
-            <main className="bg-background-light dark:bg-background-dark text-editorial-black dark:text-white font-display overflow-x-hidden antialiased pt-20">
+            <main className="bg-white text-editorial-black font-display overflow-x-hidden antialiased pt-20">
                 {/* Hero Section */}
                 <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0">
@@ -224,15 +224,16 @@ const Landing: React.FC = () => {
                                 fetchPriority="high"
                             />
                         </motion.div>
-                        <div className="absolute inset-0 bg-white/20 dark:bg-black/40"></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent dark:from-background-dark dark:via-background-dark/20 dark:to-transparent"></div>
+
+                        <div className="absolute inset-0 bg-white/20"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent"></div>
                     </div>
                     <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black dark:text-white mb-6 leading-[1.1] tracking-tighter"
+                            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black mb-6 leading-[1.1] tracking-tighter"
                         >
                             {t('landing.hero.title')}<br />
                             <span className="opacity-40">{t('landing.hero.subtitle')}</span>
@@ -241,7 +242,7 @@ const Landing: React.FC = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-lg md:text-xl text-gray-800 dark:text-gray-200 max-w-2xl mb-12 font-medium leading-relaxed"
+                            className="text-lg md:text-xl text-gray-800 max-w-2xl mb-12 font-medium leading-relaxed"
                         >
                             {t('landing.hero.desc')}
                         </motion.p>
@@ -270,7 +271,7 @@ const Landing: React.FC = () => {
 
 
                 {/* Services Options */}
-                <section className="py-16 px-6 lg:px-12 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-gray-800">
+                <section className="py-16 px-6 lg:px-12 bg-white border-b border-gray-100">
                     <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
                         <motion.div
                             whileHover={{ y: -5 }}
@@ -310,7 +311,7 @@ const Landing: React.FC = () => {
                 <ManagementClosingSection />
 
                 {/* Recent Sales Carousel */}
-                <section id="recent-sales" className="py-24 bg-white dark:bg-[#151f2b] overflow-hidden">
+                <section id="recent-sales" className="py-24 bg-white overflow-hidden">
                     <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
                         <div className="flex items-center justify-between mb-16">
                             <h2 className="text-4xl font-black tracking-tighter capitalize">{t('landing.sales.title')}</h2>
@@ -439,7 +440,7 @@ const Landing: React.FC = () => {
 
                 {/* FAQ Accordion */}
                 {/* FAQ Accordion */}
-                <section id="faq" className="py-24 bg-white dark:bg-background-dark px-6">
+                <section id="faq" className="py-24 bg-white px-6">
                     <div className="max-w-5xl mx-auto">
                         <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -499,11 +500,11 @@ const Landing: React.FC = () => {
                 </section>
 
                 {/* Final CTA */}
-                <section id="start-valuation" className="py-24 bg-white dark:bg-background-dark relative overflow-hidden">
+                <section id="start-valuation" className="py-24 bg-white relative overflow-hidden">
                     <div className="absolute right-0 top-0 w-1/3 h-full bg-editorial-black opacity-[0.03] -skew-x-12 hidden lg:block"></div>
                     <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
                         <span className="text-editorial-black font-black tracking-[0.3em] uppercase text-[10px] mb-6 block">{t('landing.cta.location')}</span>
-                        <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black dark:text-white tracking-tighter leading-none">
+                        <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black tracking-tighter leading-none">
                             {t('landing.cta.title')}
                         </h2>
                         <p className="text-lg text-gray-500 mb-16 max-w-2xl mx-auto font-medium">
@@ -528,7 +529,7 @@ const Landing: React.FC = () => {
                                                 name="name"
                                                 value={formState.name}
                                                 onChange={handleInputChange}
-                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 focus:border-editorial-black focus:outline-none text-editorial-black text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
                                                 type="text"
                                                 placeholder={t('landing.form.name')}
                                             />
@@ -542,7 +543,7 @@ const Landing: React.FC = () => {
                                                 name="phone"
                                                 value={formState.phone}
                                                 onChange={handleInputChange}
-                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 focus:border-editorial-black focus:outline-none text-editorial-black text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
                                                 type="tel"
                                                 placeholder={t('landing.form.phone')}
                                             />
@@ -558,7 +559,7 @@ const Landing: React.FC = () => {
                                             name="email"
                                             value={formState.email}
                                             onChange={handleInputChange}
-                                            className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
+                                            className="w-full h-10 bg-transparent border-b border-gray-300 focus:border-editorial-black focus:outline-none text-editorial-black text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 px-0"
                                             type="email"
                                             placeholder={t('landing.form.email')}
                                         />
@@ -574,7 +575,7 @@ const Landing: React.FC = () => {
                                                 name="address"
                                                 value={formState.address}
                                                 onChange={handleInputChange}
-                                                className="w-full h-10 bg-transparent border-b border-gray-300 dark:border-gray-700 focus:border-editorial-black dark:focus:border-white focus:outline-none text-editorial-black dark:text-white text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 pl-8 pr-0"
+                                                className="w-full h-10 bg-transparent border-b border-gray-300 focus:border-editorial-black focus:outline-none text-editorial-black text-lg font-medium placeholder-gray-300 appearance-none rounded-none border-t-0 border-x-0 pl-8 pr-0"
                                                 type="text"
                                                 placeholder={t('landing.cta.placeholder')}
                                             />

@@ -44,7 +44,7 @@ const StatsSection: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <section className="bg-[#222222] text-white py-12 md:py-20 relative overflow-hidden">
+        <section className="bg-[#f6f7f8] text-editorial-black py-12 md:py-20 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-12">
 
@@ -66,7 +66,7 @@ const StatsSection: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6">
+                        <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-editorial-black mb-6">
                             <AnimatedCounter value={13000000} suffix="€" duration={2.5} />
                         </div>
 

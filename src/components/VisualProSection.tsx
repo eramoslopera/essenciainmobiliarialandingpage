@@ -65,7 +65,7 @@ const CineVideoSection = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
     return (
-        <section ref={ref} className="py-24 px-6 md:px-12 bg-[#222222] text-white overflow-hidden">
+        <section ref={ref} className="py-24 px-6 md:px-12 bg-white text-editorial-black overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2 flex flex-col gap-6">
                     <motion.div style={{ opacity }} className="flex items-center gap-2">
@@ -77,7 +77,7 @@ const CineVideoSection = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]"
+                        className="text-5xl md:text-7xl font-black text-editorial-black tracking-tighter leading-[0.9]"
                     >
                         Pack <br />
                         <span className="text-brand-blue-500">Visual Pro</span>
@@ -134,7 +134,7 @@ const MasonryGallery = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-[#222222] text-white">
+        <section className="py-24 px-6 md:px-12 bg-white text-editorial-black">
             <div className="max-w-[1440px] mx-auto mb-16 flex flex-col md:flex-row justify-between items-end">
                 <div>
                     <h2 className="text-5xl font-black tracking-tighter mb-4">Fotografía <br /> Editorial</h2>
@@ -227,7 +227,7 @@ const BeforeAfterSlider = () => {
     }
 
     return (
-        <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
+        <section className="py-24 bg-[#f6f7f8] text-editorial-black overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
                     <div
@@ -278,22 +278,22 @@ const BeforeAfterSlider = () => {
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
                         Render con IA
                     </h2>
-                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                    <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                         Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
                     </p>
                     <div className="grid grid-cols-2 gap-8">
                         <div>
-                            <span className="text-3xl font-black text-white block mb-2">100%</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Visualización</span>
+                            <span className="text-3xl font-black text-editorial-black block mb-2">100%</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Visualización</span>
                         </div>
                         <div>
-                            <span className="text-3xl font-black text-white block mb-2">x3</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Más Interés</span>
+                            <span className="text-3xl font-black text-editorial-black block mb-2">x3</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Más Interés</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 
@@ -335,10 +335,10 @@ const VideoGallery = () => {
     const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
 
     return (
-        <section ref={containerRef} className="py-24 bg-[#222222] text-white overflow-hidden flex flex-col items-center">
+        <section ref={containerRef} className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full">
                 <div className="mb-16 text-center">
-                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-editorial-black tracking-tighter mb-4">
                         Video <span className="text-brand-blue-500">Profesional</span>
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-lg">
@@ -380,7 +380,7 @@ const VideoGallery = () => {
 
 const VisualProSection: React.FC = () => {
     return (
-        <div className="w-full relative bg-[#222222]">
+        <div className="w-full relative bg-white">
             <CineVideoSection />
             <MasonryGallery />
             <VideoGallery />

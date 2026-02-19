@@ -32,13 +32,13 @@ const LandingHeader: React.FC = () => {
     ];
 
     return (
-        <header className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#101922]/95 backdrop-blur-sm border-b border-gray-800' : 'bg-transparent'} `}>
+        <header className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 text-editorial-black' : 'bg-transparent text-white md:text-editorial-black'} `}>
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
 
                 {/* Logo - Rigid Left */}
                 <div className="flex-1 flex justify-start">
                     <a href="/" className="flex items-center gap-3">
-                        <Logo className="h-10 md:h-12 w-auto object-contain text-white" />
+                        <Logo className={`h-10 md:h-12 w-auto object-contain ${isScrolled ? 'text-editorial-black' : 'text-white md:text-editorial-black'}`} />
                     </a>
                 </div>
 
@@ -77,7 +77,7 @@ const LandingHeader: React.FC = () => {
                         {t('nav.contact')}
                     </a>
 
-                    <button className="lg:hidden p-2 text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className={`lg:hidden p-2 ${isScrolled ? 'text-editorial-black' : 'text-white'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         <span className="material-symbols-outlined">menu</span>
                     </button>
                 </div>
