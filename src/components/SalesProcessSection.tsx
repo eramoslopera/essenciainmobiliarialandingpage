@@ -143,84 +143,99 @@ const SalesProcessSection: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                            />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 p-8 md:p-16 max-w-3xl">
+                <AnimatePresence mode="wait">
                     <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="flex items-center gap-4 mb-6"
+                        key={currentStep}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute inset-0 -z-10"
                     >
-                        <div className="w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center">
-                            <span className="material-symbols-outlined text-white">{steps[currentStep].icon}</span>
-                        </div>
-                        <span className="md:hidden text-sm font-bold uppercase tracking-widest text-gray-300">
-                            Step {currentStep + 1} / {steps.length}
-                        </span>
+                        <img
+                            src={steps[currentStep].image}
+                            alt={t(steps[currentStep].titleKey)}
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-editorial-dark/90" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-editorial-dark via-transparent to-transparent" />
                     </motion.div>
 
-                    <motion.h3
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                        className="text-3xl md:text-5xl font-black tracking-tight mb-4"
-                    >
-                        {t(`sell.${steps[currentStep].id}`)}
-                    </motion.h3>
+                    {/* Content */}
+                    <div className="absolute bottom-0 left-0 p-8 md:p-16 max-w-3xl">
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="flex items-center gap-4 mb-6"
+                        >
+                            <div className="w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center">
+                                <span className="material-symbols-outlined text-brand-blue-500">{steps[currentStep].icon}</span>
+                            </div>
+                            <span className="md:hidden text-sm font-bold uppercase tracking-widest text-gray-500">
+                                Step {currentStep + 1} / {steps.length}
+                            </span>
+                        </motion.div>
 
-                    <motion.p
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                        className="text-lg md:text-xl text-gray-300 leading-relaxed"
-                    >
-                        {t(`sell.${steps[currentStep].id}.long`)}
-                    </motion.p>
-                </div>
-            </motion.div>
-        </AnimatePresence>
+                        <motion.h3
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                            className="text-3xl md:text-5xl font-black tracking-tight mb-4"
+                        >
+                            {t(`sell.${steps[currentStep].id}`)}
+                        </motion.h3>
 
-                    {/* Navigation Buttons (Desktop Floating / Mobile Bottom) */ }
-    <div className="absolute bottom-8 right-8 hidden md:flex gap-4">
-        <button
-            onClick={prevStep}
-            className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all backdrop-blur-sm"
-        >
-            <span className="material-symbols-outlined">arrow_back</span>
-        </button>
-        <button
-            onClick={nextStep}
-            className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all shadow-lg"
-        >
-            <span className="material-symbols-outlined">arrow_forward</span>
-        </button>
-    </div>
-                </div >
+                        <motion.p
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="text-lg md:text-xl text-gray-600 leading-relaxed"
+                        >
+                            {/* {t(`sell.${steps[currentStep].id}.long`)} */}
+                            {t(steps[currentStep].descKey)}
+                        </motion.p>
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Buttons (Desktop Floating / Mobile Bottom) */}
+            <div className="absolute bottom-8 right-8 hidden md:flex gap-4">
+                <button
+                    onClick={prevStep}
+                    className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all backdrop-blur-sm"
+                >
+                    <span className="material-symbols-outlined">arrow_back</span>
+                </button>
+                <button
+                    onClick={nextStep}
+                    className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all shadow-lg"
+                >
+                    <span className="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div >
 
     {/* Mobile Navigation Buttons (Outside Image) */ }
-    < div className = "flex md:hidden justify-between items-center mt-6" >
-                    <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                        {currentStep + 1} / {steps.length}
-                    </span>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={prevStep}
-                            className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
-                        >
-                            <span className="material-symbols-outlined">arrow_back</span>
-                        </button>
-                        <button
-                            onClick={nextStep}
-                            className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all"
-                        >
-                            <span className="material-symbols-outlined">arrow_forward</span>
-                        </button>
-                    </div>
-                </div >
-            </div >
+    < div className="flex md:hidden justify-between items-center mt-6" >
+        <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
+            {currentStep + 1} / {steps.length}
+        </span>
+        <div className="flex gap-4">
+            <button
+                onClick={prevStep}
+                className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
+            >
+                <span className="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button
+                onClick={nextStep}
+                className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all"
+            >
+                <span className="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div >
         </section >
     );
 };

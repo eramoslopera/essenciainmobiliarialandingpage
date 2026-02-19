@@ -62,7 +62,7 @@ const ManagementClosingSection: React.FC = () => {
         <div className="flex flex-col">
 
             {/* SECTION 1: MANAGEMENT (Clean Style) */}
-            <section className="bg-white dark:bg-[#151f2b] text-editorial-black dark:text-white py-24 px-6 md:px-12">
+            <section className="bg-white dark:bg-editorial-dark text-editorial-black dark:text-editorial-black py-24 px-6 md:px-12">
                 <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     {/* Content */}
@@ -87,14 +87,14 @@ const ManagementClosingSection: React.FC = () => {
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-300'}`}>
+                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-black text-white dark:bg-brand-blue-500 dark:text-white' : 'bg-gray-100 dark:bg-editorial-black/5 text-gray-500 dark:text-gray-500'}`}>
                                                 <span className="material-symbols-outlined">{step.icon}</span>
                                             </div>
-                                            <h3 className={`text-xl font-bold transition-colors ${activeManagementStep === index ? 'text-black dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
+                                            <h3 className={`text-xl font-bold transition-colors ${activeManagementStep === index ? 'text-black dark:text-editorial-black' : 'text-gray-500 dark:text-gray-500'}`}>
                                                 {t(step.key)}
                                             </h3>
                                         </div>
-                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeManagementStep === index ? 'rotate-180 text-black dark:text-white' : 'text-gray-400'}`}>
+                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeManagementStep === index ? 'rotate-180 text-black dark:text-editorial-black' : 'text-gray-400'}`}>
                                             expand_more
                                         </span>
                                     </div>
@@ -115,7 +115,7 @@ const ManagementClosingSection: React.FC = () => {
                                         </div>
 
                                         <div className="px-6 pb-6 lg:pl-[88px]">
-                                            <p className="text-gray-600 dark:text-gray-300 text-sm font-medium leading-relaxed">
+                                            <p className="text-gray-600 dark:text-gray-600 text-sm font-medium leading-relaxed">
                                                 {t(`${step.key}.desc`)}
                                             </p>
                                         </div>

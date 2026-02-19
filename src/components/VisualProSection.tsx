@@ -227,20 +227,19 @@ const BeforeAfterSlider = () => {
     }
 
     return (
-        <section className="py-24 bg-editorial-dark text-white overflow-hidden relative">
+        <section className="py-24 bg-editorial-dark text-editorial-black overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
                     <div
                         ref={containerRef}
-                        className="relative w-full aspect-[4/3] rounded-sm overflow-hidden cursor-ew-resize select-none"
-                        </div>
-                <div>
-                    <span className="text-3xl font-black text-white block mb-2">x3</span>
-                    <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">Más Interés</span>
+                        className="relative w-full aspect-[4/3] rounded-sm overflow-hidden cursor-ew-resize select-none">
+                    </div>
+                    <div>
+                        <span className="text-3xl font-black text-editorial-black block mb-2">x3</span>
+                        <span className="text-xs uppercase tracking-widest text-gray-600 font-bold">Más Interés</span>
+                    </div>
                 </div>
             </div>
-        </div>
-            </div >
         </section >
     )
 }
