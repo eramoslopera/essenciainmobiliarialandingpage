@@ -76,7 +76,7 @@ const StatsSection: React.FC = () => {
                     </motion.div>
 
                     {/* Secondary Stats Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 w-full max-w-6xl mx-auto border-t border-gray-300 pt-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 w-full max-w-6xl mx-auto border-t border-gray-700 pt-8">
                         {/* Stat 1: Props Sold/Month */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ const StatsSection: React.FC = () => {
                             <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={10} duration={2} />
                             </span>
-                            <span className="text-base md:text-lg text-gray-600 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.sold_per_month.label')}
                             </span>
                         </motion.div>
@@ -104,7 +104,7 @@ const StatsSection: React.FC = () => {
                             <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={30} duration={2} />
                             </span>
-                            <span className="text-base md:text-lg text-gray-600 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.days.label')}
                             </span>
                         </motion.div>
@@ -120,7 +120,7 @@ const StatsSection: React.FC = () => {
                             <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={150} prefix="+" duration={2} />
                             </span>
-                            <span className="text-base md:text-lg text-gray-600 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.active_listings.label')}
                             </span>
                         </motion.div>
@@ -136,7 +136,7 @@ const StatsSection: React.FC = () => {
                             <span className="text-5xl md:text-6xl font-bold mb-2">
                                 <AnimatedCounter value={95} suffix="%" duration={2} />
                             </span>
-                            <span className="text-base md:text-lg text-gray-600 font-light">
+                            <span className="text-base md:text-lg text-gray-400 font-light">
                                 {t('stats.success.label')}
                             </span>
                         </motion.div>
