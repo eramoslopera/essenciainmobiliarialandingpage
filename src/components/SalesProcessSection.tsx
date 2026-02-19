@@ -85,7 +85,7 @@ const SalesProcessSection: React.FC = () => {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-editorial-black"
+                        className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-white"
                     >
                         {t('sales.title')}
                     </motion.h2>
@@ -93,7 +93,7 @@ const SalesProcessSection: React.FC = () => {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-600 max-w-2xl mx-auto font-light"
+                        className="text-xl text-gray-400 max-w-2xl mx-auto font-light"
                     >
                         {t('sales.desc')}
                     </motion.p>
@@ -102,7 +102,7 @@ const SalesProcessSection: React.FC = () => {
                 {/* Timeline */}
                 <div className="relative max-w-5xl mx-auto">
                     {/* Central Line */}
-                    <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-gray-300 md:-translate-x-1/2" />
+                    <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-gray-800 md:-translate-x-1/2" />
 
                     <div className="space-y-16 md:space-y-24">
                         {steps.map((step, index) => (
@@ -116,21 +116,21 @@ const SalesProcessSection: React.FC = () => {
                             >
                                 {/* Timeline Dot */}
                                 <div className="absolute left-0 md:left-1/2 top-0 w-12 h-12 -translate-x-0 md:-translate-x-1/2 flex items-center justify-center z-10">
-                                    <div className={`w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center bg-white transition-all duration-300 ${currentStep === index ? 'border-brand-blue-500 scale-110 shadow-lg' : ''}`}>
-                                        <div className={`w-3 h-3 rounded-full ${currentStep >= index ? 'bg-brand-blue-500' : 'bg-gray-300'}`} />
+                                    <div className={`w-12 h-12 rounded-full border border-gray-800 flex items-center justify-center bg-[#222222] transition-all duration-300 ${currentStep === index ? 'border-brand-blue-500 scale-110 shadow-lg' : ''}`}>
+                                        <div className={`w-3 h-3 rounded-full ${currentStep >= index ? 'bg-brand-blue-500' : 'bg-gray-700'}`} />
                                     </div>
                                 </div>
 
                                 {/* Content */}
                                 <div className="pl-16 md:pl-0 w-full md:w-1/2 md:px-12 pt-2">
                                     <div
-                                        className={`group cursor-pointer p-6 rounded-2xl border transition-all duration-300 ${currentStep === index ? 'bg-white border-brand-blue-200 shadow-lg' : 'bg-white/50 border-transparent hover:bg-white hover:border-gray-200'}`}
+                                        className={`group cursor-pointer p-6 rounded-2xl border transition-all duration-300 ${currentStep === index ? 'bg-white/5 border-brand-blue-500/30 shadow-lg' : 'bg-white/5 border-transparent hover:bg-white/10 hover:border-gray-700'}`}
                                         onMouseEnter={() => setCurrentStep(index)}
                                     >
-                                        <span className="text-6xl font-black text-gray-200 absolute -top-8 opacity-20 select-none">
+                                        <span className="text-6xl font-black text-gray-800 absolute -top-8 opacity-20 select-none">
                                             0{index + 1}
                                         </span>
-                                        <h3 className={`text-2xl font-bold mb-3 transition-colors ${currentStep === index ? 'text-brand-blue-600' : 'text-editorial-black'}`}>
+                                        <h3 className={`text-2xl font-bold mb-3 transition-colors ${currentStep === index ? 'text-brand-blue-500' : 'text-white'}`}>
                                             {t(`sell.${step.id}.title`)}
                                         </h3>
                                         <p className="text-gray-600 leading-relaxed">
