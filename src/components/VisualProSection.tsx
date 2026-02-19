@@ -232,7 +232,33 @@ const BeforeAfterSlider = () => {
     return (
         <section className="py-24 bg-white dark:bg-editorial-black text-editorial-black dark:text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                {/* Text Content - Order 1 on Desktop */}
                 <div className="order-2 lg:order-1">
+                    <span className="text-brand-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">
+                        Render con IA
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
+                        Potencial <br />
+                        <span className="text-gray-400">Ilimitado</span>.
+                    </h2>
+                    <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8">
+                        No dejes que una habitación vacía o anticuada frene la venta. Con nuestros renders fotorrealistas, mostramos todo el potencial de tu vivienda antes de que el comprador ponga un pie en ella.
+                    </p>
+
+                    <div className="flex items-center gap-12 border-t border-gray-100 dark:border-white/10 pt-8">
+                        <div>
+                            <span className="text-4xl font-black block mb-1">100%</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Visualización</span>
+                        </div>
+                        <div>
+                            <span className="text-4xl font-black block mb-1">x3</span>
+                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Interés</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Slider - Order 2 on Desktop */}
+                <div className="order-1 lg:order-2">
                     <div
                         ref={containerRef}
                         className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-2xl"
@@ -272,30 +298,6 @@ const BeforeAfterSlider = () => {
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                                 <span className="material-symbols-outlined text-black text-lg">code</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="order-1 lg:order-2">
-                    <span className="text-brand-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">
-                        Virtual Staging
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
-                        El poder del <br />
-                        <span className="text-gray-400">staging virtual</span>.
-                    </h2>
-                    <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8">
-                        Transformamos espacios vacíos en hogares llenos de vida. Ayudamos a los compradores a visualizar el potencial real de cada vivienda sin necesidad de reformas reales.
-                    </p>
-
-                    <div className="flex items-center gap-12 border-t border-gray-100 dark:border-white/10 pt-8">
-                        <div>
-                            <span className="text-4xl font-black block mb-1">x3</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Más Visitas</span>
-                        </div>
-                        <div>
-                            <span className="text-4xl font-black block mb-1">-40%</span>
-                            <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">Tiempo Venta</span>
                         </div>
                     </div>
                 </div>
