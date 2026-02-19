@@ -70,7 +70,7 @@ const StatsSection: React.FC = () => {
                             <AnimatedCounter value={13000000} suffix="€" duration={2.5} />
                         </div>
 
-                        <p className="text-lg md:text-xl text-gray-600 font-light max-w-lg mx-auto">
+                        <p className="text-lg md:text-xl text-gray-400 font-light max-w-lg mx-auto">
                             {t('stats.vol.label')}
                         </p>
                     </motion.div>
