@@ -245,6 +245,10 @@ const BeforeAfterSlider = () => {
                             alt="Propiedad Renderizada con IA"
                         />
 
+                        <div className="absolute top-4 right-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black shadow-lg">
+                            {t('common.after')}
+                        </div>
+
                         {/* Before Image (Construction/Empty) */}
                         <div
                             className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
@@ -258,10 +262,6 @@ const BeforeAfterSlider = () => {
                             <div className="absolute top-4 left-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black">
                                 {t('common.before')}
                             </div>
-                        </div>
-
-                        <div className="absolute top-4 right-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black shadow-lg">
-                            {t('common.after')}
                         </div>
 
                         {/* Slider Handle */}

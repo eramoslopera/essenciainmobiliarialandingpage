@@ -419,7 +419,7 @@ const Landing: React.FC = () => {
                                     radius={hoveredPropertyId === property.id ? 12 : 8}
                                     pathOptions={{
                                         color: '#000',
-                                        fillColor: hoveredPropertyId === property.id ? '#FFFFFF' : '#000',
+                                        fillColor: hoveredPropertyId === property.id ? '#22d3ee' : '#000',
                                         fillOpacity: 1,
                                         weight: hoveredPropertyId === property.id ? 4 : 2
                                     }}
