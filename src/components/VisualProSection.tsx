@@ -230,7 +230,6 @@ const BeforeAfterSlider = () => {
     const afterImage = "https://images.unsplash.com/photo-1513511935574-3c66fafa3e02?q=80&w=2000&auto=format&fit=crop"; // Furnished Room
 
     return (
-    return (
         <section className="py-24 bg-gray-100 dark:bg-editorial-black text-editorial-black dark:text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Text Content - Order 2 on Mobile, Order 2 on Desktop (Right) */}
