@@ -260,7 +260,7 @@ const Landing: React.FC = () => {
                             </button>
                             <button
                                 onClick={() => document.getElementById('recent-sales')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-editorial-black hover:bg-brand-blue-500 text-white hover:text-editorial-black border border-editorial-black hover:border-brand-blue-500 text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
+                                className="h-14 px-10 bg-brand-blue-500 hover:bg-editorial-black text-white hover:text-white border border-brand-blue-500 hover:border-editorial-black text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
                             >
                                 {t('landing.hero.sales')}
                             </button>
