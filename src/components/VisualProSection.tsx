@@ -69,7 +69,7 @@ const CineVideoSection = () => {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2 flex flex-col gap-6">
                     <motion.div style={{ opacity }} className="flex items-center gap-2">
-                        <span className="px-3 py-1 bg-brand-blue-500 text-editorial-black text-[10px] uppercase font-black tracking-widest rounded-full">New</span>
+                        <span className="px-3 py-1 bg-brand-blue-500 text-editorial-black text-[10px] uppercase font-black tracking-widest rounded-full">{t('common.new')}</span>
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Pack Visual Pro</span>
                     </motion.div>
 
@@ -208,6 +208,7 @@ const MasonryGallery = () => {
 };
 
 const BeforeAfterSlider = () => {
+    const { t } = useLanguage();
     const [sliderPosition, setSliderPosition] = useState(50);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -254,13 +255,13 @@ const BeforeAfterSlider = () => {
                                 className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
                                 alt="Estado Actual"
                             />
-                            <div className="absolute top-4 left-4 bg-black/50 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white">
-                                Antes
+                            <div className="absolute top-4 left-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black">
+                                {t('common.before')}
                             </div>
                         </div>
 
-                        <div className="absolute top-4 right-4 bg-white/20 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
-                            Después
+                        <div className="absolute top-4 right-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black shadow-lg">
+                            {t('common.after')}
                         </div>
 
                         {/* Slider Handle */}
