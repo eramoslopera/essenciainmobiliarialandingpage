@@ -227,7 +227,7 @@ const BeforeAfterSlider = () => {
     }
 
     return (
-        <section className="py-24 bg-[#f6f7f8] text-editorial-black overflow-hidden relative">
+        <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
                     <div
@@ -278,16 +278,16 @@ const BeforeAfterSlider = () => {
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
                         Render con IA
                     </h2>
-                    <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
                         Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
                     </p>
                     <div className="grid grid-cols-2 gap-8">
                         <div>
-                            <span className="text-3xl font-black text-editorial-black block mb-2">100%</span>
+                            <span className="text-3xl font-black text-white block mb-2">100%</span>
                             <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Visualización</span>
                         </div>
                         <div>
-                            <span className="text-3xl font-black text-editorial-black block mb-2">x3</span>
+                            <span className="text-3xl font-black text-white block mb-2">x3</span>
                             <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Más Interés</span>
                         </div>
                     </div>
