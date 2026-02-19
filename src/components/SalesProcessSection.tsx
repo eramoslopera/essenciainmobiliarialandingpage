@@ -71,7 +71,7 @@ const SalesProcessSection: React.FC = () => {
     }
 
     return (
-        <section className="bg-editorial-dark text-editorial-black py-24 relative overflow-hidden touch-pan-y">
+        <section className="bg-[#222222] text-white py-24 relative overflow-hidden touch-pan-y">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
                     <motion.span

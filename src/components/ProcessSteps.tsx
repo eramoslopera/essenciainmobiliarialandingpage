@@ -57,7 +57,7 @@ const ProcessSteps: React.FC = () => {
     };
 
     return (
-        <section id="process-start" className="bg-white dark:bg-editorial-dark text-editorial-black dark:text-editorial-black py-24 px-6 md:px-12 relative overflow-hidden">
+        <section id="process-start" className="bg-[#111] text-white py-24 px-6 md:px-12 relative overflow-hidden">
             {/* Decorative Background Element */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-300 to-transparent" />
 

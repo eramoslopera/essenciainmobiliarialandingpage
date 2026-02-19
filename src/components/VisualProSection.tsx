@@ -65,7 +65,7 @@ const CineVideoSection = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
     return (
-        <section ref={ref} className="py-24 px-6 md:px-12 bg-white dark:bg-background-dark overflow-hidden">
+        <section ref={ref} className="py-24 px-6 md:px-12 bg-[#222222] text-white overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2 flex flex-col gap-6">
                     <motion.div style={{ opacity }} className="flex items-center gap-2">
@@ -73,54 +73,53 @@ const CineVideoSection = () => {
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Pack Visual Pro</span>
                     </motion.div>
 
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-5xl md:text-7xl font-black text-editorial-black dark:text-white tracking-tighter leading-[0.9]"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]"
                     >
-                        Pack <br />
-                        <span className="text-brand-blue-500">Visual Pro</span>
-                    </motion.h2>
+                    Pack <br />
+                    <span className="text-brand-blue-500">Visual Pro</span>
+                </motion.h2>
 
-                    <p className="text-lg text-gray-500 font-medium max-w-md">
-                        No son solo fotos. Es una experiencia inmersiva. Creamos un "Portal" digital a tu vivienda con vídeos verticales estilo cine.
-                    </p>
+                <p className="text-lg text-gray-500 font-medium max-w-md">
+                    No son solo fotos. Es una experiencia inmersiva. Creamos un "Portal" digital a tu vivienda con vídeos verticales estilo cine.
+                </p>
 
-                    <ul className="space-y-4 mt-4">
-                        {['Fotos y videos con DRON', 'Render con IA', 'Fotografía editorial', 'Video profesional', 'Planos en 3D', 'Tour Virtual'].map((item, i) => (
-                            <li key={i} className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
-                                <span className="w-2 h-2 bg-editorial-black dark:bg-white rounded-full"></span>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="md:w-1/2 relative flex justify-center">
-                    <motion.div style={{ scale }} className="relative z-10">
-                        <PhoneMockup className="h-[650px] w-[320px] border-gray-900 shadow-2xl skew-y-0 rotate-0">
-                            <AutoPlayVideo
-                                src="/Packpro_Essencia.mp4"
-                                className="w-full h-full"
-                            />
-                        </PhoneMockup>
-                    </motion.div>
-
-                    {/* Abstract decorative elements */}
-                    <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-gray-100 rounded-full -z-10 opacity-50"
-                    ></motion.div>
-                    <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-dashed border-gray-200 rounded-full -z-10 opacity-30"
-                    ></motion.div>
-                </div>
+                <ul className="space-y-4 mt-4">
+                    {['Fotos y videos con DRON', 'Render con IA', 'Fotografía editorial', 'Video profesional', 'Planos en 3D', 'Tour Virtual'].map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
+                            <span className="w-2 h-2 bg-editorial-black dark:bg-white rounded-full"></span>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
             </div>
-        </section>
+
+            <div className="md:w-1/2 relative flex justify-center">
+                <motion.div style={{ scale }} className="relative z-10">
+                    <PhoneMockup className="h-[650px] w-[320px] border-gray-900 shadow-2xl skew-y-0 rotate-0">
+                        <AutoPlayVideo
+                            src="/Packpro_Essencia.mp4"
+                            className="w-full h-full"
+                        />
+                    </PhoneMockup>
+                </motion.div>
+
+                {/* Abstract decorative elements */}
+                <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-gray-100 rounded-full -z-10 opacity-50"
+                ></motion.div>
+                <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-dashed border-gray-200 rounded-full -z-10 opacity-30"
+                ></motion.div>
+            </div>
+        </div>
+        </section >
     );
 };
 
@@ -134,7 +133,7 @@ const MasonryGallery = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-white dark:bg-background-dark">
+        <section className="py-24 px-6 md:px-12 bg-[#222222] text-white">
             <div className="max-w-[1440px] mx-auto mb-16 flex flex-col md:flex-row justify-between items-end">
                 <div>
                     <h2 className="text-5xl font-black tracking-tighter mb-4">Fotografía <br /> Editorial</h2>
@@ -230,7 +229,7 @@ const BeforeAfterSlider = () => {
     const afterImage = "https://images.unsplash.com/photo-1513511935574-3c66fafa3e02?q=80&w=2000&auto=format&fit=crop"; // Furnished Room
 
     return (
-        <section className="py-24 bg-gray-100 dark:bg-editorial-black text-editorial-black dark:text-white overflow-hidden relative">
+        <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Text Content - Order 2 on Mobile, Order 2 on Desktop (Right) */}
                 <div className="order-2 lg:order-2">
@@ -349,10 +348,10 @@ const VideoGallery = () => {
     const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
 
     return (
-        <section ref={containerRef} className="py-24 bg-[#F6F7F8] dark:bg-white/5 overflow-hidden flex flex-col items-center">
+        <section ref={containerRef} className="py-24 bg-[#222222] text-white overflow-hidden flex flex-col items-center">
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full">
                 <div className="mb-16 text-center">
-                    <h2 className="text-4xl md:text-6xl font-black text-editorial-black dark:text-white tracking-tighter mb-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4">
                         Video <span className="text-brand-blue-500">Profesional</span>
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-lg">
