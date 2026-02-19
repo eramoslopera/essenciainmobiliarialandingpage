@@ -128,13 +128,13 @@ const SalesProcessSection: React.FC = () => {
                                         onMouseEnter={() => setCurrentStep(index)}
                                     >
                                         <span className="text-6xl font-black text-gray-200 absolute -top-8 opacity-20 select-none">
-                                            {step.number}
+                                            0{index + 1}
                                         </span>
                                         <h3 className={`text-2xl font-bold mb-3 transition-colors ${currentStep === index ? 'text-brand-blue-600' : 'text-editorial-black'}`}>
-                                            {t(step.titleKey)}
+                                            {t(`sell.${step.id}.title`)}
                                         </h3>
                                         <p className="text-gray-600 leading-relaxed">
-                                            {t(step.descKey)}
+                                            {t(`sell.${step.id}.desc`)}
                                         </p>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@ const SalesProcessSection: React.FC = () => {
                     >
                         <img
                             src={steps[currentStep].image}
-                            alt={t(steps[currentStep].titleKey)}
+                            alt={t(`sell.${steps[currentStep].id}.title`)}
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-editorial-dark/90" />
@@ -193,7 +193,7 @@ const SalesProcessSection: React.FC = () => {
                             className="text-lg md:text-xl text-gray-600 leading-relaxed"
                         >
                             {/* {t(`sell.${steps[currentStep].id}.long`)} */}
-                            {t(steps[currentStep].descKey)}
+                            {t(`sell.${steps[currentStep].id}.long`)}
                         </motion.p>
                     </div>
                 </motion.div>
