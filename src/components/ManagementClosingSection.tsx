@@ -62,7 +62,7 @@ const ManagementClosingSection: React.FC = () => {
         <div className="flex flex-col">
 
             {/* SECTION 1: MANAGEMENT (Clean Style) */}
-            <section className="bg-[#222222] text-white py-24 px-6 md:px-12">
+            <section className="bg-white text-editorial-black py-24 px-6 md:px-12">
                 <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     {/* Content */}
@@ -83,18 +83,18 @@ const ManagementClosingSection: React.FC = () => {
                                 <div
                                     key={step.key}
                                     onClick={() => setActiveManagementStep(index)}
-                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeManagementStep === index ? 'border-white/20 bg-white/5 shadow-lg' : 'border-transparent hover:bg-white/5'}`}
+                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeManagementStep === index ? 'border-editorial-black/20 bg-gray-50 shadow-lg' : 'border-transparent hover:bg-gray-50'}`}
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-brand-blue-500 text-white' : 'bg-white/10 text-gray-400'}`}>
+                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm shrink-0 transition-colors ${activeManagementStep === index ? 'bg-brand-blue-500 text-white' : 'bg-gray-100 text-gray-400'}`}>
                                                 <span className="material-symbols-outlined">{step.icon}</span>
                                             </div>
-                                            <h3 className={`text-xl font-bold transition-colors ${activeManagementStep === index ? 'text-white' : 'text-gray-400'}`}>
+                                            <h3 className={`text-xl font-bold transition-colors ${activeManagementStep === index ? 'text-editorial-black' : 'text-gray-400'}`}>
                                                 {t(step.key)}
                                             </h3>
                                         </div>
-                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeManagementStep === index ? 'rotate-180 text-white' : 'text-gray-400'}`}>
+                                        <span className={`material-symbols-outlined transition-transform duration-300 ${activeManagementStep === index ? 'rotate-180 text-editorial-black' : 'text-gray-400'}`}>
                                             expand_more
                                         </span>
                                     </div>
@@ -148,10 +148,10 @@ const ManagementClosingSection: React.FC = () => {
                 </div>
             </section>
 
-            {/* SECTION 2: CLOSING (Premium / AI Render Style) */}
-            <section className="bg-[#111] text-white py-24 px-6 md:px-12 relative overflow-hidden">
+            {/* SECTION 2: CLOSING (Original Gray) */}
+            <section className="bg-[#f6f7f8] text-editorial-black py-24 px-6 md:px-12 relative overflow-hidden">
                 {/* Background Texture/Gradient */}
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay" />
 
                 <div className="max-w-[1440px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
@@ -169,14 +169,14 @@ const ManagementClosingSection: React.FC = () => {
                                 <div
                                     key={step.key}
                                     onClick={() => setActiveClosingStep(index)}
-                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeClosingStep === index ? 'bg-white/50 border-gray-300 shadow-sm' : 'bg-transparent border-gray-200 hover:border-gray-300'}`}
+                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeClosingStep === index ? 'bg-white border-gray-200 shadow-md' : 'bg-transparent border-gray-200 hover:border-gray-300 hover:bg-white/50'}`}
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-brand-blue-500 text-white' : 'bg-white text-gray-400'}`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeClosingStep === index ? 'bg-brand-blue-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
                                                 <span className="material-symbols-outlined text-sm">{step.icon}</span>
                                             </div>
-                                            <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-editorial-black' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                                            <h3 className={`text-xl font-bold transition-colors ${activeClosingStep === index ? 'text-editorial-black' : 'text-gray-500 group-hover:text-gray-700'}`}>
                                                 {t(step.key)}
                                             </h3>
                                         </div>
