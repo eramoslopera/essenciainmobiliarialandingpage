@@ -186,6 +186,7 @@ const MasonryGallery = () => {
                     <motion.div
                         key={i}
                         className={`relative group overflow-hidden cursor-pointer w-auto h-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''} ${i === 3 ? 'md:col-span-2' : ''}`}
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
