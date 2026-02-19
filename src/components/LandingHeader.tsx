@@ -21,7 +21,7 @@ const LandingHeader: React.FC = () => {
     ];
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-[#101922]/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+        <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-editorial-dark/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
 
                 {/* Logo - Rigid Left */}

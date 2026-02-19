@@ -149,7 +149,7 @@ const ManagementClosingSection: React.FC = () => {
             </section>
 
             {/* SECTION 2: CLOSING (Premium / AI Render Style) */}
-            <section className="bg-[#222222] text-white py-24 px-6 md:px-12 relative overflow-hidden">
+            <section className="bg-editorial-dark text-white py-24 px-6 md:px-12 relative overflow-hidden">
                 {/* Background Texture/Gradient */}
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 

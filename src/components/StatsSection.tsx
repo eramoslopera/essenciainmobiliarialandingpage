@@ -44,7 +44,7 @@ const StatsSection: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <section className="bg-black text-white py-12 md:py-20 relative overflow-hidden">
+        <section className="bg-editorial-dark text-white py-12 md:py-20 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center text-center space-y-8 md:space-y-12">
 

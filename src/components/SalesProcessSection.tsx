@@ -72,7 +72,7 @@ const SalesProcessSection: React.FC = () => {
 
     return (
         <section
-            className="bg-[#222222] text-white py-24 relative overflow-hidden touch-pan-y"
+            className="bg-editorial-dark text-white py-24 relative overflow-hidden touch-pan-y"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -101,7 +101,7 @@ const SalesProcessSection: React.FC = () => {
                                 onClick={() => setCurrentStep(index)}
                                 className={`group flex flex-col items-center gap-4 transition-all duration-300 w-48 ${currentStep === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
                             >
-                                <div className={`w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-[#222222] transition-all duration-300 ${currentStep === index ? 'border-white scale-110 shadow-[0_0_20px_rgba(255,255,255,0.2)]' : ''}`}>
+                                <div className={`w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-editorial-dark transition-all duration-300 ${currentStep === index ? 'border-white scale-110 shadow-[0_0_20px_rgba(255,255,255,0.2)]' : ''}`}>
                                     <span className="font-mono text-sm font-bold">0{index + 1}</span>
                                 </div>
                                 <span className="text-[10px] font-black tracking-[0.2em] uppercase text-center max-w-[150px] leading-relaxed">

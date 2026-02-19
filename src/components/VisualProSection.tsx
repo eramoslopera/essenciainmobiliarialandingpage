@@ -227,7 +227,7 @@ const BeforeAfterSlider = () => {
     }
 
     return (
-        <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
+        <section className="py-24 bg-editorial-dark text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
                     <div
