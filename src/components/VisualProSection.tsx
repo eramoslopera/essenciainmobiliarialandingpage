@@ -65,7 +65,8 @@ const CineVideoSection = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
     return (
-        <section ref={ref} className="py-24 px-6 md:px-12 bg-[#222222] text-white overflow-hidden">
+    return (
+        <section ref={ref} className="py-24 px-6 md:px-12 bg-gray-50 text-editorial-black overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2 flex flex-col gap-6">
                     <motion.div style={{ opacity }} className="flex items-center gap-2">
@@ -77,7 +78,7 @@ const CineVideoSection = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]"
+                        className="text-5xl md:text-7xl font-black text-editorial-black tracking-tighter leading-[0.9]"
                     >
                         Pack <br />
                         <span className="text-brand-blue-500">Visual Pro</span>
@@ -134,7 +135,7 @@ const MasonryGallery = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-[#222222] text-white">
+        <section className="py-24 px-6 md:px-12 bg-white text-editorial-black">
             <div className="max-w-[1440px] mx-auto mb-16 flex flex-col md:flex-row justify-between items-end">
                 <div>
                     <h2 className="text-5xl font-black tracking-tighter mb-4">Fotografía <br /> Editorial</h2>
@@ -230,7 +231,7 @@ const BeforeAfterSlider = () => {
     const afterImage = "https://images.unsplash.com/photo-1513511935574-3c66fafa3e02?q=80&w=2000&auto=format&fit=crop"; // Furnished Room
 
     return (
-        <section className="py-24 bg-[#222222] text-white overflow-hidden relative">
+        <section className="py-24 bg-gray-50 text-editorial-black overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Text Content - Order 2 on Mobile, Order 2 on Desktop (Right) */}
                 <div className="order-2 lg:order-2">
@@ -261,7 +262,7 @@ const BeforeAfterSlider = () => {
                 <div className="order-1 lg:order-1">
                     <div
                         ref={containerRef}
-                        className="relative w-full aspect-[4/3] min-h-[300px] md:min-h-[400px] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-2xl bg-gray-200"
+                        className="relative w-full aspect-[4/3] min-h-[300px] md:min-h-[400px] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-2xl bg-gray-200 border border-gray-200 dark:border-gray-800"
                         onMouseMove={handleMouseMove}
                         onTouchMove={handleTouchMove}
                     >
@@ -349,45 +350,46 @@ const VideoGallery = () => {
     const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
 
     return (
-        <section ref={containerRef} className="py-24 bg-[#222222] text-white overflow-hidden flex flex-col items-center">
+        <section ref={containerRef} className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full">
                 <div className="mb-16 text-center">
-                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4">
-                        Video <span className="text-brand-blue-500">Profesional</span>
-                    </h2>
-                    <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                        {t('landing.video.desc')}
-                    </p>
-                </div>
-            </div>
-
-            {/* Cinematic Video Container */}
-            <motion.div
-                style={{
-                    width: width,
-                    borderRadius: borderRadius
-                }}
-                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto"
-            >
-                <video
-                    ref={videoRef}
-                    src={mainVideoUrl}
-                    className="w-full h-full object-cover"
-                    muted
-                    loop
-                    playsInline
-                />
-
-                {/* Overlay Title */}
-                <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
-                    <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-sm inline-block mb-2">
-                        <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
+                    <div className="mb-16 text-center">
+                        <h2 className="text-4xl md:text-6xl font-black text-editorial-black tracking-tighter mb-4">
+                            Video <span className="text-brand-blue-500">Profesional</span>
+                        </h2>
+                        <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                            {t('landing.video.desc')}
+                        </p>
                     </div>
-                    <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
-                        Exhibición Inmobiliaria
-                    </h3>
                 </div>
-            </motion.div>
+
+                {/* Cinematic Video Container */}
+                <motion.div
+                    style={{
+                        width: width,
+                        borderRadius: borderRadius
+                    }}
+                    className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto"
+                >
+                    <video
+                        ref={videoRef}
+                        src={mainVideoUrl}
+                        className="w-full h-full object-cover"
+                        muted
+                        loop
+                        playsInline
+                    />
+
+                    {/* Overlay Title */}
+                    <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
+                        <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-sm inline-block mb-2">
+                            <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
+                        </div>
+                        <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
+                            Exhibición Inmobiliaria
+                        </h3>
+                    </div>
+                </motion.div>
         </section>
     );
 }

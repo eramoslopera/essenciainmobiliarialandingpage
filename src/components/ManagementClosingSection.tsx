@@ -62,7 +62,7 @@ const ManagementClosingSection: React.FC = () => {
         <div className="flex flex-col">
 
             {/* SECTION 1: MANAGEMENT (Clean Style) */}
-            <section className="bg-[#222222] text-white py-24 px-6 md:px-12">
+            <section className="bg-white text-editorial-black py-24 px-6 md:px-12">
                 <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     {/* Content */}
@@ -149,7 +149,7 @@ const ManagementClosingSection: React.FC = () => {
             </section>
 
             {/* SECTION 2: CLOSING (Premium / AI Render Style) */}
-            <section className="bg-[#222222] text-white py-24 px-6 md:px-12 relative overflow-hidden">
+            <section className="bg-[#111] text-white py-24 px-6 md:px-12 relative overflow-hidden">
                 {/* Background Texture/Gradient */}
                 <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
