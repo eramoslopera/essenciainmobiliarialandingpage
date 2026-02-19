@@ -65,7 +65,6 @@ const CineVideoSection = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
     return (
-    return (
         <section ref={ref} className="py-24 px-6 md:px-12 bg-gray-50 text-editorial-black overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2 flex flex-col gap-6">
@@ -353,43 +352,42 @@ const VideoGallery = () => {
         <section ref={containerRef} className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full">
                 <div className="mb-16 text-center">
-                    <div className="mb-16 text-center">
-                        <h2 className="text-4xl md:text-6xl font-black text-editorial-black tracking-tighter mb-4">
-                            Video <span className="text-brand-blue-500">Profesional</span>
-                        </h2>
-                        <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                            {t('landing.video.desc')}
-                        </p>
-                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black text-editorial-black tracking-tighter mb-4">
+                        Video <span className="text-brand-blue-500">Profesional</span>
+                    </h2>
+                    <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                        {t('landing.video.desc')}
+                    </p>
                 </div>
+            </div>
 
-                {/* Cinematic Video Container */}
-                <motion.div
-                    style={{
-                        width: width,
-                        borderRadius: borderRadius
-                    }}
-                    className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto"
-                >
-                    <video
-                        ref={videoRef}
-                        src={mainVideoUrl}
-                        className="w-full h-full object-cover"
-                        muted
-                        loop
-                        playsInline
-                    />
+            {/* Cinematic Video Container */}
+            <motion.div
+                style={{
+                    width: width,
+                    borderRadius: borderRadius
+                }}
+                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto"
+            >
+                <video
+                    ref={videoRef}
+                    src={mainVideoUrl}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                    playsInline
+                />
 
-                    {/* Overlay Title */}
-                    <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
-                        <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-sm inline-block mb-2">
-                            <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
-                        </div>
-                        <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
-                            Exhibición Inmobiliaria
-                        </h3>
+                {/* Overlay Title */}
+                <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
+                    <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-sm inline-block mb-2">
+                        <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
                     </div>
-                </motion.div>
+                    <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
+                        Exhibición Inmobiliaria
+                    </h3>
+                </div>
+            </motion.div>
         </section>
     );
 }
