@@ -316,8 +316,8 @@ const VideoGallery = () => {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     // Start playing when 30% of the video is visible
-                    videoRef.current?.play().catch(() => {
-                        console.warn("Autoplay with sound was blocked by the browser. User interaction required.");
+                    videoRef.current?.play().catch((e) => {
+                        console.warn("Autoplay was blocked:", e);
                     });
                 } else {
                     // Pause when scrolled out of view
@@ -363,8 +363,9 @@ const VideoGallery = () => {
                 <video
                     ref={videoRef}
                     src={mainVideoUrl}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                     controls
+                    muted
                     loop
                     playsInline
                 />
