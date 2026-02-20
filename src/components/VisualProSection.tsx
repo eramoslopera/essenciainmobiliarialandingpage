@@ -332,7 +332,7 @@ const VideoGallery = () => {
         return () => unsubscribe();
     }, [scrollYProgress]);
 
-    const mainVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-view-of-the-city-at-night-4243-large.mp4";
+    const mainVideoUrl = "/editorial/Video_Landing.mp4";
 
     return (
         <section ref={containerRef} className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
