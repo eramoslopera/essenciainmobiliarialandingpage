@@ -126,10 +126,10 @@ const CineVideoSection = () => {
 
 const MasonryGallery = () => {
     const images = [
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop", // Modern Kitchen
-        "https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800&auto=format&fit=crop", // Living Room
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop", // Bedroom
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop", // Exterior / Pool
+        "/editorial/IMG32.jpg", // Modern Kitchen
+        "/editorial/IMG_0626.jpg", // Living Room
+        "/editorial/IMG_0774-2.jpg", // Bedroom
+        "/editorial/dji_fly_20260123_131308_0349_1769181794892_photo.jpg", // Exterior / Pool
     ];
     const [currentSlide, setCurrentSlide] = useState(0);
 
