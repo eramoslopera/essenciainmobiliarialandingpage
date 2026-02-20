@@ -307,35 +307,39 @@ const VideoGallery = () => {
         offset: ["start end", "end start"]
     });
 
-    // Transform logic: 
-    // From 80% width (max-w-6xl) to 100% width
-    // We'll use a width percentage animation for smoother layout flow
     const width = useTransform(scrollYProgress, [0.1, 0.4], ["80%", "100%"]);
     const borderRadius = useTransform(scrollYProgress, [0.1, 0.4], [12, 0]);
 
-    // Playback control
+    // Playback control on scroll
     useEffect(() => {
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
-            if (videoRef.current) {
-                // Play when the section is significantly active/expanding
-                if (latest > 0.1 && latest < 0.9) {
-                    if (videoRef.current.paused) {
-                        videoRef.current.play().catch(() => { });
-                    }
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    // Start playing when 30% of the video is visible
+                    videoRef.current?.play().catch(() => {
+                        console.warn("Autoplay with sound was blocked by the browser. User interaction required.");
+                    });
                 } else {
-                    if (!videoRef.current.paused) {
-                        videoRef.current.pause();
-                    }
+                    // Pause when scrolled out of view
+                    videoRef.current?.pause();
                 }
-            }
-        });
-        return () => unsubscribe();
-    }, [scrollYProgress]);
+            },
+            { threshold: 0.3 }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if (containerRef.current) observer.unobserve(containerRef.current);
+        };
+    }, []);
 
     const mainVideoUrl = "/editorial/Video_Landing.mp4";
 
     return (
-        <section ref={containerRef} className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
+        <section className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 w-full">
                 <div className="mb-16 text-center">
                     <h2 className="text-4xl md:text-6xl font-black text-editorial-black tracking-tighter mb-4">
@@ -349,16 +353,17 @@ const VideoGallery = () => {
 
             {/* Cinematic Video Container */}
             <motion.div
+                ref={containerRef}
                 style={{
                     width: width,
                     borderRadius: borderRadius
                 }}
-                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto max-h-[80vh]"
+                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto max-w-[1920px]"
             >
                 <video
                     ref={videoRef}
                     src={mainVideoUrl}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     controls
                     loop
                     playsInline
