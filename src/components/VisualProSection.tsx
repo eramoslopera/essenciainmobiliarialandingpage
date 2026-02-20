@@ -353,13 +353,13 @@ const VideoGallery = () => {
                     width: width,
                     borderRadius: borderRadius
                 }}
-                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto"
+                className="aspect-video relative overflow-hidden shadow-2xl bg-black mx-auto max-h-[80vh]"
             >
                 <video
                     ref={videoRef}
                     src={mainVideoUrl}
                     className="w-full h-full object-cover"
-                    muted
+                    controls
                     loop
                     playsInline
                 />
@@ -369,7 +369,7 @@ const VideoGallery = () => {
                     <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-sm inline-block mb-2">
                         <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
                     </div>
-                    <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight">
+                    <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight drop-shadow-lg">
                         Exhibición Inmobiliaria
                     </h3>
                 </div>
