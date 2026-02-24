@@ -32,13 +32,13 @@ const LandingHeader: React.FC = () => {
     ];
 
     return (
-        <header className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 text-editorial-black' : 'bg-transparent text-white md:text-editorial-black'} `}>
+        <header className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 text-editorial-black' : 'bg-transparent text-editorial-black'} `}>
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
 
                 {/* Logo - Rigid Left */}
                 <div className="flex-1 flex justify-start">
                     <a href="/" className="flex items-center gap-3">
-                        <Logo className={`h-10 md:h-12 w-auto object-contain ${isScrolled ? 'text-editorial-black' : 'text-white md:text-editorial-black'}`} />
+                        <Logo className={`h-10 md:h-12 w-auto object-contain ${isScrolled ? 'text-editorial-black' : 'text-editorial-black md:text-editorial-black'}`} />
                     </a>
                 </div>
 
@@ -60,16 +60,16 @@ const LandingHeader: React.FC = () => {
 
                     {/* Language Switcher Dropdown */}
                     <div className="hidden lg:block relative group">
-                        <button className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-gray-400 hover:text-editorial-black dark:hover:text-white transition-colors py-2 uppercase">
+                        <button className="flex items-center gap-1 text-[10px] font-bold tracking-widest text-gray-400 hover:text-editorial-black transition-colors py-2 uppercase">
                             {language}
                             <span className="material-symbols-outlined text-[14px]">expand_more</span>
                         </button>
-                        <div className="absolute top-full right-0 w-24 bg-white dark:bg-background-dark shadow-xl border border-gray-100 dark:border-gray-800 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                            <button onClick={() => setLanguage('en')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'en' ? 'text-brand-blue-500' : 'text-gray-400'}`}>EN</button>
-                            <button onClick={() => setLanguage('es')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'es' ? 'text-brand-blue-500' : 'text-gray-400'}`}>ES</button>
-                            <button onClick={() => setLanguage('fr')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'fr' ? 'text-brand-blue-500' : 'text-gray-400'}`}>FR</button>
-                            <button onClick={() => setLanguage('de')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'de' ? 'text-brand-blue-500' : 'text-gray-400'}`}>DE</button>
-                            <button onClick={() => setLanguage('va')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 dark:hover:bg-white/5 uppercase tracking-widest ${language === 'va' ? 'text-brand-blue-500' : 'text-gray-400'}`}>VA</button>
+                        <div className="absolute top-full right-0 w-24 bg-white shadow-xl border border-gray-100 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                            <button onClick={() => setLanguage('en')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 uppercase tracking-widest ${language === 'en' ? 'text-brand-blue-500' : 'text-gray-400'}`}>EN</button>
+                            <button onClick={() => setLanguage('es')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 uppercase tracking-widest ${language === 'es' ? 'text-brand-blue-500' : 'text-gray-400'}`}>ES</button>
+                            <button onClick={() => setLanguage('fr')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 uppercase tracking-widest ${language === 'fr' ? 'text-brand-blue-500' : 'text-gray-400'}`}>FR</button>
+                            <button onClick={() => setLanguage('de')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 uppercase tracking-widest ${language === 'de' ? 'text-brand-blue-500' : 'text-gray-400'}`}>DE</button>
+                            <button onClick={() => setLanguage('va')} className={`block w-full text-left px-4 py-2 text-[10px] font-bold hover:bg-gray-50 uppercase tracking-widest ${language === 'va' ? 'text-brand-blue-500' : 'text-gray-400'}`}>VA</button>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@ const LandingHeader: React.FC = () => {
                         {t('nav.contact')}
                     </a>
 
-                    <button className={`lg:hidden p-2 ${isScrolled ? 'text-editorial-black' : 'text-white'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className={`lg:hidden p-2 ${isScrolled ? 'text-editorial-black' : 'text-editorial-black'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         <span className="material-symbols-outlined">menu</span>
                     </button>
                 </div>
@@ -85,13 +85,13 @@ const LandingHeader: React.FC = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="lg:hidden absolute top-20 left-0 w-full bg-white dark:bg-background-dark border-b border-gray-100 dark:border-gray-800 p-6 shadow-xl flex flex-col gap-6 animate-in slide-in-from-top-2">
+                <div className="lg:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 p-6 shadow-xl flex flex-col gap-6 animate-in slide-in-from-top-2">
                     <nav className="flex flex-col gap-4 text-center">
                         {navLinks.map((link) => (
                             <button
                                 key={link.id}
                                 onClick={() => scrollToSection(link.id)}
-                                className="text-xs font-black uppercase tracking-[0.2em] py-2 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+                                className="text-xs font-black uppercase tracking-[0.2em] py-2 hover:bg-gray-50 transition-colors"
                             >
                                 {link.label}
                             </button>

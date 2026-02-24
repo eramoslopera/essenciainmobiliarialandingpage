@@ -151,6 +151,7 @@ const Landing: React.FC = () => {
         email: '',
         address: ''
     });
+    const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -158,6 +159,14 @@ const Landing: React.FC = () => {
             ...formState,
             [e.target.name]: e.target.value
         });
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            setSelectedFiles(e.target.files);
+        } else {
+            setSelectedFiles(null);
+        }
     };
 
     const [showBackToTop, setShowBackToTop] = useState(false);
@@ -182,10 +191,21 @@ const Landing: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setFormStatus('submitting');
+
+        // Simulating processing the files and form
+        console.log('Form Data:', formState);
+        if (selectedFiles) {
+            console.log(`Submitting ${selectedFiles.length} files`);
+            // Here you would typically use FormData:
+            // const formData = new FormData();
+            // Array.from(selectedFiles).forEach(file => formData.append('files', file));
+        }
+
         // Simulate API call
         setTimeout(() => {
             setFormStatus('success');
             setFormState({ name: '', phone: '', email: '', address: '' });
+            setSelectedFiles(null);
         }, 1500);
     };
 
@@ -277,10 +297,10 @@ const Landing: React.FC = () => {
                             whileHover={{ y: -5 }}
                             transition={{ type: "spring", stiffness: 300 }}
                             onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="bg-[#f6f7f8] dark:bg-white/5 p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+                            className="bg-[#f6f7f8] p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 transition-colors"
                         >
-                            <span className="material-symbols-outlined text-4xl mb-6 text-editorial-black dark:text-white">laptop_mac</span>
-                            <h3 className="text-2xl font-black mb-2 text-editorial-black dark:text-white tracking-tight">{t('landing.service.online.title')}</h3>
+                            <span className="material-symbols-outlined text-4xl mb-6 text-editorial-black">laptop_mac</span>
+                            <h3 className="text-2xl font-black mb-2 text-editorial-black tracking-tight">{t('landing.service.online.title')}</h3>
                             <p className="text-gray-500 font-medium text-sm mb-8">{t('landing.service.online.desc')}</p>
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-300 pb-1 group-hover:border-black transition-colors">{t('landing.service.online.cta')}</span>
                         </motion.div>
@@ -288,10 +308,10 @@ const Landing: React.FC = () => {
                             whileHover={{ y: -5 }}
                             transition={{ type: "spring", stiffness: 300 }}
                             onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="bg-[#f6f7f8] dark:bg-white/5 p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+                            className="bg-[#f6f7f8] p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 transition-colors"
                         >
-                            <span className="material-symbols-outlined text-4xl mb-6 text-editorial-black dark:text-white">person</span>
-                            <h3 className="text-2xl font-black mb-2 text-editorial-black dark:text-white tracking-tight">{t('landing.service.person.title')}</h3>
+                            <span className="material-symbols-outlined text-4xl mb-6 text-editorial-black">person</span>
+                            <h3 className="text-2xl font-black mb-2 text-editorial-black tracking-tight">{t('landing.service.person.title')}</h3>
                             <p className="text-gray-500 font-medium text-sm mb-8">{t('landing.service.person.desc')}</p>
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-300 pb-1 group-hover:border-black transition-colors">{t('landing.service.person.cta')}</span>
                         </motion.div>
@@ -318,13 +338,13 @@ const Landing: React.FC = () => {
                             <div className="flex gap-4">
                                 <button
                                     onClick={() => scroll('left')}
-                                    className="w-12 h-12 border border-editorial-black dark:border-white/20 flex items-center justify-center hover:bg-editorial-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                                    className="w-12 h-12 border border-editorial-black flex items-center justify-center hover:bg-editorial-black hover:text-white transition-all"
                                 >
                                     <span className="material-symbols-outlined">arrow_back</span>
                                 </button>
                                 <button
                                     onClick={() => scroll('right')}
-                                    className="w-12 h-12 bg-editorial-black dark:bg-white dark:text-black text-white flex items-center justify-center hover:bg-gray-800 transition-all"
+                                    className="w-12 h-12 bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-all"
                                 >
                                     <span className="material-symbols-outlined">arrow_forward</span>
                                 </button>
@@ -344,7 +364,7 @@ const Landing: React.FC = () => {
                             {salesProperties.length > 0 ? salesProperties.map((property) => (
                                 <div
                                     key={property.id}
-                                    className="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white dark:bg-background-dark shadow-sm flex flex-col md:flex-row h-auto md:h-[280px] cursor-pointer"
+                                    className="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white shadow-sm flex flex-col md:flex-row h-auto md:h-[280px] cursor-pointer"
                                     onMouseEnter={() => setHoveredPropertyId(property.id)}
                                     onMouseLeave={() => setHoveredPropertyId(null)}
                                 >
@@ -356,7 +376,7 @@ const Landing: React.FC = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="w-full md:w-7/12 p-8 flex flex-col justify-center border border-gray-100 dark:border-gray-800 md:border-l-0">
+                                    <div className="w-full md:w-7/12 p-8 flex flex-col justify-center border border-gray-100 md:border-l-0">
                                         <div className="mb-6">
                                             <span className={`text-[10px] font-black px-2 py-1 uppercase tracking-[0.2em] mb-3 inline-block ${property.status === 'sold' ? 'bg-brand-blue-500 text-editorial-black' :
                                                 property.status === 'reserved' ? 'bg-gray-400 text-white' :
@@ -369,10 +389,10 @@ const Landing: React.FC = () => {
                                             <h3 className="text-xl font-black tracking-tight leading-none mb-1">{property.title}</h3>
                                             <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">{property.location}</p>
                                         </div>
-                                        <div className="space-y-3 border-t border-gray-100 dark:border-gray-800 pt-4">
+                                        <div className="space-y-3 border-t border-gray-100 pt-4">
                                             <div className="flex justify-between items-center">
                                                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('properties.filters.zone')}</span>
-                                                <span className="text-xs font-black text-editorial-black dark:text-white uppercase">{property.location.split(',')[0]}</span>
+                                                <span className="text-xs font-black text-editorial-black uppercase">{property.location.split(',')[0]}</span>
                                             </div>
                                             <div className="flex justify-between items-center">
                                                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('properties.filters.price')}</span>
@@ -435,10 +455,9 @@ const Landing: React.FC = () => {
                             ) : null
                         ))}
                     </MapContainer>
-                    <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white dark:from-[#151f2b] to-transparent z-[400] pointer-events-none"></div>
+                    <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-[400] pointer-events-none"></div>
                 </section>
 
-                {/* FAQ Accordion */}
                 {/* FAQ Accordion */}
                 <section id="faq" className="py-24 bg-white px-6">
                     <div className="max-w-5xl mx-auto">
@@ -454,7 +473,7 @@ const Landing: React.FC = () => {
                                 ].map((item, index) => {
                                     const realIndex = index; // 0 to 3
                                     return (
-                                        <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
+                                        <div key={realIndex} className="border-b border-gray-100">
                                             <button
                                                 className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
                                                 onClick={() => toggleFaq(realIndex)}
@@ -480,7 +499,7 @@ const Landing: React.FC = () => {
                                 ].map((item, index) => {
                                     const realIndex = index + 4; // 4 to 7
                                     return (
-                                        <div key={realIndex} className="border-b border-gray-100 dark:border-gray-800">
+                                        <div key={realIndex} className="border-b border-gray-100">
                                             <button
                                                 className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
                                                 onClick={() => toggleFaq(realIndex)}
@@ -514,7 +533,7 @@ const Landing: React.FC = () => {
                         <div className="max-w-2xl mx-auto">
                             {formStatus === 'success' ? (
                                 <div className="text-center py-12">
-                                    <span className="material-symbols-outlined text-6xl text-editorial-black dark:text-white mb-4">check_circle</span>
+                                    <span className="material-symbols-outlined text-6xl text-editorial-black mb-4">check_circle</span>
                                     <h3 className="text-2xl font-black mb-2">{t('landing.form.success')}</h3>
                                 </div>
                             ) : (
@@ -594,20 +613,41 @@ const Landing: React.FC = () => {
                                                 multiple
                                                 accept="image/*,video/*"
                                                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                                                onChange={(e) => {
-                                                    const files = e.target.files;
-                                                    if (files && files.length > 0) {
-                                                        // In a real app, handle file selection here
-                                                        console.log('Files selected:', files);
-                                                    }
-                                                }}
+                                                onChange={handleFileChange}
+                                                title=""
                                             />
-                                            <div className="w-full h-12 border-b border-gray-300 dark:border-gray-700 flex items-center justify-between text-gray-400 group-hover:text-editorial-black dark:group-hover:text-white transition-colors">
-                                                <span className="text-sm font-medium italic">
-                                                    {t('landing.form.files_placeholder')}
+                                            <div className={`w-full h-12 border-b flex items-center justify-between transition-colors ${selectedFiles && selectedFiles.length > 0
+                                                ? 'border-brand-blue-500 text-editorial-black'
+                                                : 'border-gray-300 text-gray-400 group-hover:text-editorial-black'
+                                                }`}>
+                                                <span className={`text-sm font-medium ${selectedFiles && selectedFiles.length > 0 ? 'not-italic' : 'italic'}`}>
+                                                    {selectedFiles && selectedFiles.length > 0
+                                                        ? `${selectedFiles.length} archivo(s) adjunto(s)`
+                                                        : t('landing.form.files_placeholder')}
                                                 </span>
-                                                <span className="material-symbols-outlined text-xl">attach_file</span>
+                                                {selectedFiles && selectedFiles.length > 0 ? (
+                                                    <span className="material-symbols-outlined text-xl text-brand-blue-500">check_circle</span>
+                                                ) : (
+                                                    <span className="material-symbols-outlined text-xl">attach_file</span>
+                                                )}
                                             </div>
+
+                                            {/* Preview of file names */}
+                                            {selectedFiles && selectedFiles.length > 0 && (
+                                                <div className="mt-2 flex flex-wrap gap-2">
+                                                    {(Array.from(selectedFiles) as File[]).slice(0, 3).map((file, idx) => (
+                                                        <div key={idx} className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-[10px] text-gray-600 mt-1">
+                                                            <span className="material-symbols-outlined text-[12px]">{file.type.startsWith('video/') ? 'movie' : 'image'}</span>
+                                                            <span className="truncate max-w-[100px]">{file.name}</span>
+                                                        </div>
+                                                    ))}
+                                                    {selectedFiles.length > 3 && (
+                                                        <div className="flex items-center bg-gray-100 px-2 py-1 rounded text-[10px] text-gray-600 mt-1">
+                                                            +{selectedFiles.length - 3} más
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 
@@ -632,7 +672,7 @@ const Landing: React.FC = () => {
             <FloatingWhatsApp />
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-24 right-6 z-40 w-12 h-12 bg-white dark:bg-background-dark text-editorial-black dark:text-white shadow-lg border border-gray-100 dark:border-gray-700 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+                className={`fixed bottom-24 right-6 z-40 w-12 h-12 bg-white text-editorial-black shadow-lg border border-gray-100 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
             >
                 <span className="material-symbols-outlined">arrow_upward</span>
             </button>
