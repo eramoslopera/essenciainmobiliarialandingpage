@@ -622,7 +622,7 @@ const Landing: React.FC = () => {
                                                 }`}>
                                                 <span className={`text-sm font-medium ${selectedFiles && selectedFiles.length > 0 ? 'not-italic' : 'italic'}`}>
                                                     {selectedFiles && selectedFiles.length > 0
-                                                        ? `${selectedFiles.length} archivo(s) adjunto(s)`
+                                                        ? `${selectedFiles.length} ${t('landing.form.files_attached')}`
                                                         : t('landing.form.files_placeholder')}
                                                 </span>
                                                 {selectedFiles && selectedFiles.length > 0 ? (
@@ -643,7 +643,7 @@ const Landing: React.FC = () => {
                                                     ))}
                                                     {selectedFiles.length > 3 && (
                                                         <div className="flex items-center bg-gray-100 px-2 py-1 rounded text-[10px] text-gray-600 mt-1">
-                                                            +{selectedFiles.length - 3} más
+                                                            +{selectedFiles.length - 3} {t('landing.form.files_more')}
                                                         </div>
                                                     )}
                                                 </div>

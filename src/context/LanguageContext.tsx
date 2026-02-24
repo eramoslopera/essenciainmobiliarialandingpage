@@ -396,6 +396,8 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'Request Valuation',
     'landing.form.success': 'Request received. We will contact you shortly.',
+    'landing.form.files_attached': 'attached file(s)',
+    'landing.form.files_more': 'more',
 
     // Landing Page
     'landing.hero.title': 'Local Expertise.',
@@ -902,8 +904,12 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.name': 'Nombre Completo',
     'landing.form.phone': 'Teléfono de Contacto',
     'landing.form.email': 'Correo Electrónico',
+    'landing.form.files': 'Añadir Fotos/Vídeos (Opcional)',
+    'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'OBTENER VALORACIÓN GRATUITA',
     'landing.form.success': 'Solicitud recibida. Te contactaremos en breve.',
+    'landing.form.files_attached': 'archivo(s) adjunto(s)',
+    'landing.form.files_more': 'más',
 
     // Landing Page
     'landing.hero.title': 'Experiencia local.',
@@ -1528,8 +1534,12 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.name': 'Nom Complet',
     'landing.form.phone': 'Téléphone de Contact',
     'landing.form.email': 'Adresse E-mail',
+    'landing.form.files': 'Ajouter Photos/Vidéos (Optionnel)',
+    'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'OBTENIR UNE ESTIMATION GRATUITE',
     'landing.form.success': 'Demande reçue. Nous vous contacterons sous peu.',
+    'landing.form.files_attached': 'fichier(s) joint(s)',
+    'landing.form.files_more': 'plus',
 
 
   },
@@ -1905,6 +1915,8 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'Bewertung Anfordern',
     'landing.form.success': 'Anfrage erhalten. Wir werden Sie in Kürze kontaktieren.',
+    'landing.form.files_attached': 'angehängte Datei(en)',
+    'landing.form.files_more': 'weitere',
 
     // Landing Page
     'landing.hero.title': 'Lokale Expertise.',
@@ -2334,6 +2346,8 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.form.files_placeholder': 'PDF, JPG, PNG, MP4...',
     'landing.form.submit': 'Sol·licitar Valoració',
     'landing.form.success': 'Sol·licitud rebuda. Et contactarem aviat.',
+    'landing.form.files_attached': 'arxiu(s) adjunt(s)',
+    'landing.form.files_more': 'més',
 
     // Landing Page
     'landing.hero.title': 'Experiència Local.',
