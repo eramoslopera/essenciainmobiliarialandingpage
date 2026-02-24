@@ -80,7 +80,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.value.button': 'Start Valuation',
 
     // Footer
-    'footer.desc': 'Redefining luxury real estate in Valencia. We provide an experience that is as exceptional as the properties we represent.',
+    'footer.desc': 'Redefining luxury real estate in Valencia.',
     'footer.discover': 'Discover',
     'footer.company': 'Essencia Inmobiliaria',
     'footer.contact': 'CONTACTO',
