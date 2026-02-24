@@ -59,10 +59,10 @@ const StatsSection: React.FC = () => {
                         {/* Title and Subtitle added as per request */}
                         <div className="mb-12">
                             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-brand-blue-500">
-                                ¿Por qué elegirnos?
+                                {t('stats.title')}
                             </h2>
                             <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
-                                Estos son los datos que muestran nuestro trabajo
+                                {t('stats.subtitle')}
                             </p>
                         </div>
 
