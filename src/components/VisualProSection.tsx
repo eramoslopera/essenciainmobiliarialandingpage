@@ -238,7 +238,7 @@ const BeforeAfterSlider = () => {
                     >
                         {/* After Image (Rendered) */}
                         <img
-                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
+                            src="/1.jpeg"
                             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                             alt="Propiedad Renderizada con IA"
                         />
@@ -253,7 +253,7 @@ const BeforeAfterSlider = () => {
                             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop"
+                                src="/2.jpeg"
                                 className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
                                 alt="Estado Actual"
                             />
