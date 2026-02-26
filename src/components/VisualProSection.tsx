@@ -254,7 +254,7 @@ const BeforeAfterSlider = () => {
                         >
                             <img
                                 src="/2.jpeg"
-                                className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-90"
+                                className="absolute inset-0 w-full h-full object-cover"
                                 alt="Estado Actual"
                             />
                             <div className="absolute top-4 left-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black z-30">
