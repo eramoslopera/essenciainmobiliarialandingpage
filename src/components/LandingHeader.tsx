@@ -37,13 +37,16 @@ const LandingHeader: React.FC = () => {
 
                 {/* Logo - Rigid Left */}
                 <div className="flex-1 flex justify-start">
-                    <a href="/" className="flex items-center gap-3">
+                    <a href="https://essenciainmobiliaria.com/" className="flex items-center gap-3" title="Volver a Essencia Inmobiliaria">
                         <Logo className={`h-10 md:h-12 w-auto object-contain ${isScrolled ? 'text-editorial-black' : 'text-editorial-black md:text-editorial-black'}`} />
                     </a>
                 </div>
 
                 {/* Desktop Navigation - Rigid Center */}
                 <nav className="hidden lg:flex flex-1 justify-center items-center gap-6">
+                    <a href="https://essenciainmobiliaria.com/" className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-brand-blue-500 transition-colors whitespace-nowrap">
+                        ← Web Principal
+                    </a>
                     {navLinks.map((link) => (
                         <button
                             key={link.id}
@@ -87,6 +90,9 @@ const LandingHeader: React.FC = () => {
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 p-6 shadow-xl flex flex-col gap-6 animate-in slide-in-from-top-2">
                     <nav className="flex flex-col gap-4 text-center">
+                        <a href="https://essenciainmobiliaria.com/" className="text-xs font-black text-gray-400 hover:text-brand-blue-500 uppercase tracking-[0.2em] py-2 hover:bg-gray-50 transition-colors">
+                            ← Web Principal
+                        </a>
                         {navLinks.map((link) => (
                             <button
                                 key={link.id}
