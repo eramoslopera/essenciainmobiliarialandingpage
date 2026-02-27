@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import { useLanguage } from '../context/LanguageContext';
 
+const BUY_URL = 'https://essenciainmobiliaria.com/buscadoressenciainmobiliaria/';
+
 const LandingHeader: React.FC = () => {
     const { t, language, setLanguage } = useLanguage();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,6 +78,9 @@ const LandingHeader: React.FC = () => {
                         </div>
                     </div>
 
+                    <a href={BUY_URL} target="_blank" rel="noopener noreferrer" className="hidden lg:flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-brand-blue-500 hover:bg-editorial-black border border-brand-blue-500 hover:border-editorial-black text-editorial-black hover:text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-lg hover:shadow-brand-blue-500/20">
+                        {t('cta.buy.button')}
+                    </a>
                     <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-editorial-black hover:bg-brand-blue-500 border border-editorial-black hover:border-brand-blue-500 hover:text-editorial-black text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-lg hover:shadow-brand-blue-500/20">
                         {t('nav.contact')}
                     </a>
@@ -110,6 +115,9 @@ const LandingHeader: React.FC = () => {
                         <button onClick={() => setLanguage('de')} className={`text-sm font-bold ${language === 'de' ? 'text-primary' : 'text-gray-400'}`}>DE</button>
                         <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
                     </div>
+                    <a href={BUY_URL} target="_blank" rel="noopener noreferrer" className="w-full h-12 flex items-center justify-center bg-brand-blue-500 text-editorial-black font-bold uppercase tracking-widest text-xs">
+                        {t('cta.buy.button')}
+                    </a>
                     <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
                         {t('nav.contact')}
                     </a>

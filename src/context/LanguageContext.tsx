@@ -541,6 +541,10 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.map.denia': 'Property in Denia',
     'landing.staging.title': 'Home staging',
     'landing.staging.subtitle': 'Staging setting.',
+
+    // Purchase CTA
+    'cta.buy.banner_text': 'Looking to buy? Explore our exclusive properties',
+    'cta.buy.button': 'View Properties',
   },
   es: {
     'nav.buy': 'Comprar',
@@ -1061,6 +1065,10 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.map.denia': 'Propiedad en Denia',
     'landing.staging.title': 'Home staging',
     'landing.staging.subtitle': 'Puesta en escena.',
+
+    // Purchase CTA
+    'cta.buy.banner_text': '¿Buscas comprar? Explora nuestras propiedades exclusivas',
+    'cta.buy.button': 'Ver Propiedades',
   },
   // Add simplified/placeholders for FR/DE to avoid excessive length, repeating EN structure
   fr: {
@@ -1405,6 +1413,10 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.map.denia': 'Propriété à Denia',
     'landing.staging.title': 'Home staging',
     'landing.staging.subtitle': 'Mise en scène.',
+
+    // Purchase CTA
+    'cta.buy.banner_text': 'Vous cherchez à acheter ? Découvrez nos propriétés exclusives',
+    'cta.buy.button': 'Voir les Propriétés',
 
     'contact.title': "Discutons.",
     'contact.subtitle': 'Pour acheter ou vendre, nous sommes prêts.',
@@ -1791,6 +1803,10 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.map.denia': 'Immobilie in Denia',
     'landing.staging.title': 'Home staging',
     'landing.staging.subtitle': 'Inszenierung.',
+
+    // Purchase CTA
+    'cta.buy.banner_text': 'Auf der Suche nach einer Immobilie? Entdecken Sie unser exklusives Angebot',
+    'cta.buy.button': 'Immobilien ansehen',
 
     'contact.title': "Lassen Sie uns sprechen.",
     'contact.subtitle': 'Ob Kauf oder Verkauf, wir sind bereit.',
@@ -2507,6 +2523,10 @@ const translations: Record<Language, Record<string, string>> = {
     'landing.map.denia': 'Propietat a Dénia',
     'landing.staging.title': 'Home staging',
     'landing.staging.subtitle': 'Posada en escena.',
+
+    // Purchase CTA
+    'cta.buy.banner_text': 'Busques comprar? Explora les nostres propietats exclusives',
+    'cta.buy.button': 'Veure Propietats',
   },
 };
 
