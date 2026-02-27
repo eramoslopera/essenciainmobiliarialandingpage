@@ -95,3 +95,14 @@ body.sticky-banner-active .floating-whatsapp {
 body.sticky-banner-active .back-to-top {
   bottom: 5.5rem !important;
 }
+
+/* Mobile: banner is taller (stacked layout ~100px) */
+@media (max-width: 767px) {
+  body.sticky-banner-active .floating-whatsapp {
+    bottom: 7.5rem !important;
+  }
+
+  body.sticky-banner-active .back-to-top {
+    bottom: 7.5rem !important;
+  }
+}
