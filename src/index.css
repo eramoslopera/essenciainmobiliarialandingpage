@@ -13,6 +13,7 @@ html {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -21,8 +22,7 @@ html {
 /* Map Pattern */
 .map-pattern {
   background-color: #f3f4f6;
-  background-image: linear-gradient(
-      0deg,
+  background-image: linear-gradient(0deg,
       transparent 24%,
       #e5e7eb 25%,
       #e5e7eb 26%,
@@ -31,10 +31,8 @@ html {
       #e5e7eb 75%,
       #e5e7eb 76%,
       transparent 77%,
-      transparent
-    ),
-    linear-gradient(
-      90deg,
+      transparent),
+    linear-gradient(90deg,
       transparent 24%,
       #e5e7eb 25%,
       #e5e7eb 26%,
@@ -43,8 +41,7 @@ html {
       #e5e7eb 75%,
       #e5e7eb 76%,
       transparent 77%,
-      transparent
-    );
+      transparent);
   background-size: 50px 50px;
 }
 
@@ -55,14 +52,29 @@ html {
 
 /* Animations with Reduced Motion Preference */
 @keyframes fadeInBadge {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse-shadow {
-  0% { filter: drop-shadow(0 0 0 rgba(19, 127, 236, 0)); }
-  50% { filter: drop-shadow(0 0 10px rgba(19, 127, 236, 0.8)); }
-  100% { filter: drop-shadow(0 0 0 rgba(19, 127, 236, 0)); }
+  0% {
+    filter: drop-shadow(0 0 0 rgba(19, 127, 236, 0));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 10px rgba(19, 127, 236, 0.8));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 0 rgba(19, 127, 236, 0));
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -73,4 +85,15 @@ html {
   .marker-pulse {
     animation: pulse-shadow 1.5s infinite ease-in-out;
   }
+}
+
+/* Shift floating elements up when sticky buy banner is active */
+body.sticky-banner-active .floating-whatsapp {
+  bottom: 5.5rem !important;
+  /* ~88px: clear the banner (64px) + gap */
+}
+
+body.sticky-banner-active .back-to-top {
+  bottom: 8rem !important;
+  /* ~128px: above WhatsApp + banner */
 }

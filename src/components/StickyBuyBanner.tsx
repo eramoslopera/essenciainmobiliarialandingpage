@@ -19,6 +19,15 @@ const StickyBuyBanner: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isDismissed]);
 
+    useEffect(() => {
+        if (isVisible) {
+            document.body.classList.add('sticky-banner-active');
+        } else {
+            document.body.classList.remove('sticky-banner-active');
+        }
+        return () => document.body.classList.remove('sticky-banner-active');
+    }, [isVisible]);
+
     const handleDismiss = () => {
         setIsDismissed(true);
         setIsVisible(false);

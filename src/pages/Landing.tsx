@@ -674,7 +674,7 @@ const Landing: React.FC = () => {
             <StickyBuyBanner />
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-24 right-6 z-40 w-12 h-12 bg-white text-editorial-black shadow-lg border border-gray-100 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+                className={`back-to-top fixed bottom-24 right-6 z-40 w-12 h-12 bg-white text-editorial-black shadow-lg border border-gray-100 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
             >
                 <span className="material-symbols-outlined">arrow_upward</span>
             </button>
