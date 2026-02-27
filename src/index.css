@@ -90,10 +90,8 @@ html {
 /* Shift floating elements up when sticky buy banner is active */
 body.sticky-banner-active .floating-whatsapp {
   bottom: 5.5rem !important;
-  /* ~88px: clear the banner (64px) + gap */
 }
 
 body.sticky-banner-active .back-to-top {
-  bottom: 8rem !important;
-  /* ~128px: above WhatsApp + banner */
+  bottom: 5.5rem !important;
 }
