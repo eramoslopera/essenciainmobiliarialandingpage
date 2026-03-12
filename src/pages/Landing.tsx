@@ -189,25 +189,46 @@ const Landing: React.FC = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setFormStatus('submitting');
 
-        // Simulating processing the files and form
-        console.log('Form Data:', formState);
+        const formData = new FormData();
+        formData.append('name', formState.name);
+        formData.append('phone', formState.phone);
+        formData.append('email', formState.email);
+        formData.append('address', formState.address);
+
         if (selectedFiles) {
-            console.log(`Submitting ${selectedFiles.length} files`);
-            // Here you would typically use FormData:
-            // const formData = new FormData();
-            // Array.from(selectedFiles).forEach(file => formData.append('files', file));
+            Array.from(selectedFiles).forEach(file => {
+                formData.append('files[]', file);
+            });
         }
 
-        // Simulate API call
-        setTimeout(() => {
-            setFormStatus('success');
-            setFormState({ name: '', phone: '', email: '', address: '' });
-            setSelectedFiles(null);
-        }, 1500);
+        try {
+            const response = await fetch('./enviar_correo.php', {
+                method: 'POST',
+                body: formData,
+            });
+
+            // Check if response is ok before trying to parse JSON
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const data = await response.json();
+
+            if (data.success) {
+                setFormStatus('success');
+                setFormState({ name: '', phone: '', email: '', address: '' });
+                setSelectedFiles(null);
+            } else {
+                alert(data.message || 'Hubo un error al enviar tu información. Por favor, intenta de nuevo.');
+                setFormStatus('idle'); // Rollback status on failure
+            }
+        } catch (error) {
+            console.error('Error enviando el formulario:', error);
+            alert('Error de conexión con el servidor. Por favor, intenta de nuevo más tarde.');
+            setFormStatus('idle');
+        }
     };
 
     const toggleFaq = (index: number) => {
@@ -365,14 +386,18 @@ const Landing: React.FC = () => {
                             {salesProperties.length > 0 ? salesProperties.map((property) => (
                                 <div
                                     key={property.id}
-                                    className="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white shadow-sm flex flex-col md:flex-row h-auto md:h-[280px] cursor-pointer"
+                                    className="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white shadow-sm flex flex-col md:flex-row h-auto md:h-[280px] cursor-pointer group"
                                     onMouseEnter={() => setHoveredPropertyId(property.id)}
                                     onMouseLeave={() => setHoveredPropertyId(null)}
                                 >
-                                    <div className="w-full md:w-5/12 bg-cover bg-center h-56 md:h-full grayscale hover:grayscale-0 transition-all duration-500 relative"
-                                        style={{ backgroundImage: `url("${property.image}")` }}>
+                                    <div className="w-full md:w-5/12 relative h-56 md:h-full grayscale group-hover:grayscale-0 transition-all duration-500 overflow-hidden">
+                                        <img
+                                            src={property.image}
+                                            alt={property.title}
+                                            className="absolute inset-0 w-full h-full object-cover object-center"
+                                        />
                                         {property.status === 'sold' && (
-                                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-10">
                                                 <span className="bg-brand-blue-500 text-editorial-black font-black uppercase tracking-[0.2em] px-4 py-2 rotate-[-12deg]">{t('landing.sales.sold')}</span>
                                             </div>
                                         )}

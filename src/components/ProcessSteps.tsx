@@ -97,9 +97,10 @@ const ProcessSteps: React.FC = () => {
                             className="group relative h-[400px] rounded-2xl overflow-hidden cursor-default"
                         >
                             {/* Background Image */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                style={{ backgroundImage: `url(${step.image})` }}
+                            <img
+                                src={step.image}
+                                alt={t(step.titleKey)}
+                                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                             />
 
                             {/* Overlay */}
@@ -144,9 +145,10 @@ const ProcessSteps: React.FC = () => {
                                 className="snap-center shrink-0 w-[85vw] h-[400px] rounded-2xl overflow-hidden relative ml-6 last:mr-6"
                             >
                                 {/* Background Image */}
-                                <div
-                                    className="absolute inset-0 bg-cover bg-center"
-                                    style={{ backgroundImage: `url(${step.image})` }}
+                                <img
+                                    src={step.image}
+                                    alt={t(step.titleKey)}
+                                    className="absolute inset-0 w-full h-full object-cover object-center"
                                 />
 
                                 {/* Overlay */}

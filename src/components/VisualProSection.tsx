@@ -101,7 +101,7 @@ const CineVideoSection = () => {
                     <motion.div style={{ scale }} className="relative z-10">
                         <PhoneMockup className="h-[650px] w-[320px] border-gray-900 shadow-2xl skew-y-0 rotate-0">
                             <AutoPlayVideo
-                                src="/Packpro_Essencia.mp4"
+                                src="./Packpro_Essencia.mp4"
                                 className="w-full h-full"
                             />
                         </PhoneMockup>
@@ -126,10 +126,10 @@ const CineVideoSection = () => {
 
 const MasonryGallery = () => {
     const images = [
-        "/editorial/IMG32.jpg", // Modern Kitchen
-        "/editorial/IMG_0626.jpg", // Living Room
-        "/editorial/IMG_0774-2.jpg", // Bedroom
-        "/editorial/dji_fly_20260123_131308_0349_1769181794892_photo.jpg", // Exterior / Pool
+        "./editorial/IMG32.jpg", // Modern Kitchen
+        "./editorial/IMG_0626.jpg", // Living Room
+        "./editorial/IMG_0774-2.jpg", // Bedroom
+        "./editorial/dji_fly_20260123_131308_0349_1769181794892_photo.jpg", // Exterior / Pool
     ];
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -238,7 +238,7 @@ const BeforeAfterSlider = () => {
                     >
                         {/* After Image (Rendered) */}
                         <img
-                            src="/1.jpeg"
+                            src="./1.jpeg"
                             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                             alt="Propiedad Renderizada con IA"
                         />
@@ -253,7 +253,7 @@ const BeforeAfterSlider = () => {
                             style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                         >
                             <img
-                                src="/2.jpeg"
+                                src="./2.jpeg"
                                 className="absolute inset-0 w-full h-full object-cover"
                                 alt="Estado Actual"
                             />
@@ -336,7 +336,7 @@ const VideoGallery = () => {
         };
     }, []);
 
-    const mainVideoUrl = "/editorial/Video_Landing.mp4";
+    const mainVideoUrl = "./editorial/Video_Landing.mp4";
 
     return (
         <section className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">

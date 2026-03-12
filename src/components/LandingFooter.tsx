@@ -11,7 +11,7 @@ const LandingFooter: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 border-b border-gray-800 pb-16">
                     <div className="col-span-1">
                         <div className="mb-8">
-                            <a href="https://essenciainmobiliaria.com/" title="Volver a Essencia Inmobiliaria">
+                            <a href="https://essenciainmobiliaria.com/?noredirect=1" title="Volver a Essencia Inmobiliaria">
                                 <Logo variant="white" className="h-10 w-auto" />
                             </a>
                         </div>
