@@ -80,10 +80,10 @@ const LandingHeader: React.FC = () => {
                         </div>
                     </div>
 
-                    <a href={BUY_URL} target="_blank" rel="noopener noreferrer" className="hidden lg:flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-brand-blue-500 hover:bg-editorial-black border border-brand-blue-500 hover:border-editorial-black text-editorial-black hover:text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-lg hover:shadow-brand-blue-500/20">
+                    <a href={BUY_URL} target="_blank" rel="noopener noreferrer" className="hidden lg:flex h-10 px-6 items-center justify-center bg-brand-blue-500 text-editorial-black hover:bg-brand-blue-600 hover:shadow-diffusion-hover text-xs font-black uppercase tracking-[0.15em] rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2">
                         {t('cta.buy.button')}
                     </a>
-                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-9 md:h-10 px-3 md:px-6 items-center justify-center bg-editorial-black hover:bg-brand-blue-500 border border-editorial-black hover:border-brand-blue-500 hover:text-editorial-black text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-lg hover:shadow-brand-blue-500/20">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex h-10 px-4 md:px-6 items-center justify-center bg-editorial-black text-white text-xs font-bold uppercase tracking-widest hover:bg-brand-blue-600 transition-all shadow-diffusion hover:shadow-diffusion-hover rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2">
                         {t('nav.contact')}
                     </a>
 
@@ -117,10 +117,10 @@ const LandingHeader: React.FC = () => {
                         <button onClick={() => setLanguage('de')} className={`text-sm font-bold ${language === 'de' ? 'text-primary' : 'text-gray-400'}`}>DE</button>
                         <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
                     </div>
-                    <a href={BUY_URL} target="_blank" rel="noopener noreferrer" className="w-full h-12 flex items-center justify-center bg-brand-blue-500 text-editorial-black font-bold uppercase tracking-widest text-xs">
+                    <a href={BUY_URL} target="_blank" rel="noopener noreferrer" className="w-full h-14 flex items-center justify-center bg-brand-blue-500 text-editorial-black font-black uppercase tracking-widest text-xs rounded-full shadow-diffusion hover:shadow-diffusion-hover hover:bg-brand-blue-600 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
                         {t('cta.buy.button')}
                     </a>
-                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
+                    <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="w-full h-14 flex items-center justify-center bg-brand-blue-700 text-white font-bold uppercase tracking-widest hover:bg-brand-blue-500 hover:shadow-diffusion-hover rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
                         {t('nav.contact')}
                     </a>
                 </div>

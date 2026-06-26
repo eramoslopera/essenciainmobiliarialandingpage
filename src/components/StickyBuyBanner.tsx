@@ -63,7 +63,7 @@ const StickyBuyBanner: React.FC = () => {
                                 href={BUY_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="h-10 px-8 bg-editorial-black hover:bg-white text-white hover:text-editorial-black text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+                                className="h-10 px-8 bg-editorial-black hover:bg-brand-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-diffusion-hover active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
                             >
                                 {t('cta.buy.button')}
                                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
@@ -88,7 +88,7 @@ const StickyBuyBanner: React.FC = () => {
                             href={BUY_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="h-9 w-full max-w-xs bg-editorial-black hover:bg-white text-white hover:text-editorial-black text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+                            className="h-11 w-full max-w-xs bg-editorial-black hover:bg-brand-blue-600 text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-diffusion-hover active:scale-[0.98] flex items-center justify-center gap-2"
                         >
                             {t('cta.buy.button')}
                             <span className="material-symbols-outlined text-sm">arrow_forward</span>

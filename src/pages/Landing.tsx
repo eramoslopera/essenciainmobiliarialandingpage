@@ -328,15 +328,16 @@ const Landing: React.FC = () => {
                         >
                             <button
                                 onClick={() => document.getElementById('start-valuation')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-editorial-black hover:bg-brand-blue-500 border border-editorial-black hover:border-brand-blue-500 hover:text-editorial-black text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center cursor-pointer shadow-xl hover:shadow-brand-blue-500/20 hover:-translate-y-1"
+                                className="h-14 px-10 bg-editorial-black text-white text-[11px] font-black tracking-[0.2em] uppercase rounded-full shadow-diffusion hover:shadow-diffusion-hover hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 transition-all duration-300 flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black focus-visible:ring-offset-2"
                             >
                                 {t('landing.hero.valuation')}
                             </button>
                             <button
                                 onClick={() => document.getElementById('recent-sales')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="h-14 px-10 bg-brand-blue-500 hover:bg-editorial-black text-white hover:text-white border border-brand-blue-500 hover:border-editorial-black text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-1"
+                                className="h-14 px-10 group text-editorial-black font-black text-[11px] uppercase tracking-[0.2em] bg-white/70 backdrop-blur-md border border-white/50 rounded-full hover:bg-white hover:border-white hover:shadow-diffusion-hover active:scale-[0.98] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black"
                             >
                                 {t('landing.hero.sales')}
+                                <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </button>
                         </motion.div>
                     </div>
@@ -394,7 +395,7 @@ const Landing: React.FC = () => {
                                     onClick={() => scroll('left')}
                                     aria-label="Propiedad anterior"
                                     title="Propiedad anterior"
-                                    className="w-12 h-12 border border-editorial-black flex items-center justify-center hover:bg-editorial-black hover:text-white transition-all"
+                                    className="w-12 h-12 rounded-full border border-editorial-black flex items-center justify-center hover:bg-editorial-black hover:text-white active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
                                 >
                                     <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
                                 </button>
@@ -402,7 +403,7 @@ const Landing: React.FC = () => {
                                     onClick={() => scroll('right')}
                                     aria-label="Siguiente propiedad"
                                     title="Siguiente propiedad"
-                                    className="w-12 h-12 bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-all"
+                                    className="w-12 h-12 rounded-full bg-editorial-black text-white flex items-center justify-center hover:bg-brand-blue-600 hover:border-brand-blue-600 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 shadow-md"
                                 >
                                     <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                                 </button>
@@ -659,10 +660,10 @@ const Landing: React.FC = () => {
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'submitting'}
-                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-brand-blue-500 border border-editorial-black hover:border-brand-blue-500 hover:text-editorial-black text-white font-black text-sm uppercase tracking-[0.2em] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-brand-blue-500/20"
+                                        className="mt-8 h-14 w-full bg-editorial-black hover:bg-brand-blue-600 text-white font-black text-[11px] uppercase tracking-[0.15em] rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-diffusion-hover active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2"
                                     >
                                         {formStatus === 'submitting' ? (
-                                            <span className="material-symbols-outlined animate-spin">refresh</span>
+                                            <span className="material-symbols-outlined animate-spin text-base">refresh</span>
                                         ) : (
                                             t('landing.form.submit')
                                         )}
@@ -678,7 +679,7 @@ const Landing: React.FC = () => {
             <StickyBuyBanner />
             <button
                 onClick={scrollToTop}
-                className={`back-to-top fixed bottom-6 left-6 z-40 w-12 h-12 bg-white text-editorial-black shadow-lg border border-gray-100 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+                className={`back-to-top fixed bottom-6 left-6 z-40 w-12 h-12 bg-brand-blue-500 border border-brand-blue-500 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-blue-600 hover:border-brand-blue-600 hover:scale-110 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
             >
                 <span className="material-symbols-outlined">arrow_upward</span>
             </button>

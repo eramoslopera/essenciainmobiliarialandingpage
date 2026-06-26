@@ -57,88 +57,115 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 };
 
 const StatsSection: React.FC = () => {
-    const { t, language } = useLanguage();
+    const { language } = useLanguage();
 
-    // Notes mapped by language
-    const getNotes = (key: string) => {
-        const notes: Record<string, Record<string, string>> = {
-            vol: {
-                es: 'Volumen de operaciones gestionadas',
-                en: 'Volume of managed operations',
-                fr: 'Volume des opérations gérées',
-                de: 'Volumen der verwalteten Vorgänge',
-                va: 'Volum d\'operacions gestionades'
-            },
-            sold_per_month: {
-                es: 'Promedio mensual en la comarca',
-                en: 'Monthly average in the region',
-                fr: 'Moyenne mensuelle dans la région',
-                de: 'Monatlicher Durchschnitt in der Region',
-                va: 'Mitjana mensual a la comarca'
+    // Data mapped by language to match the corporate website exactly
+    const getStatData = (key: string) => {
+        const data: Record<string, Record<string, { label: string; note: string }>> = {
+            sold: {
+                es: { label: 'Ventas cerradas', note: '15 años en el mercado de Gandía' },
+                en: { label: 'Closed sales', note: '15 years in the Gandia market' },
+                fr: { label: 'Ventes clôturées', note: '15 ans sur le marché de Gandía' },
+                de: { label: 'Abgeschlossene Verkäufe', note: '15 Jahre auf dem Markt von Gandía' },
+                va: { label: 'Vendes tancades', note: '15 anys en el mercat de Gandia' }
             },
             days: {
-                es: 'Desde la captación hasta la venta',
-                en: 'From listing to final sale',
-                fr: 'De la mise en vente à la signature',
-                de: 'Vom Inserat bis zum Verkauf',
-                va: 'Des de la captació fins a la venda'
+                es: { label: 'Media hasta la venta', note: 'Desde la captación hasta escrituras' },
+                en: { label: 'Average time to sell', note: 'From listing to notary signing' },
+                fr: { label: 'Moyenne jusqu\'à la vente', note: 'Du mandat à la signature' },
+                de: { label: 'Durchschnitt bis zum Verkauf', note: 'Vom Inserat bis zur Beurkundung' },
+                va: { label: 'Mitjana fins a la venda', note: 'Des de la captació fins a escriptures' }
             },
-            active_listings: {
-                es: 'Cartera activa de inmuebles exclusivos',
-                en: 'Active portfolio of exclusive listings',
-                fr: 'Portefeuille actif de biens exclusifs',
-                de: 'Aktives Portfolio exklusiver Immobilien',
-                va: 'Cartera activa d\'immobles exclusius'
+            volume: {
+                es: { label: 'En ventas este año', note: 'Volumen de operaciones en 2025' },
+                en: { label: 'In sales this year', note: 'Volume of operations in 2025' },
+                fr: { label: 'En ventes cette année', note: 'Volume des opérations en 2025' },
+                de: { label: 'Umsatz in diesem Jahr', note: 'Volumen der Transaktionen im Jahr 2025' },
+                va: { label: 'En vendes enguany', note: 'Volum d\'operacions el 2025' }
             },
-            success: {
-                es: 'Según encuestas de satisfacción post-venta',
-                en: 'According to post-sale satisfaction surveys',
-                fr: 'Selon les enquêtes de satisfaction post-vente',
-                de: 'Laut Kundenzufriedenheitsbefragungen',
-                va: 'Segons enquestes de satisfacció postvenda'
+            satisfaction: {
+                es: { label: 'Clientes satisfechos', note: 'Según encuesta post-venta' },
+                en: { label: 'Satisfied clients', note: 'According to post-sale survey' },
+                fr: { label: 'Clients satisfaits', note: 'Selon l\'enquête post-vente' },
+                de: { label: 'Zufriedene Kunden', note: 'Laut After-Sales-Umfrage' },
+                va: { label: 'Clients satisfets', note: 'Segons enquesta postvenda' }
             }
         };
-        return notes[key]?.[language] || notes[key]?.['es'] || '';
+        return data[key]?.[language] || data[key]?.['es'];
     };
 
     const STATS = [
         {
-            value: 10,
-            prefix: '',
+            value: 2000,
+            prefix: '+',
             suffix: '',
-            label: t('stats.sold_per_month.label'),
-            note: getNotes('sold_per_month'),
-            ariaLabel: `10 ${t('stats.sold_per_month.label')}`,
+            label: getStatData('sold').label,
+            note: getStatData('sold').note,
+            ariaLabel: `Más de 2000 ${getStatData('sold').label}`,
             delay: 0,
         },
         {
-            value: 30,
+            value: 45,
             prefix: '',
             suffix: ` ${language === 'en' ? 'days' : language === 'fr' ? 'jours' : language === 'de' ? 'Tage' : 'días'}`,
-            label: t('stats.days.label'),
-            note: getNotes('days'),
-            ariaLabel: `30 ${t('stats.days.label')}`,
+            label: getStatData('days').label,
+            note: getStatData('days').note,
+            ariaLabel: `45 ${getStatData('days').label}`,
             delay: 0.1,
         },
         {
-            value: 150,
-            prefix: '+',
-            suffix: '',
-            label: t('stats.active_listings.label'),
-            note: getNotes('active_listings'),
-            ariaLabel: `Más de 150 ${t('stats.active_listings.label')}`,
+            value: 13,
+            prefix: '',
+            suffix: 'M€',
+            label: getStatData('volume').label,
+            note: getStatData('volume').note,
+            ariaLabel: `13 millones de euros ${getStatData('volume').label}`,
             delay: 0.2,
         },
         {
             value: 95,
             prefix: '',
             suffix: '%',
-            label: t('stats.success.label'),
-            note: getNotes('success'),
-            ariaLabel: `95% ${t('stats.success.label')}`,
+            label: getStatData('satisfaction').label,
+            note: getStatData('satisfaction').note,
+            ariaLabel: `95% ${getStatData('satisfaction').label}`,
             delay: 0.3,
         },
     ] as const;
+
+    const t = (key: string) => {
+        const translations: Record<string, Record<string, string>> = {
+            status: {
+                es: 'Datos reales',
+                en: 'Real data',
+                fr: 'Données réelles',
+                de: 'Reale Daten',
+                va: 'Dades reals'
+            },
+            title: {
+                es: 'Números',
+                en: 'Numbers',
+                fr: 'Nombres',
+                de: 'Zahlen',
+                va: 'Números'
+            },
+            subtitle: {
+                es: 'que hablan.',
+                en: 'that speak.',
+                fr: 'qui parlent.',
+                de: 'die sprechen.',
+                va: 'que parlen.'
+            },
+            description: {
+                es: 'Más de 15 años vendiendo propiedades en Gandía y La Safor. Estos son los resultados de Essencia Inmobiliaria.',
+                en: 'More than 15 years selling properties in Gandía and La Safor. These are the results of Essencia Inmobiliaria.',
+                fr: 'Plus de 15 ans d\'expérience dans la vente de propriétés à Gandía et La Safor. Voici les résultats d\'Essencia Inmobiliaria.',
+                de: 'Über 15 Jahre Erfahrung im Verkauf von Immobilien in Gandía und La Safor. Dies sind die Ergebnisse von Essencia Inmobiliaria.',
+                va: 'Més de 15 anys venent propietats a Gandia i La Safor. Aquests són els resultats d\'Essencia Inmobiliaria.'
+            }
+        };
+        return translations[key]?.[language] || translations[key]?.['es'];
+    };
 
     return (
         <section
@@ -170,42 +197,23 @@ const StatsSection: React.FC = () => {
                         <div className="inline-flex items-center gap-2 mb-8" aria-hidden="true">
                             <div className="w-8 h-[1px] bg-brand-blue-500" />
                             <span className="text-xs font-black tracking-[0.2em] uppercase text-brand-blue-500">
-                                {t('stats.status')} · 2025
+                                {t('status')} · 2025
                             </span>
                         </div>
 
                         <h2 className="text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] mb-8 text-white">
-                            {language === 'va' ? 'Números' : language === 'en' ? 'Numbers' : language === 'fr' ? 'Nombres' : language === 'de' ? 'Zahlen' : 'Números'}<br />
+                            {t('title')}<br />
                             <span className="text-white/60">
-                                {language === 'va' ? 'que parlen.' : language === 'en' ? 'that speak.' : language === 'fr' ? 'qui parlent.' : language === 'de' ? 'die sprechen.' : 'que hablan.'}
+                                {t('subtitle')}
                             </span>
                         </h2>
 
                         <p className="text-gray-200 text-base leading-relaxed font-medium max-w-sm">
-                            {language === 'es' || language === 'va'
-                                ? 'Más de 15 años vendiendo propiedades en Gandía y La Safor. Estos son los resultados de Essencia Inmobiliaria.'
-                                : language === 'fr'
-                                ? 'Plus de 15 ans d\'expérience dans la vente de propriétés à Gandía et La Safor. Voici les résultats d\'Essencia Inmobiliaria.'
-                                : language === 'de'
-                                ? 'Über 15 Jahre Erfahrung im Verkauf von Immobilien in Gandía und La Safor. Dies sind die Ergebnisse von Essencia Inmobiliaria.'
-                                : 'More than 15 years selling properties in Gandía and La Safor. These are the results of Essencia Inmobiliaria.'}
+                            {t('description')}
                         </p>
 
-                        {/* Volume Stat Highlight inside left column */}
-                        <div className="mt-8 p-6 bg-white/5 border border-white/10 rounded-2xl">
-                            <div className="text-3xl md:text-4xl font-black text-brand-blue-500 tracking-tight leading-none mb-2">
-                                <AnimatedCounter value={13000000} suffix=" €" />
-                            </div>
-                            <p className="text-xs font-black text-gray-400 uppercase tracking-wider mb-1">
-                                {t('stats.vol.label')}
-                            </p>
-                            <p className="text-[11px] text-gray-400 font-medium">
-                                {getNotes('vol')}
-                            </p>
-                        </div>
-
                         {/* Divider decoration */}
-                        <div className="mt-8 pt-8 border-t border-white/10">
+                        <div className="mt-12 pt-12 border-t border-white/10">
                             <p className="text-xs font-black tracking-[0.15em] uppercase text-gray-400">
                                 Essencia Inmobiliaria · Gandía, La Safor
                             </p>
