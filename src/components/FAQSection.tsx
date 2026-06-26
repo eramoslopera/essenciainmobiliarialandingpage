@@ -22,7 +22,7 @@ const FAQSection: React.FC = () => {
       <div className="max-w-[1280px] mx-auto relative z-10">
         <div className="mb-16 md:mb-24 flex flex-col items-center text-center">
           <span className="inline-block text-xs font-black uppercase tracking-[0.2em] text-brand-blue-500 mb-6 border border-brand-blue-500/30 px-4 py-2 rounded-full">
-            {t('home.contact.tag') || t('landing.faq.title') || 'Transparencia Total'}
+            {t('landing.faq.tag') || t('landing.faq.title') || 'Transparencia Total'}
           </span>
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white leading-[1.1] tracking-[-0.04em]">
             {t('landing.faq.title') || 'Preguntas Frecuentes'}
