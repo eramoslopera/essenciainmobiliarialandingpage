@@ -279,15 +279,17 @@ const Landing: React.FC = () => {
 
     return (
         <>
+            <time dateTime="2026-06-26" className="sr-only">Última actualización: 2026-06-26</time>
             <LandingHeader />
-            <main className="bg-white text-editorial-black font-display overflow-x-hidden antialiased pt-20">
+            <main className="pt-20">
                 {/* Hero Section */}
-                <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
+                <section className="relative min-h-[90vh] flex items-center justify-center py-20 overflow-hidden bg-[#fafafa]">
+                    {/* Background image container */}
                     <div className="absolute inset-0 z-0">
                         <motion.div
-                            initial={{ scale: 1.1 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 10, ease: "easeOut" }}
+                            initial={{ scale: 1.1, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 0.6 }}
+                            transition={{ duration: 1.5 }}
                             className="w-full h-full"
                         >
                             <img
@@ -303,15 +305,16 @@ const Landing: React.FC = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent"></div>
                     </div>
                     <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
-                        <motion.h1
+                        <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black mb-6 leading-[1.1] tracking-tighter"
                         >
-                            {t('landing.hero.title')}<br />
-                            <span className="opacity-40">{t('landing.hero.subtitle')}</span>
-                        </motion.h1>
+                            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black mb-6 leading-[1.1] tracking-tighter">
+                                {t('landing.hero.title')}<br />
+                                <span className="opacity-40">{t('landing.hero.subtitle')}</span>
+                            </h1>
+                        </motion.div>
                         <motion.p
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
