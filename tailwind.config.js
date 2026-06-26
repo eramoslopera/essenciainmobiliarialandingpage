@@ -36,7 +36,7 @@ export default {
                     200: "#99ebf7",
                     300: "#6be2f4",
                     400: "#4edcf1",
-                    500: "#22d3ee",
+                    500: "#1fc0d9",
                     600: "#1fc0d9",
                     700: "#1896a9",
                     800: "#137483",
@@ -57,6 +57,9 @@ export default {
             },
             boxShadow: {
                 editorial: "0 20px 40px -10px rgba(0, 0, 0, 0.05)",
+                diffusion: "0 20px 40px -5px rgba(0, 0, 0, 0.05)",
+                "diffusion-hover": "0 30px 60px -10px rgba(0, 0, 0, 0.1)",
+                "glass-inner": "inset 0 1px 0 0 rgba(255, 255, 255, 0.2)",
             },
         },
     },

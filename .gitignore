@@ -122,3 +122,4 @@ dist
 # Brain
 .gemini/
 .agents/
+.vercel

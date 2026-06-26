@@ -20,6 +20,7 @@ import ProcessSteps from '../components/ProcessSteps';
 import ManagementClosingSection from '../components/ManagementClosingSection';
 import StatsSection from '../components/StatsSection';
 import StickyBuyBanner from '../components/StickyBuyBanner';
+import FAQSection from '../components/FAQSection';
 
 // Component to update map bounds based on properties
 const MapBoundsUpdater: React.FC<{ properties: Property[] }> = ({ properties }) => {
@@ -42,9 +43,7 @@ const MapBoundsUpdater: React.FC<{ properties: Property[] }> = ({ properties }) 
 };
 
 const Landing: React.FC = () => {
-    // State for FAQ accordion
-    const [openFaq, setOpenFaq] = useState<number | null>(null);
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const scrollRef = useRef<HTMLDivElement>(null);
 
     // Properties State
@@ -52,10 +51,46 @@ const Landing: React.FC = () => {
     const [hoveredPropertyId, setHoveredPropertyId] = useState<string | null>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    // SEO Title
+    // SEO: Dynamic title + lang attribute + FAQ Schema injection
     useEffect(() => {
-        document.title = `${t('landing.hero.title')} - Essencia Inmobiliaria`;
-    }, [t]);
+        document.title = `${t('landing.hero.title')} - Essencia Inmobiliaria | Gandía & Valencia`;
+        // Update lang attribute dynamically based on selected language
+        const langMap: Record<string, string> = { es: 'es', en: 'en', fr: 'fr', de: 'de', va: 'ca' };
+        document.documentElement.lang = langMap[language] || 'es';
+
+        // Inject / update FAQ JSON-LD Schema for rich snippets
+        const existingScript = document.getElementById('faq-schema');
+        if (existingScript) existingScript.remove();
+        const faqItems = [
+            { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
+            { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
+            { q: t('landing.faq.3.q'), a: t('landing.faq.3.a') },
+            { q: t('landing.faq.4.q'), a: t('landing.faq.4.a') },
+            { q: t('landing.faq.5.q'), a: t('landing.faq.5.a') },
+            { q: t('landing.faq.6.q'), a: t('landing.faq.6.a') },
+            { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
+            { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') },
+        ];
+        const faqSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqItems.map(item => ({
+                '@type': 'Question',
+                name: item.q,
+                acceptedAnswer: { '@type': 'Answer', text: item.a },
+            })),
+        };
+        const script = document.createElement('script');
+        script.id = 'faq-schema';
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(script);
+
+        return () => {
+            const s = document.getElementById('faq-schema');
+            if (s) s.remove();
+        };
+    }, [t, language]);
 
     const FEATURED_SOLD: Property[] = [
         {
@@ -200,7 +235,7 @@ const Landing: React.FC = () => {
         formData.append('address', formState.address);
 
         if (selectedFiles) {
-            Array.from(selectedFiles).forEach(file => {
+            Array.from(selectedFiles).forEach((file: any) => {
                 formData.append('files[]', file);
             });
         }
@@ -231,9 +266,6 @@ const Landing: React.FC = () => {
         }
     };
 
-    const toggleFaq = (index: number) => {
-        setOpenFaq(openFaq === index ? null : index);
-    };
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
@@ -360,15 +392,19 @@ const Landing: React.FC = () => {
                             <div className="flex gap-4">
                                 <button
                                     onClick={() => scroll('left')}
+                                    aria-label="Propiedad anterior"
+                                    title="Propiedad anterior"
                                     className="w-12 h-12 border border-editorial-black flex items-center justify-center hover:bg-editorial-black hover:text-white transition-all"
                                 >
-                                    <span className="material-symbols-outlined">arrow_back</span>
+                                    <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
                                 </button>
                                 <button
                                     onClick={() => scroll('right')}
+                                    aria-label="Siguiente propiedad"
+                                    title="Siguiente propiedad"
                                     className="w-12 h-12 bg-editorial-black text-white flex items-center justify-center hover:bg-gray-800 transition-all"
                                 >
-                                    <span className="material-symbols-outlined">arrow_forward</span>
+                                    <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                                 </button>
                             </div>
                         </div>
@@ -393,8 +429,9 @@ const Landing: React.FC = () => {
                                     <div className="w-full md:w-5/12 relative h-56 md:h-full grayscale group-hover:grayscale-0 transition-all duration-500 overflow-hidden">
                                         <img
                                             src={property.image}
-                                            alt={property.title}
+                                            alt={`${property.title} - ${property.location} - Essencia Inmobiliaria`}
                                             className="absolute inset-0 w-full h-full object-cover object-center"
+                                            loading="lazy"
                                         />
                                         {property.status === 'sold' && (
                                             <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-10">
@@ -484,65 +521,7 @@ const Landing: React.FC = () => {
                     <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-[400] pointer-events-none"></div>
                 </section>
 
-                {/* FAQ Accordion */}
-                <section id="faq" className="py-24 bg-white px-6">
-                    <div className="max-w-5xl mx-auto">
-                        <h2 className="text-4xl font-black tracking-tighter text-center mb-16">{t('landing.faq.title')}</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                            {/* Left Column */}
-                            <div className="space-y-4">
-                                {[
-                                    { q: t('landing.faq.1.q'), a: t('landing.faq.1.a') },
-                                    { q: t('landing.faq.2.q'), a: t('landing.faq.2.a') },
-                                    { q: t('landing.faq.3.q'), a: t('landing.faq.3.a') },
-                                    { q: t('landing.faq.4.q'), a: t('landing.faq.4.a') }
-                                ].map((item, index) => {
-                                    const realIndex = index; // 0 to 3
-                                    return (
-                                        <div key={realIndex} className="border-b border-gray-100">
-                                            <button
-                                                className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
-                                                onClick={() => toggleFaq(realIndex)}
-                                            >
-                                                {item.q}
-                                                <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
-                                            </button>
-                                            <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
-                                                <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-
-                            {/* Right Column */}
-                            <div className="space-y-4">
-                                {[
-                                    { q: t('landing.faq.5.q'), a: t('landing.faq.5.a') },
-                                    { q: t('landing.faq.6.q'), a: t('landing.faq.6.a') },
-                                    { q: t('landing.faq.7.q'), a: t('landing.faq.7.a') },
-                                    { q: t('landing.faq.8.q'), a: t('landing.faq.8.a') }
-                                ].map((item, index) => {
-                                    const realIndex = index + 4; // 4 to 7
-                                    return (
-                                        <div key={realIndex} className="border-b border-gray-100">
-                                            <button
-                                                className="w-full flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors py-4 text-left gap-4"
-                                                onClick={() => toggleFaq(realIndex)}
-                                            >
-                                                {item.q}
-                                                <span className={`material-symbols-outlined shrink-0 transition-transform ${openFaq === realIndex ? 'rotate-180' : ''}`}>expand_more</span>
-                                            </button>
-                                            <div className={`overflow-hidden transition-all duration-300 ${openFaq === realIndex ? 'max-h-40 pb-4' : 'max-h-0'}`}>
-                                                <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.a}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <FAQSection />
 
                 {/* Final CTA */}
                 <section id="start-valuation" className="py-24 bg-white relative overflow-hidden">

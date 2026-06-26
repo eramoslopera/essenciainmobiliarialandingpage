@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://essenciainmobiliaria.com/sitemap.xml
+Sitemap: https://essenciainmobiliarialandingpage.vercel.app/sitemap.xml

@@ -34,7 +34,7 @@ const LandingFooter: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                    <p>{t('footer.rights')}</p>
+                    <p>© 2025 ESSENCIA INMOBILIARIA. TODOS LOS DERECHOS RESERVADOS.</p>
                     <div className="flex gap-10">
                         <span className="hover:text-brand-blue-500 transition-colors cursor-pointer">{t('footer.privacy')}</span>
                         <span className="hover:text-brand-blue-500 transition-colors cursor-pointer">{t('footer.cookies')}</span>
