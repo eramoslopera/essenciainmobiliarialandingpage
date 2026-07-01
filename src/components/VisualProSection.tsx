@@ -336,7 +336,7 @@ const VideoGallery = () => {
         };
     }, []);
 
-    const mainVideoUrl = "./editorial/Video_Landing.mp4";
+    const mainVideoUrl = "./Video_Landing.mp4";
 
     return (
         <section className="py-24 bg-white text-editorial-black overflow-hidden flex flex-col items-center">
